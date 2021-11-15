@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>各种测试</title>
+  </head>
+  <body>
+    <!-- <input type="button" value="删除" onclick="del()" /> -->
+
+    <!-- <p><input type="button" value="打开窗口" onclick="openWin()" /></p>
+    <p><input type="button" value="关闭窗口" onclick="closeWin()" /></p>
+    <p><input type="button" value="检测窗口是否关闭" onclick="checkWin()" /></p>
+    <p id="msg"></p> -->
+
+    <!-- <input type="button" value="打开窗口" onclick="openWin()" />
+    <input type="button" value="调整窗口位置和大小" onclick="changeWin()" /> -->
+
+    <!-- <iframe name="frame01"></iframe>
+    <iframe name="frame03"></iframe>
+    <iframe name="frame02"></iframe> -->
+
+    <!-- <input type="button" value="开始计数" onclick="startCount()">
+    <input type="text" id="num">
+    <input type="button" value="停止计数" onclick="stopCount()"> -->
+
+    <script>
+      // window对象全局作用域
+      /* // console.log(a);
+      console.log(window.a);
+      b = {}
+      console.log(b.a);
+      console.log(window.b.a); */
+
+      // 对象测试
+      /* var str1 = prompt('请输入测试的选项');
+      var str2 = prompt('请输入测试的选项','用户名和密码');
+      function del() {
+        if (confirm("确认要删除吗？")) {
+          console.log("yes");
+        } else {
+          console.log("no");
+        }
+      } */
+
+      // 窗口1
+      /* var myWindow;
+      function openWin(){
+        myWindow = window.open('','newWin','width=400,height=200,left=200');
+        myWindow.document.write('<p>窗口名称为：'+myWindow.name+'</p>');
+        myWindow.document.write('<p>当前窗口地址为：'+window.parent.location+'</p>');
+      }
+      function closeWin(){
+        myWindow.close();
+      }
+      function checkWin(){
+        if(myWindow){
+          var str = myWindow.closed ?  '窗口已关闭':'窗口未关闭';
+        }else {
+          var str = '窗口没有被打开！';
+        }
+        document.getElementById('msg').innerHTML = str;
+      } */
+
+      // 窗口2
+      /* var myWindow;
+      function openWin() {
+        myWindow = window.open("", "newWin", "width=250,height=300");
+        getPosSize();
+      }
+      function changeWin() {
+        myWindow.moveBy(250, 250);
+        myWindow.focus();
+        myWindow.resizeTo(500, 300);
+        getPosSize();
+      }
+      function getPosSize() {
+        var x = myWindow.screenLeft,
+          y = myWindow.screenTop;
+        var inH = myWindow.innerHeight,
+          inW = myWindow.innerWidth;
+        var outH = myWindow.outerHeight,
+          outW = myWindow.outerWidth;
+        myWindow.document.write(
+          "<p>相对屏幕窗口的坐标：(" + x + "," + y + ")</p>"
+        );
+        myWindow.document.write(
+          "<p>文档的高度和宽度：(" + inH + "," + inW + ")</p>"
+        );
+        myWindow.document.write(
+          "<p>窗口的高度和宽度：(" + outH + "," + outW + ")</p><hr>"
+        );
+      } */
+
+      // 框架
+      /* window.frames['frame01'].document.write('frame01 text.');
+      window.frames.frame02.document.write('frame02 text.');
+      window.frames[2].document.write('frame03 text.');
+      window.parent;
+      window.parent.frames; */
+
+      // 定时器
+      /* var timer = null, c= 0;
+      function timeCount(){
+        document.getElementById('num').value = c;
+        ++c;
+      }
+      function startCount(){
+        timer = setInterval(timeCount, 1000);
+      }
+      function stopCount(){
+        clearInterval(timer);
+      } */
+
+      // navigator对象
+      /* console.log(navigator.appCodeName);
+      console.log(navigator.appName);
+      console.log(navigator.cookieEnabled);
+      console.log(navigator.platform);
+      console.log(navigator.javaEnabled());
+      console.log(navigator.appVersion);
+      console.log(navigator.userAgent); */
+
+      // screen对象
+      console.log(screen.height);
+      console.log(screen.availHeight);
+      console.log(screen.colorDepth);
+      console.log(screen.pixelDepth);
+    </script>
+  </body>
+</html>

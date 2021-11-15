@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>鼠标拖动</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .box {
+        width: 400px;
+        height: 300px;
+        border: 5px solid #eee;
+        box-shadow: 2px 2px 2px 2px #666;
+        position: absolute;
+        top: 30%;
+        left: 30%;
+      }
+      .hd {
+        width: 100%;
+        height: 25px;
+        background-color: #7c9299;
+        border-bottom: 1px solid #369;
+        line-height: 25px;
+        color: #fff;
+        cursor: move;
+      }
+      #box_close {
+        float: right;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" class="box">
+      <div id="drop" class="hd">
+        注册信息 (可以拖拽)
+        <span id="box_close">【关闭】</span>
+      </div>
+      <div class="bd"></div>
+    </div>
+    <script>
+      // 获取被拖动的盒子和拖动条
+      var box = document.getElementById("box");
+      var drop = document.getElementById("drop");
+      drop.onmousedown = function (event) {
+        // 鼠标在拖动条上 按下 可拖动盒子
+        var event = event || window.event;
+        // 获取鼠标按下时的位置
+        var pageX =
+          event.pageX || event.clientX + document.documentElement.scrollLeft;
+        var pageY =
+          event.pageY || event.clientY + document.documentElement.scrollTop;
+        // 计算鼠标按下的位置 距 盒子的位置
+        var spaceX = pageX - box.offsetLeft;
+        var spaceY = pageY - box.offsetTop;
+        document.onmousemove = function (event) {
+          // 鼠标移动的时候 获取鼠标的位置 整个盒子跟着鼠标的位置走
+          var event = event || window.event;
+          // 获取移动后鼠标的位置
+          var pageX =
+            event.pageX || event.clientX + document.documentElement.scrollLeft;
+          var pageY =
+            event.pageY || event.clientY + document.documentElement.scrollTop;
+          // 计算并设置盒子移动后的位置
+          box.style.left = pageX - spaceX + "px";
+          box.style.top = pageY - spaceY + "px";
+          // 清理鼠标拖动时，选中拖动条中文字的情况
+          window.getSelection
+            ? window.getSelection().removeAllRanges()
+            : document.selection.empty();
+        };
+      };
+      document.onmouseup = function () {
+        // 释放鼠标按键时  取消盒子的移动
+        document.onmousemove = null;
+      };
+    </script>
+  </body>
+</html>

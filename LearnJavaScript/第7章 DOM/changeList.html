@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>列表的增删与移动</title>
+    <script src="SmartList.js"></script>
+  </head>
+  <body>
+    <form>
+      <div class="list">
+        <ul class="list-ul">
+          <li class="list-option">
+            <input class="list-input" type="text" name="list[]" />
+            <span class="list-btn">
+              <span class="list-up">[上移]</span>
+              <span class="list-down">[下移]</span>
+              <span class="list-del">[删除]</span>
+            </span>
+          </li>
+        </ul>
+    </form>
+    <div class="list-bottom">
+      <span class="list-add-show">添加项目</span>
+      <div class="list-add-area list-hide">
+        添加到列表:
+        <input class="list-add-input" type="text" name="list[]">
+        <input class="list-add-add" type="button" name="添加">
+        <input class="list-add-cancel" type="button" name="取消">
+      </div>
+      </div>
+    </div>
+  </div>
+    <script >
+      SmartList("list", ["PHP", "JavaScrip"]);
+    </script>
+  </body>
+</html>

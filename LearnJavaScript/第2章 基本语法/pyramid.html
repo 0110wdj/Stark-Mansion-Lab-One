@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>金字塔</title>
+  </head>
+  <body>
+    <script>
+      var level = prompt("请设置金字塔的层数");
+      console.log(parseFloat(level), Number(level));
+      level2 = parseFloat(level) && Number(level);
+      console.log(level2);
+      level3 = parseFloat(level);
+      console.log(level3);
+      level4 = Number(level);
+      console.log(level4);
+
+      if (isNaN(level2)) {
+        // alert('金字塔的层数必须是纯数字');
+        console.log("金字塔的层数必须是纯数字");
+      }
+      for (var i = 1; i < level2; i++) {
+        var blank = level2 - i;
+        for (var k = 0; k < blank; k++) {
+          document.write("&nbsp;");
+        }
+        var star = i * 2 - 1;
+        for (var j = 0; j < star; j++) {
+          document.write("*");
+        }
+        document.write("<br>");
+      }
+    </script>
+  </body>
+</html>

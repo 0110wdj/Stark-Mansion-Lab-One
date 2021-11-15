@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>标签栏切换效果</title>
+    <!-- 没有CSS 将就看log -->
+  </head>
+  <body>
+    <div class="tab-box">
+      <div class="tab-head">
+        <div class="tab-head-div current">标签一</div>
+        <div class="tab-head-div">标签二</div>
+        <div class="tab-head-div">标签三</div>
+        <div class="tab-head-div">标签四</div>
+      </div>
+      <div class="tab-body">
+        <div class="tab-body-div current">1</div>
+        <div class="tab-body-div">2</div>
+        <div class="tab-body-div">3</div>
+        <div class="tab-body-div">4</div>
+      </div>
+    </div>
+    <script>
+      var tabs = document.getElementsByClassName('tab-head-div');
+      var divs = document.getElementsByClassName('tab-body-div');
+      for (var i = 0; i < tabs.length; ++i) {
+        tabs[i].onmouseover = function () {
+          console.log('------------------');
+          for (var i = 0; i < divs.length; ++i) {
+            if (tabs[i] == this) {
+              divs[i].classList.add('current');
+              tabs[i].classList.add('current');
+              console.log('增加',i);
+            } else {
+              divs[i].classList.remove('current');
+              tabs[i].classList.remove('current');
+              console.log('移除',i);
+            }
+          }
+          console.log('------------------');
+        };
+      }
+    </script>
+  </body>
+</html>

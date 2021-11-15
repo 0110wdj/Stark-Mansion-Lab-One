@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>左移与右移</title>
+    <style>
+      select {
+        width: 100px;
+        height: 150px;
+      }
+      input[type="button"] {
+        width: 50px;
+      }
+      #opt {
+        margin: 90px 10px 0;
+      }
+      .box {
+        width: 80%;
+        margin: 0 auto;
+        background-color: #999999;
+      }
+      .box div {
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div id="left">
+        <p>可选项</p>
+        <select multiple="multiple">
+          <option>添加</option>
+          <option>移动</option>
+          <option>修改</option>
+          <option>查询</option>
+          <option>打印</option>
+          <option>删除</option>
+        </select>
+      </div>
+      <div id="opt">
+        <input id="toRight" type="button" value=">" /><br>
+        <input id="toLeft" type="button" value="<" /><br>
+        <input id="toAllRight" type="button" value=">>" /><br>
+        <input id="toAllLeft" type="button" value="<<" /><br>
+      </div>
+      <div id="right">
+        <p>已选项</p>
+        <select multiple="multiple"></select>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $('#toRight').click(function(){
+        $('#right>select').append($('#left>select>option:selected'));
+      });
+      $('#toLeft').click(function(){
+        $('#left>select').append($('#right>select>option:selected'));
+      });
+      $('#toAllRight').click(function(){
+        $('#right>select').append($('#left>select>option'));
+      });
+      $('#toAllLeft').click(function(){
+        $('#left>select').append($('#right>select>option'));
+      });
+    </script>
+  </body>
+</html>

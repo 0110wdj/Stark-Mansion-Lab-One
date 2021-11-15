@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>三级联动</title>
+  </head>
+  <body>
+    <select id="province">
+      <option value="-1">请选择</option>
+    </select>
+    <select id="city"></select>
+    <select id="country"></select>
+
+    <script>
+      var provinceArr = ["上海", "江苏"];
+      var cityArr = [["上海市"], ["苏州市", "南京市"]];
+      var countryArr = [
+        [["黄浦区", "浦东区"]],
+        [
+          ["姑苏区", "吴中区"],
+          ["建邺区", "秦淮区", "玄武区"],
+        ],
+      ];
+
+      function createOption(obj, data) {
+        for (var i in data) {
+          var op = new Option(data[i], i);
+          obj.options.add(op);
+        }
+      }
+      var province = document.getElementById("province");
+      createOption(province, provinceArr);
+
+      var city = document.getElementById("city");
+      province.onchange = function () {
+        city.options.length = 0;
+        createOption(city, cityArr[province.value]);
+        if (province.value >= 0) {
+            city.onchange();
+        } else {
+            country.options.length = 0;
+        }
+      };
+
+      var country = document.getElementById("country");
+      city.onchange = function () {
+        country.options.length = 0;
+        createOption(country, countryArr[province.value][city.value]);
+      };
+    </script>
+  </body>
+</html>

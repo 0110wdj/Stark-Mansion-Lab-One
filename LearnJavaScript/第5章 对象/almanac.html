@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>年历</title>
+  </head>
+  <body>
+    <script>
+      var year = parseInt(prompt("请输入年份", "2018"));
+      console.log(year);
+      document.write(calendar(year));
+      function calendar(y) {
+        var w = new Date(y, 0).getDay();
+        var html = "";
+        for (var m = 1; m <= 12; ++m) {
+          html += "<table>";
+          html += '<tr><th colspan="7">' + y + " 年 " + m + " 月</th></tr>";
+          html +=
+            "<tr><td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td></tr>";
+          var max = new Date(y, m, 0).getDate();
+          /* for (var d = 1; d <= max; ++d) {
+            w = w + 1 > 6 ? 0 : w + 1;
+          } */
+          html += "<tr>";
+          for (var d = 1; d <= max; d++) {
+            if (w && d == 1) {
+              html += '<td colspan="' + w + '"> </td>';
+            }
+            html += "<td>" + d + "</td>";
+            if (w == 6 && d != max) {
+              html += "</tr><tr>";
+            } else if (d == max) {
+              html += "</tr>";
+            }
+            w = w + 1 > 6 ? 0 : w + 1;
+          }
+          html += "</table>";
+        }
+        // console.log(html);
+        return html;
+      }
+    </script>
+  </body>
+</html>

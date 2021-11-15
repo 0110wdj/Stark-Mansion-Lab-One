@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>折叠菜单</title>
+    <style>
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        width: 150px;
+        border: 1px solid #515e7b;
+        margin: 10px;
+      }
+      div li {
+        background: #515e7b;
+        border-bottom: 1px solid #fff;
+      }
+      div li a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+      }
+      div li a:hover {
+        text-decoration: underline;
+      }
+      .wrap {
+        width: 150px;
+        display: none;
+      }
+      .wrap li {
+        background: #fff;
+        margin: 0;
+      }
+      .wrap li a {
+        color: #3b475f;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 从CDN（内容分布网络）上获取jQuery代码 -->
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"
+    ></script>
+    <div id="fold">
+      <ul>
+        <li>
+          <a href="#">信息管理</a>
+          <ul class="wrap">
+            <li><a href="#">未读信息</a></li>
+            <li><a href="#">已读信息</a></li>
+            <li><a href="#">信息列表</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">商品管理</a>
+          <ul class="wrap">
+            <li><a href="#">商品添加</a></li>
+            <li><a href="#">商品列表</a></li>
+            <li><a href="#">商品分类</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">用户管理</a>
+          <ul class="wrap">
+            <li><a href="#">权限设置</a></li>
+            <li><a href="#">用户列表</a></li>
+            <li><a href="#">重置密码</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <script>
+      $('#fold>ul>li:first').find('.wrap').css({ display: 'block' });
+      $('#fold>ul>li').click(function(){
+        $(this).siblings('li').find('.wrap').css({display:'none'});
+        $(this).find('.wrap').css({display:'block'});
+      });
+      
+    </script>
+    <!-- <script>
+      // 默认情况下，显示第一个分类下的菜单
+      $('#fold>ul>li:first').find('.wrap').css({display: 'block'});
+
+      // 根据用户单击，折叠或展开对应的菜单
+      $('#fold>ul>li').click(function() {
+        $(this).siblings('li').find('.wrap').css({display: 'none'});
+        $(this).find('.wrap').css({display: 'block'});
+      });
+    </script> -->
+  </body>
+</html>

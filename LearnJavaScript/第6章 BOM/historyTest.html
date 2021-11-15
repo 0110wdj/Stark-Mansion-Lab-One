@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>history测试</title>
+  </head>
+  <body>
+    <input type="button" value="前进" onclick="goForward()">
+    <input type="button" value="新网页" onclick="newPage()">
+    <script>
+      function newPage(){
+        window.location.assign('show.html');
+      }
+      function goForward(){
+        history.go(1);
+      }
+    </script>
+  </body>
+</html>

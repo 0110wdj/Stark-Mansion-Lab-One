@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>定时跳转</title>
+  </head>
+  <body>
+    <div>
+      <h2>提交成功</h2>
+      <a href="www.example.com">不加上http则表示相对路径</a>
+      <a href="http://www.example.com">
+        <span id="seconds">3</span>秒后系统会自动跳转，也可单机此链接跳转
+      </a>
+    </div>
+    <script>
+      function timing(secs, url) {
+        // console.log(url);
+        var seconds = document.getElementById("seconds");
+        seconds.innerHTML = --secs;
+        if (secs > 0) {
+          // 层级问题，所以还需要在url外面加一层''
+          temp = "timing(" + secs + ",'" + url + "')";
+          console.log(temp);
+          console.log(typeof(url));
+          setTimeout(temp, 1000);
+        } else {
+          location.href = url;
+        }
+      };
+      timing(50,'http://www.example.com');
+    </script>
+  </body>
+</html>

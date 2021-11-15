@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>算球</title>
+  </head>
+  <body>
+    <script>
+      var red = (white = black = 0);
+      var redAndWhite = 25;
+      var whiteAndBlack = 31;
+      var redAndBlack = 28;
+      // 两种解法：遍历；逻辑推理
+      for (red = 0; red < 25; red++) {
+        for (white = 0; white < 25; white++) {
+          for (black = 0; black < 28; black++) {
+            // console.log(red, white, black);
+            if (
+              red + white == redAndWhite &&
+              white + black == whiteAndBlack &&
+              red + black == redAndBlack
+            ) {
+              console.log("遍历：",red, white, black);
+            }
+          }
+        }
+      }
+    // the other way
+    var redAndWhiteAndBlack = (redAndWhite + whiteAndBlack + redAndBlack)/2;
+    red = redAndWhiteAndBlack - whiteAndBlack;
+    white = redAndWhiteAndBlack - redAndBlack;
+    black = redAndWhiteAndBlack - redAndWhite;
+    console.log("推理：",red, white, black);
+    </script>
+  </body>
+</html>

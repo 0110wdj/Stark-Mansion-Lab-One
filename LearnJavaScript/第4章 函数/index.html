@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>各种测试</title>
+  </head>
+  <body>
+    <script>
+      /* // 无形参，有实参
+      function transferParam() {
+        console.log(arguments.length);
+        console.log(arguments);
+      }
+      transferParam(1,2,5,6,'3',[2,3],'');
+
+      // 个数与默认
+      function transferNumber(name, say = 'lalala') {
+        console.log(say+name);
+      }
+      transferNumber("ssss");
+      transferNumber('ss','jj');
+      transferNumber('ddd',22);
+      transferNumber();
+      
+      // 简写剩余参数
+      function transferNumberNext(one, ...then){
+        console.log(one,then);
+      }
+      transferNumberNext(1,2,3);
+      transferNumberNext(1);
+      transferNumberNext(); */
+
+      // 习题验证
+      /* console.log(((a,b)=>a*b)(6,2));
+      console.log([12,15,8].find(function(ele){return ele>=10})); */
+
+      // 编程题
+      function addLine() {
+        console.log("===");
+        var div = document.getElementById("div");
+        div.style.border = "1px double red";
+      }
+    </script>
+    <input type="button" value="change" onclick="addLine()" />
+    <div id="div">div元素</div>
+  </body>
+</html>

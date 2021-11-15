@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>URL测试</title>
+  </head>
+  <body>
+    <input type="button" value="载入新文档" onclick="newPage()">
+    <input type="button" value="刷新页面" onclick="freshPage()">
+    <p id="time"></p>
+    <script>
+      var ds = new Date(), d = ds.getTime();
+      var t = ds.toLocaleTimeString();
+      document.getElementById('time').innerHTML = t;
+      function newPage(){
+        window.location.assign('http://www.example.com');
+      }
+      function freshPage(){
+        location.reload(true);
+      }
+      console.log(location.host);
+      console.log(location.href);
+      // location.href = 'http://www.example.com';
+    </script>
+  </body>
+</html>

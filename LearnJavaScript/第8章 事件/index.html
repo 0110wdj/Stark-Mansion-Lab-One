@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>各种测试</title>
+  </head>
+  <body>
+    <!-- <button id="btn" class="ceshi">获取event对象</button> -->
+    <div id="tips"></div>
+    <div class="box">
+      <label>userName:<input id="user" type="text"></label>
+      <label>password:<input id="pass" type="password"></label>
+      <button id="login">login</button>
+    </div>
+    <div id="mouse"></div>
+    <script>
+      /* var btn = document.getElementById('btn');
+      btn.onclick = function(e){
+        var event = e || window.event;
+        console.log(event);
+        console.log(event.x);
+        console.log(event.y);
+        console.log(event.type);
+        console.log("--------------");
+        var obj = event.target || window.event.srcElement;
+        console.log(obj.nodeName);
+        console.log(obj.id);
+        console.log(obj.className);
+        console.log(obj.innerText);
+      } */
+
+      /* window.unload = function(){
+        alert("关闭页面前的广告")
+      } */
+
+      window.onload = function() {
+        addBlur($('user'));
+        addBlur($('pass'));
+      };
+      function $(obj) {
+        return document.getElementById(obj);
+      }
+      function addBlur(obj){
+        obj.onblur = function(){
+          isEmpty(this);
+        };
+      }
+      function isEmpty(obj){
+        if(obj.value === ''){
+          $('tips').style.display = 'block';
+          $('tips').innerHTML = 'listen: the content cound not empty';
+        } else {
+          $('tips').style.display = 'none';
+        }
+      }
+
+      var mouse = document.getElementById('mouse');
+      document.onclick = function(event){
+        var event = event || window.event;
+        var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+        var pageY = event.pageY || event.clientY + document.documentElement.scrollTop;
+        console.log(pageX, pageY);
+        var targetX = pageX - mouse.offsetWidth / 2;
+        var targetY = pageY - mouse.offsetHeight / 2;
+        // console.log(targetX, targetY);
+        mouse.style.display = 'block';
+        // mouse.style.left = targetX + 'px';
+        // mouse.style.top = targetY + 'px';
+        mouse.style.left = '20px';
+        mouse.style.top = '20px';
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>表单验证</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>user name:</th>
+        <td><input type="text" name="username" placeholder="length 4 ~ 12 , english word"/>
+        </td><td><div></div></td>
+      </tr>
+
+      <tr>
+        <th>password:</th>
+        <td>
+          <input
+            type="password"
+            name="pwd"
+            placeholder="length 6 ~ 20 , english number underscore"
+          />
+        </td><td><div></div></td>
+      </tr>
+
+      <tr>
+        <th>comfirm password:</th>
+        <td>
+          <input
+            type="password"
+            name="repwd"
+            placeholder="input password again"
+          />
+        </td><td><div></div></td>
+      </tr>
+
+      <tr>
+        <th>phone number:</th>
+        <td>
+          <input
+            type="text"
+            name="tel"
+            placeholder="length 11, begin with 13 14 15 17 18"
+          />
+        </td><td><div></div></td>
+      </tr>
+
+      <tr>
+        <th>email:</th>
+        <td>
+          <input
+            type="text"
+            name="email"
+            placeholder="for example: userName@domainName, and domainName longer than 2 "
+          />
+        </td><td1><div></div></td1>
+      </tr>
+
+      <tr>
+        <td colspan="3"><input type="submit" value="register" /></td>
+      </tr>
+    </table>
+
+    <script>
+      var inputs = document.getElementsByTagName("input");
+      for (var i = 0; i < inputs.length - 1; ++i) {
+        inputs[i].onblur = inputBlur;
+        // console.log(inputs[i]);
+      }
+      function inputBlur() {
+        var name = this.name;
+        var val = this.value;
+        var tips = this.placeholder;
+        // 这里有问题但是不知道为什么——找到了
+        // 天坑！元素节点换行之后，兄弟节点就会多一个换行的元素节点！！！！
+        /* IE将跳过在节点之间产生的空格文档节点（如：换行字符），
+              而Mozilla不会这样——FF会把诸如空格换行之类的排版元素视作节点读取，
+              因此，在ie中用nextSibling便可读取到的下一个节点元素，
+              在FF中就需要这样写：nextSibling.nextSibling了。 
+              opera和safari对nextSibling的处理方式与FF一致 */ 
+        // 参考资料：https://www.cnblogs.com/xuan52rock/p/4378731.html
+        var tips_obj = this.parentNode.nextSibling.firstChild;
+        console.log("=============");
+        // console.log(tips_obj);
+        // console.log(this.parentNode.parentNode.nextSibling.firstChild);
+        console.log((this.parentNode).nextSibling);
+        console.log(this.parentNode);
+        console.log(this);
+        console.log("=============");
+        val = val.trim();
+        if (!val) {
+          error(tips_obj, "not input");
+          return false;
+        }
+        var reg_msg = getRegMsg(name, tips);
+        // console.log("=========");
+        // console.log(reg_msg);
+        // console.log("=========");
+        if (reg_msg['reg'].test(val)) {
+          success(tips_obj, reg_msg['msg']['success']);
+        } else {
+          error(tips_obj, reg_msg['msg']['error']);
+        }
+      }
+      function success(obj, msg){
+        obj.className = 'success';
+        obj.innerHTML = msg;
+      }
+      function error(obj, msg) {
+        obj.className = "error";
+        obj.innerHTML = msg + ", please input again";
+      }
+      function getRegMsg(name, tips) {
+        var reg = (msg = "");
+        switch (name) {
+          case "username":
+            reg = /^[a-zA-Z]{4,12}$/;
+            msg = { success: "user name correcr", error: tips };
+            break;
+          case "ped":
+            reg = /^\w{6,20}$/;
+            msg = { success: "password correcr", error: tips };
+            break;
+          case "repwd":
+            var con = document.getElementsByTagName("input")[1].value;
+            reg = RegExp("^" + con + "$");
+            msg = {
+              success: "twice password correcr",
+              error: "diffrent between two password",
+            };
+            break;
+          case "tel":
+            reg = /^1[34578]\d{9}$/;
+            msg = { success: "phone number correcr", error: tips };
+            break;
+          case "email":
+            reg = /^(\w+(\_|\-|\.)*)+@(\w+(\-)?)+(\.\w{2,})+$/;
+            msg = { success: "email correcr", error: tips };
+            break;
+        }
+        return { 'reg': reg, 'msg': msg };
+      }
+    </script>
+  </body>
+</html>

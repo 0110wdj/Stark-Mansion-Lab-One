@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>键盘事件</title>
+  </head>
+  <body>
+    <p>userName:<input type="text" /></p>
+    <p>email:<input type="text" /></p>
+    <p>phone number:<input type="text" /></p>
+    <p>personal derscription:<input type="text" /></p>
+    <script>
+      var inputs = document.getElementsByTagName("input");
+      for (var i = 0; i < inputs.length; ++i) {
+        inputs[i].onkeydown = function (e) {
+          var e = event || window.event;
+          if (e.keyCode === 13) {
+            for (var i = 0; i < inputs.length; ++i) {
+              if (inputs[i] === this) {
+                // 不写括号的都是坑*
+                // var index = (i + 1) >= inputs.length ? 0 : (i + 1);
+                var index = i + 1 >= inputs.length ? 0 : i + 1;
+                break;
+              }
+            }
+            if(inputs[index].type === 'text'){
+              inputs[index].focus();
+            }
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>找猴子大王</title>
+  </head>
+  <body>
+    <script>
+      var total = prompt('请输入猴子的总数');
+      var kick = prompt('踢出地机制猴子');
+      var monkey = [];
+      for (var i = 1; i <= total; i++) {
+          monkey.push(i);
+      }
+      i = 0;
+      while (monkey.length>1){
+          i++;
+          head = monkey.shift();
+          if (i % kick != 0) {
+            monkey.push(head);
+            console.log(i,monkey);
+          }
+      }
+      console.log('猴王编号：'+monkey[0]);
+    </script>
+  </body>
+</html>

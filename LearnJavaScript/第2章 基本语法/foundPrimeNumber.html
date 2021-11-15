@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>找素数</title>
+  </head>
+  <body>
+    <script>
+        function isPrime (number) {
+            if (number <= 2) {
+                return true;
+            } else {
+                for (var i = 2; i < number/2; i++) {
+                    if (number%i==0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+        }
+        for (var i = 1; i <= 100; i++) {
+            if (isPrime(i)){
+                console.log(i);
+            }
+        }
+    </script>
+  </body>
+</html>

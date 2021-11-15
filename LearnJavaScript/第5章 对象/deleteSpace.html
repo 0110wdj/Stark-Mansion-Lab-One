@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>模拟Object.create()功能</title>
+  </head>
+  <body>
+    <script>
+      //  原实例
+      var obj = {
+        sayHello: function () {
+          console.log("拥有sayHello");
+        },
+      };
+      var newObj = Object.create(obj);
+      newObj.sayHello();
+      console.log(newObj.__proto__ === obj);
+
+      console.log("======模拟====");
+      var newObj2 = obj;
+      newObj2.sayHello();
+      console.log(newObj2.__proto__ === obj);
+
+      var newObj3 = obj;
+      newObj3.sayHello();
+      newObj3.prototype = obj.prototype;
+      console.log(newObj3.__proto__ === obj);
+
+      var newObj4 = obj;
+      newObj4.sayHello();
+      newObj4.prototype = obj.__proto__;
+      console.log(newObj4.__proto__ === obj);
+
+      var newObj5 = obj;
+      newObj5.sayHello();
+      newObj5.__proto__ = obj.__proto__;
+      console.log(newObj5.__proto__ === obj);
+
+      var newObj6 = obj;
+      newObj6.sayHello();
+      newObj6.__proto__ = obj.__proto__;
+      console.log(newObj6.__proto__ === obj);
+
+      var newObj7 = obj;
+      newObj7.sayHello();
+      newObj7.__proto__ = obj.constructor;
+      console.log(newObj7.__proto__ === obj);
+
+      var newObj8 = obj;
+      newObj8.sayHello();
+      newObj8.prototype = obj.constructor;
+      console.log(newObj8.__proto__ === obj);
+
+      var newObj9 = obj.constructor;
+      console.log(newObj9.__proto__ === obj);
+
+      console.log("======模拟====");
+
+      console.log("======结论====");
+      console.log("======结论====");
+
+      console.log("======网上答案====");
+      function createObj(o) {
+        function F() {}
+        F.prototype = o;
+        return new F();
+      }
+      var newObj = createObj(obj);
+      newObj.sayHello();
+      console.log(newObj.__proto__ === obj);
+
+      console.log("======网上答案====");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>表单提交与重置</title>
+  </head>
+  <body>
+    <form id="register" action="index.php" method="post">
+      <label>useName:<input id="user" type="text" /></label>
+      <input type="submit" value="submit" /><input type="reset" value="reset" />
+    </form>
+    <script>
+      var regist = document.getElementById('register');
+      var user = document.getElementById('user');
+      regist.onsubmit = function(event) {
+        var event = event || window.event;
+        console.log(event.type);
+        return user.value ? true : false;
+      };
+      regist.onreset = function(event){
+        var event = event || window.event;
+        console.log(event.type);
+        return confirm('Are you sure to reset the from ? It would be clear if choosed yes !');
+      }
+    </script>
+  </body>
+</html>

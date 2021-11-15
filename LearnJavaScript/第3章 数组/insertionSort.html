@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>插入排序</title>
+  </head>
+  <body>
+    <script>
+      var arr = [89, 56, 100, 21, 87, 45, 1, 888];
+      console.log("待排序数组:" + arr);
+      for (var i = 1; i < arr.length; i++) {
+        for (var j = i; j > 0; j--) {
+          if (arr[j-1] > arr[j]) {
+            [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+          }
+        }
+      }
+      console.log("排序后数组:" + arr);
+    </script>
+  </body>
+</html>
