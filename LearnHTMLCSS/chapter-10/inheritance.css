@@ -1,0 +1,10 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(62, 22, 170);
+    padding: 50px;
+}
+.page {
+    border: 1px solid #665544;
+    background-color: violet;
+    padding: inherit;
+}
