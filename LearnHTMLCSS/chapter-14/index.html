@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>List, Table and Forms</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 90%;
+            color: #666;
+            background-color: #f8f8f8;
+        }
+
+        li {
+            list-style-image: url('./07.jpeg');
+            line-height: 1.6em;
+        }
+
+        table {
+            border-spacing: 0px;
+        }
+
+        th,
+        td {
+            padding: 5px 30px 5px 10px;
+            border-spacing: 0px;
+            font-size: 90%;
+            margin: 0px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            background-color: #e0e9f0;
+        }
+
+        tr.head th {
+            color: #fff;
+            background-color: #90b4d6;
+            border-bottom: 2px solid #547ca0;
+            border-right: 1px solid #749abe;
+            border-top: 1px solid #90b4d6;
+            text-align: center;
+            text-shadow: -1px -1px 1px #666;
+            letter-spacing: 0.15em;
+        }
+
+        td {
+            text-shadow: 1px 1px 1px #fff;
+        }
+
+        tr.even td,
+        tr.even th {
+            background-color: #e8eff5;
+        }
+
+        tr.head th:first-child {
+            -webkitborder-top-left-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        tr.head th:last-child {
+            -webkitborder-top-right-radius: 5px;
+            -moz-border-radius-topright: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        fieldset {
+            width: 300px;
+            margin-top: 20px;
+            border: 1px solid #d6d6d6;
+            background-color: #fff;
+            line-height: 1.6em;
+        }
+
+        legend {
+            font-style: italic;
+            color: #666;
+        }
+
+        input[type='tex'] {
+            width: 120px;
+            border: 1px solid #d6d6d6;
+            padding: 2px;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="text"]:hover {
+            background-color: #d0e2f0;
+            border: 1px solid #999;
+        }
+
+        input[type="submit"] {
+            border: solid 1px #063;
+            background-color: #096;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            border: 1px solid #063;
+            background-color: #0c3;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .title {
+            float: left;
+            width: 160px;
+            clear: left;
+        }
+
+        .submit {
+            width: 310px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Poetry Workshops</h1>
+    <p>We will be conducting a number of popetry workshops and symposiums throughout the year.</p>
+    <p>We will be conducting a number of popetry workshops and symposiums throughout the year.</p>
+    <ul>
+        <li>something</li>
+        <li>something</li>
+        <li>something</li>
+    </ul>
+    <table>
+        <tr class="head">
+            <th></th>
+            <th>New York</th>
+            <th>Chicago</th>
+            <th>San Francisco</th>
+        </tr>
+        <tr>
+            <th>A Poetic Perspective</th>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+        </tr>
+        <tr class="even">
+            <th>Walt Whitman at War</th>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+        </tr>
+        <tr>
+            <th>A Poetic Perspective</th>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+        </tr>
+        <tr class="even">
+            <th>Walt Whitman at War</th>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+            <td>Sat, 4 Feb 2012<br />11am - 2pm</td>
+        </tr>
+    </table>
+    <form action="http://www.bing.com" method="get">
+        <fieldset>
+            <legend>Register your interest</legend>
+            <p>
+                <label for="name" class="title">Your name:</label>
+                <input type="text" name="name" id="name"><br />
+                <label for="email" class="title">Your email:</label>
+                <input type="text" name="email" id="email"><br />
+            </p>
+            <p>
+                <label for="location" class="title">Your closet centter:</label>
+                <select name="location" id="location">
+                    <option value="ny">New York</option>
+                    <option value="il">Chicago</option>
+                    <option value="ca">San Francisco</option>
+                </select>
+            </p>
+            <span class="title">Are you a member?</span>
+            <label for=""><input type="radio" name="member" value="yes"> Yes</label>
+            <label for=""><input type="radio" name="member" value="no"> No</label>
+        </fieldset>
+        <div class="submit">
+            <input type="submit" name="" id="" value="Register">
+        </div>
+    </form>
+</body>
+
+</html>
