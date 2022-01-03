@@ -1,0 +1,17 @@
+{
+    "name": "music-player",
+    "version": "1.0.0",
+    "description": "一个简单的音乐播放器",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "author": "冰上飞熊",
+    "license": "MIT",
+    "dependencies": {
+        "bootstrap": "^3.3.6",
+        "formidable": "^1.0.17",
+        "underscore": "^1.8.3"
+    }
+}
