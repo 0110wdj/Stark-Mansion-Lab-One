@@ -12,10 +12,11 @@ var url = require('url');
 module.exports = function(req, res) {
     var urlObj = url.parse(req.url, true);
     req.query = urlObj.query;
+    console.log('urlObj.query: ');
     console.log(urlObj.query);
     var pathname = urlObj.pathname;
     var method = req.method;
-    console.log(method);
+    console.log('method: ' + method + ' pathname: ' + pathname);
     if (method === 'GET' && pathname === '/') {
         musicController.showIndex(req, res);
     } else if (method === 'GET' && pathname === '/index.html') {
@@ -39,6 +40,6 @@ module.exports = function(req, res) {
     } else if (method === 'POST' && pathname.startsWith('/edit')) {
         musicController.doEdit(req, res);
     } else {
-        console.log("意料之外的事件——真相只有一个!");
+        console.log("without method or pathname");
     }
 }
