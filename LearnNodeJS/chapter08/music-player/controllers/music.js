@@ -27,8 +27,16 @@ exports.showAdd = function(req, res) {
 }
 
 exports.showEdit = function(req, res) {
+    var id = req.query.id;
+    var music = {}
+    storage.forEach(function(item, index) {
+        if (item.id == id) {
+            music = item;
+        }
+    });
     res.render('edit', {
         title: '编辑音乐',
+        music: music,
     })
 }
 
@@ -62,4 +70,45 @@ exports.doAdd = function(req, res) {
         })
         res.end();
     })
+}
+
+exports.doRemove = function(req, res) {
+    var id = req.query.id;
+    var music_index = 0;
+    storage.forEach(function(item, index) {
+        if (item.id == id) {
+            music_index = index;
+        }
+    });
+    storage.splice(music_index, 1);
+    res.writeHead(302, {
+        'Location': 'http://127.0.0.1:3000'
+    });
+    res.end();
+}
+
+exports.doEdit = function(req, res) {
+    var id = req.query.id;
+    var data = ''
+    req.on('data', function(chunk) {
+        data += chunk
+        setTimeout(function() { console.log(data); }, 2000)
+    })
+    req.on('end', function() {
+        // 此处解析有问题，所以用常量表示
+        // var postBody = qstring.parse(data)
+        var postBody = { title: 'test', singer: 'test' }
+        var music_index = 0;
+        storage.forEach(function(item, index) {
+            if (item.id == id) {
+                music_index = index;
+            }
+        });
+        storage[music_index].title = postBody.title;
+        storage[music_index].singer = postBody.singer;
+    })
+    res.writeHead(302, {
+        'Location': 'http://127.0.0.1:3000'
+    });
+    res.end();
 }
