@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模块化开发演变 - 对象命名空间</title>
+</head>
+
+<body>
+    <input type="text" id="x">
+    <select name="" id="opt">
+        <option value="0">+</option>
+        <option value="1">-</option>
+        <option value="2">*</option>
+        <option value="3">/</option>
+    </select>
+    <input type="text" id="y" />
+    <button id="cal">=</button>
+    <input type="text" id="result" />
+    <script>
+        /* 对象命名空间 */
+        var calculator = {}
+        calculator.add = function (x, y) {
+            return parseInt(x) + parseInt(y);
+        }
+        calculator.subtract = function (x, y) {
+            return parseInt(x) - parseInt(y);
+        }
+        calculator.multiply = function (x, y) {
+            return parseInt(x) * parseInt(y);
+        }
+        calculator.divide = function (x, y) {
+            return parseInt(x) / parseInt(y);
+        }
+        // 获取所有的 DOM 元素
+        var oX = document.getElementById("x");
+        var oY = document.getElementById("y");
+        var oOpt = document.getElementById("opt");
+        var oCal = document.getElementById("cal");
+        var oResult = document.getElementById("result");
+        // 为等号添加点击事件
+        oCal.addEventListener("click", function () {
+            var x = oX.value.trim();
+            var y = oY.value.trim();
+            var opt = oOpt.value;
+            var result = 0;
+            switch (opt) {
+                case "0":
+                    result = calculator.add(x, y);
+                    break;
+                case "1":
+                    result = calculator.subtract(x, y);
+                    break;
+                case "2":
+                    result = calculator.multiply(x, y);
+                    break;
+                case "3":
+                    result = calculator.divide(x, y);
+                    break;
+            }
+            oResult.value = result;
+            // console.log(oResult.value);
+        });
+    </script>
+</body>
+
+</html>

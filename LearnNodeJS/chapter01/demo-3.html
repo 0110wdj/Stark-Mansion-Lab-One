@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模块化开发演变 - 函数的作用域</title>
+</head>
+
+<body>
+    <input type="text" id="x">
+    <select name="" id="opt">
+        <option value="0">+</option>
+        <option value="1">-</option>
+        <option value="2">*</option>
+        <option value="3">/</option>
+    </select>
+    <input type="text" id="y" />
+    <button id="cal">=</button>
+    <input type="text" id="result" />
+    <script>
+        /* 利用匿名自执行函数形成的封闭的函数作用域空间，达到私有化的目的 */
+        var calculator = (function () {
+            function add(x, y) {
+                return parseInt(x) + parseInt(y);
+            }
+            function subtract(x, y) {
+                return parseInt(x) - parseInt(y);
+            }
+            function multiply(x, y) {
+                return parseInt(x) * parseInt(y);
+            }
+            function divide(x, y) {
+                return parseInt(x) / parseInt(y);
+            }
+            return {
+                add:add,
+                subtract:subtract,
+                multiply:multiply,
+                divide:divide,
+            }
+        })();
+        
+        // 获取所有的 DOM 元素
+        var oX = document.getElementById("x");
+        var oY = document.getElementById("y");
+        var oOpt = document.getElementById("opt");
+        var oCal = document.getElementById("cal");
+        var oResult = document.getElementById("result");
+        
+        // 为等号添加点击事件
+        oCal.addEventListener("click", function () {
+            var x = oX.value.trim();
+            var y = oY.value.trim();
+            var opt = oOpt.value;
+            
+            var result = 0;
+            switch (opt) {
+                case "0":
+                    result = calculator.add(x, y);
+                    break;
+                case "1":
+                    result = calculator.subtract(x, y);
+                    break;
+                case "2":
+                    result = calculator.multiply(x, y);
+                    break;
+                case "3":
+                    result = calculator.divide(x, y);
+                    break;
+            }
+            oResult.value = result;
+            // console.log(oResult.value);
+        });
+    </script>
+</body>
+
+</html>
