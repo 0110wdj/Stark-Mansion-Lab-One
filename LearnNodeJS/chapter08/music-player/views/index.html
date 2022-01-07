@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1><a href="/">我的音乐</a><small>
+                    <%= title %>
+                </small></h1>
+        </div>
+        <a href="/add.html" class="btn btn-success">添加歌曲</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>标题</th>
+                    <th>歌手</th>
+                    <th>音乐名称</th>
+                    <th>海报</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% musicList.forEach(function(music){ %>
+                    <tr>
+                        <td>
+                            <%= music.id %>
+                        </td>
+                        <td>
+                            <%= music.title %>
+                        </td>
+                        <td>
+                            <%= music.singer %>
+                        </td>
+                        <td>
+                            <%= music.music %>
+                        </td>
+                        <td>
+                            <%= music.poster %>
+                        </td>
+                        <td>
+                            <a href="/edit?id=<%= music.id %>">修改</a>
+                            <a href="/remove?id=<%= music.id %>">删除</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
