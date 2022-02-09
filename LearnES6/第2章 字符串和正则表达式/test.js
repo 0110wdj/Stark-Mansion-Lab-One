@@ -37,19 +37,3 @@
 // let result2 = `用户名为:${uid}测试而${uid2}.`
 // console.log(result);
 // console.log(result2);
-
-function testParams(param1, param2) {
-    console.log(param1);
-    console.log(param2);
-    console.log(arguments.length);
-    console.log(arguments);
-}
-function testParams2(param1, param2 = 'm') {
-    console.log(param1);
-    console.log(param2);
-    console.log(arguments.length);
-    console.log(arguments);
-}
-
-testParams('a', 'b')
-testParams2('n')
