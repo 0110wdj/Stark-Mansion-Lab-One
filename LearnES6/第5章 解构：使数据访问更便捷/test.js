@@ -19,4 +19,6 @@ a.loc.start.line = 2;
 console.log(a);
 console.log(b);
 
+a.loc.start.line = 3;
+
 console.log(node);
