@@ -15,7 +15,10 @@
 由分支 feature_2022_001 维护，目前(2021-04-25)已完成。
 
 ### 5、“YouDontknowJSVolumeOne”目录下的实践代码来自《你不知道的JavaScript上卷》([美]KYLE SIMPSON 著 赵望野 梁杰 译)
-由分支 feature_2022_002 更新，2022.05.06至-。
+由分支 feature_2022_002 更新，2022.05.06至2022.07.31。
+
+### 5、“YouDontknowJSVolumeTwo”目录下的实践代码来自《你不知道的JavaScript中卷》([美]KYLE SIMPSON 著 单业 姜南 译)
+仍由分支 feature_2022_002 更新，2022.07.31至-。
 
 ## 二、网页游戏等小程序的记录
 ### 1、“webGames”目录下的代码出处不限制，用于记录觉得好玩的小程序

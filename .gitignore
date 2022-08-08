@@ -1,5 +1,5 @@
 # 忽略 readme 文件
-README
+README.md
 
 # Compiled class file
 *.class
