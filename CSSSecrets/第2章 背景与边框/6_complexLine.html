@@ -4,7 +4,7 @@
  * @Authored: LiuJie
  * @Date: 2022-10-11 08:32:02
  * @LastEditor: LiuJie
- * @LastEditTime: 2022-10-11 09:22:49
+ * @LastEditTime: 2022-10-12 11:04:36
 -->
 <style>
   html {
@@ -35,7 +35,66 @@
       linear-gradient(90deg, white 1px, transparent 0);
     background-size: 30px 30px;
   }
+
+  .div3 {
+    background: #58a;
+    background-image:
+      linear-gradient(white 2px, transparent 0),
+      linear-gradient(90deg, white 2px, transparent 0),
+      linear-gradient(hsla(0, 0%, 100%, .3) 1px, transparent 0),
+      linear-gradient(90deg, hsla(0, 0%, 100%, .3) 1px, transparent 0);
+    background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+  }
+
+  .div4 {
+    background: #655;
+    background-image: radial-gradient(tan 30%, transparent 0);
+    background-size: 30px 30px;
+  }
+
+  .div5 {
+    background: #655;
+    background-image:
+      radial-gradient(tan 30%, transparent 0),
+      radial-gradient(tan 30%, transparent 0);
+    background-size: 30px 30px;
+    background-position: 0 0, 15 15;
+  }
+
+  .div6 {
+    background: #eee;
+    background-image:
+      linear-gradient(45deg, #bbb 25%, transparent 0),
+      linear-gradient(45deg, transparent 75%, #bbb 0),
+      linear-gradient(45deg, #bbb 25%, transparent 0),
+      linear-gradient(45deg, transparent 75%, #bbb 0);
+    background-position: 0 0, 15px 15px, 15px 15px, 30px 30px;
+    background-size: 30px 30px;
+  }
+
+  .div7 {
+    background: #eee;
+    background-image:
+      linear-gradient(45deg, rgba(0, 0, 0, .25) 25%, transparent 0, transparent 75%, rgba(0, 0, 0, .25) 0),
+      linear-gradient(45deg, rgba(0, 0, 0, .25) 25%, transparent 0, transparent 75%, rgba(0, 0, 0, .25) 0);
+    background-position: 0 0, 15px 15px, 15px 15px, 30px 30px;
+    background-size: 30px 30px;
+  }
+
+  .div8 {
+    /* 不可用 */
+    /* background: conic-gradient() */
+    /* background: repeating-conic-gradient() */
+    background-size: 30px 30px;
+    border: 1px solid;
+  }
 </style>
 
 <div class="div1">div1</div>
 <div class="div2">div2</div>
+<div class="div3">div3</div>
+<div class="div4">div4</div>
+<div class="div5">div5</div>
+<div class="div6">div6</div>
+<div class="div7">div7</div>
+<div class="div8">div8</div>
