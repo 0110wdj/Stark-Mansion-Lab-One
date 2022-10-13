@@ -1,0 +1,115 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-10-13 14:31:51
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-10-13 16:30:32
+-->
+<style>
+  html {
+    background-color: rebeccapurple;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  div {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    float: left;
+  }
+</style>
+
+<style>
+  .div1 {
+    background: url('../imgs/Snofly.png');
+    background-size: cover;
+    padding: 1em;
+  }
+
+  .div1>span {
+    background: white;
+    padding: 1em;
+    display: table-cell;
+  }
+
+  .div2 {
+    padding: 1em;
+    border: 1em solid transparent;
+    background: linear-gradient(#7f5ac9, #e56251), url(../imgs/Snofly.png);
+    background-size: cover;
+    background-clip: padding-box, border-box;
+    background-origin: border-box;
+  }
+
+  .div3 {
+    padding: 1em;
+    border: 1em solid transparent;
+    background: linear-gradient(#1971e6, transparent) padding-box, url(../imgs/Snofly.png) border-box 0 0 / cover;
+  }
+
+  .div4 {
+    padding: 1em;
+    border: 1em solid transparent;
+    background: linear-gradient(white, white) padding-box,
+      repeating-linear-gradient(-45deg, red 0, red 12.5%,
+        transparent 0, transparent 25%,
+        #58a 0, #58A 37.5%,
+        transparent 0, transparent 50%) 18px / 5em 5em;
+  }
+
+  .div5 {
+    padding: 1em;
+    border: 16px solid transparent;
+    border-image: 16 repeating-linear-gradient(-45deg, red 0, red 1em, transparent 0, transparent 2em, #58a 0, #58A 3em, transparent 0, transparent 4em);
+  }
+
+  @keyframes ants {
+    to {
+      background-position: 100%
+    }
+  }
+
+  .div6 {
+    padding: 1em;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(white, white) padding-box,
+      repeating-linear-gradient(-45deg, black 0, black 25%, white 0, white 50%) 0 / .6em .6em;
+    animation: ants 12s linear infinite;
+  }
+
+  .footnote {
+    border-top: .15em solid transparent;
+    border-image: 100% 0 0 linear-gradient(90deg, currentColor 4em, transparent 0);
+    padding-top: .5em;
+    font: 220%/1.4 Baskerville, Palatino, serif;
+  }
+</style>
+
+<div class="div1">
+  <span>div1: some words or other words in the block. Hi my friend, why are you so lazy ?</span>
+</div>
+<div class="div2">
+  1、边框是透明的,图片背景延伸到了边框。
+  2、内部的白色是颜色渐变模拟的背景色,因为最底层背景色已经被图片是遮挡了。
+</div>
+<div class="div3">
+  div3: some words or other words in the block. Hi my friend, why are you so lazy ?
+</div>
+<div class="div4">
+  div4: some words or other words in the block. Hi my friend, why are you so lazy ?
+</div>
+<div class="div5">
+  div5: some words or other words in the block. Hi my friend, why are you so lazy ?
+</div>
+<div class="div6">
+  div6: some words or other words in the block. Hi my friend, why are you so lazy ?
+</div>
+<div class="footnote">
+  div7: some words or other words in the block. Hi my friend, why are you so lazy ?
+</div>
+<div class="footnote">
+  div8:
+</div>
