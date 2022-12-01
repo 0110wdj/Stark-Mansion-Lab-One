@@ -1,0 +1,82 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-11-30 20:36:52
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-01 21:45:36
+-->
+<style>
+  html {
+    background-color: rgb(151 90 219);
+    display: flex;
+    justify-content: space-around;
+  }
+
+  div {
+    background: rgb(151 90 219);
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+    float: left;
+  }
+</style>
+
+<style>
+  .div1 {
+    /* width: 400px; */
+    /* skew 斜 */
+    /* transform: skew(-45deg); */
+    /* rotate 旋转 */
+    transform: rotate(45deg);
+    overflow: hidden;
+  }
+
+  .div1>img {
+    max-width: 100%;
+    transform: rotate(-45deg);
+  }
+
+  .div1-5 {
+    /* width: 400px; */
+    /* skew 斜 */
+    /* transform: skew(-45deg); */
+    /* rotate 旋转 */
+    transform: rotate(45deg);
+    overflow: hidden;
+  }
+
+  .div1-5>img {
+    max-width: 100%;
+    transform: rotate(-45deg) scale(1.42);
+  }
+
+  .div2>img {
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    width: 200px;
+  }
+
+  .div3>img {
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    width: 200px;
+    transition: 1s clip-path;
+  }
+
+  .div3>img:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    width: 200px;
+  }
+</style>
+
+<div class="div1">
+  <img src='../imgs/Snofly.png' alt="head" />
+</div>
+<div class="div1-5">
+  <img src='../imgs/Snofly.png' alt="head" />
+</div>
+<div class="div2">
+  <img src='../imgs/Snofly.png' alt="head" />
+</div>
+<div class="div3">
+  <img src='../imgs/Snofly.png' alt="head" />
+</div>
