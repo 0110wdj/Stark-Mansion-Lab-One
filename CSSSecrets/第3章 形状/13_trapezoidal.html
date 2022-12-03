@@ -1,0 +1,121 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-02 17:20:33
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-03 13:12:19
+-->
+<style>
+  html {
+    background-color: rgb(151 90 219);
+    display: flex;
+    justify-content: space-around;
+  }
+
+  div {
+    background: #58a;
+    /* width: 200px; */
+    /* height: 200px; */
+    margin: 50px;
+    float: left;
+  }
+</style>
+
+<style>
+  .div1 {
+    transform: perspective(10px) rotateX(5deg);
+  }
+
+  .div2 {
+    position: relative;
+    display: inline-block;
+    padding: 0.5em 1em 0.35em;
+    color: white;
+    background: blueviolet;
+  }
+
+  .div2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: #58a;
+    transform: perspective(0.5em) rotateX(5deg);
+  }
+
+  .div3 {
+    position: relative;
+    display: inline-block;
+    padding: 0.5em 1em 0.35em;
+    color: white;
+    background: bottom;
+  }
+
+  .div3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: #58a;
+    transform: perspective(0.5em) rotateX(5deg);
+  }
+
+  .div4 {
+    position: relative;
+    display: inline-block;
+    padding: 0.5em 1em 0.35em;
+    color: white;
+    background: bottom;
+  }
+
+  .div4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: #58a;
+    transform: scaleY(1.3) perspective(0.5em) rotateX(5deg);
+    transform-origin: bottom;
+  }
+
+  .div5 {
+    position: relative;
+    display: inline-block;
+    padding: 0.5em 1em 0.35em;
+    background: bottom;
+  }
+
+  .div5::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: #ccc;
+    border: 1px solid rgba(0, 0, 0, .4);
+    border-bottom: none;
+    border-radius: 0.5em 0.5em 0 0;
+    box-shadow: 0 0.15em white inset;
+    background-image: linear-gradient(hsl(327deg 96% 60% / 73%), hsl(232deg 61% 49% / 81%));
+    transform: scaleY(1.3) perspective(0.5em) rotateX(5deg);
+    transform-origin: bottom;
+  }
+</style>
+
+<div class="div1">DIV1SNOFLY</div>
+<div class="div2">DIV2SNOFLY</div>
+<div class="div3">SNOFLYDIV3</div>
+<div class="div4">SNOFLYDIV4</div>
+<div class="div5">SNOFLYDIV5</div>
