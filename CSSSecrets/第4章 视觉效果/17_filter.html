@@ -1,0 +1,49 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-09 20:12:43
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-09 20:44:25
+-->
+
+<style>
+  img {
+    width: 520px;
+  }
+
+  .img-2 {
+    filter: sepia(1) saturate(4) hue-rotate(295deg);
+  }
+
+  .div-3 {
+    background: hsl(335, 100%, 50%);
+    width: 520px;
+    display: inline-block;
+  }
+
+  .img-3 {
+    mix-blend-mode: luminosity;
+  }
+
+  .div-4 {
+    width: 1024px;
+    height: 1470px;
+    background-size: cover;
+    background-color: hsl(335, 100%, 50%);
+    background-blend-mode: luminosity;
+    transition: .5s background-color;
+  }
+
+  .div-4:hover {
+    background-color: transparent;
+  }
+</style>
+
+
+<img src="../imgs/redClothes.jpeg" class="img-1">
+<img src="../imgs/redClothes.jpeg" class="img-2">
+<div class="div-3">
+  <img src="../imgs/redClothes.jpeg" class="img-3">
+</div>
+<div style="background-image: url('../imgs/redClothes.jpeg');" class="div-4" />
