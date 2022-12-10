@@ -1,0 +1,63 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-10 11:13:23
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-10 11:54:11
+-->
+<style>
+  html {
+    background-color: rgb(93 142 193 / 84%);
+    display: flex;
+    justify-content: space-around;
+  }
+
+  div {
+    background: #00ff10;
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+    float: left;
+  }
+</style>
+
+<style>
+  .div1 {
+    background: linear-gradient(-135deg, transparent 15px, #00ff10 0);
+  }
+
+  .div2 {
+    background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, .4) 0) no-repeat 100% 0 / 2em 2em, linear-gradient(-135deg, transparent 2em, #58a 0);
+  }
+
+  .div3 {
+    background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, .4) 0) no-repeat 100% 0 / 2em 2em, linear-gradient(-135deg, transparent 1.5em, #58a 0);
+  }
+
+  .div4 {
+    position: relative;
+    background: linear-gradient(-150deg, transparent 1.5em, #58a 0);
+    border-radius: 0.5em;
+    padding: 20px 0 0 20px;
+  }
+
+  .div4::before {
+    content: '';
+    position: absolute;
+    top: -41px;
+    right: 0;
+    background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .4)) 100% 0 no-repeat;
+    width: 1.73em;
+    height: 3em;
+    transform: translateY(1.3em) rotate(-30deg);
+    transform-origin: bottom right;
+    border-bottom-left-radius: inherit;
+    box-shadow: -0.2em 0.2em 0.3em -0.1em rgb(0 0 0 / 15%);
+  }
+</style>
+
+<div class="div1">div1</div>
+<div class="div2">div2</div>
+<div class="div3">div3</div>
+<div class="div4">翻折效果</div>
