@@ -1,0 +1,67 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-10 11:13:23
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-10 14:57:45
+-->
+<style>
+  div {
+    width: 8.7em;
+    font: 180%/1.4 Baskerville, serif;
+  }
+
+  .div1 {
+    text-align: justify;
+  }
+
+  .div2 {
+    hyphens: auto;
+  }
+
+  p {
+    width: 55px;
+    border: 1px solid black;
+  }
+
+  p.none {
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  p.manual {
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
+  }
+
+  p.auto {
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+</style>
+<html>
+
+<body>
+  <div class="div1">"The only way to get rid of a temptation is to yield to it."</div>
+  <div class="div2">"The only way to get rid of a temptation is to yield to it."</div>
+
+  <!-- MDN 的例子 -->
+  <ul>
+    <li><code>none</code>: no hyphen; overflow if needed
+      <p lang="en" class="none">An extreme&shy;ly long English word</p>
+    </li>
+    <li><code>manual</code>: hyphen only at &amp;hyphen; or &amp;shy; (if needed)
+      <p lang="en" class="manual">An extreme&shy;ly long English word</p>
+    </li>
+    <li><code>auto</code>: hyphen where the algo is deciding (if needed)
+      <p lang="en" class="auto">An extreme&shy;ly long English word</p>
+    </li>
+  </ul>
+
+</body>
+
+</html>
