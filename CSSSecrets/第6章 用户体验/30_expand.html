@@ -1,0 +1,53 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-20 17:17:23
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-20 18:05:10
+-->
+<style>
+  button {
+    cursor: pointer;
+  }
+
+  .btn2 {
+    border: 10px solid transparent;
+  }
+
+  .btn3 {
+    border: 10px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .btn4 {
+    border: 10px solid transparent;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .3) inset;
+    background-clip: padding-box;
+  }
+
+  .btn5 {
+    border: 10px solid transparent;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .3) inset, 0 .1em .2em -.05em rgba(0, 0, 0, .5);
+    background-clip: padding-box;
+  }
+
+  .btn6 {
+    position: relative;
+  }
+
+  .btn6::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+  }
+</style>
+<button class="btn1">btn1</button>
+<button class="btn2">btn2</button>
+<button class="btn3">btn3</button>
+<button class="btn4">btn4</button>
+<button class="btn5">btn5</button>
+<button class="btn6">btn6</button>
