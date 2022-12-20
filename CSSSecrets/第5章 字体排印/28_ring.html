@@ -1,0 +1,34 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-20 15:25:46
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-20 16:17:31
+-->
+<style>
+  .circular {
+    margin: 5em;
+    width: 30em;
+    height: 30em;
+  }
+
+  .circular path {
+    fill: none;
+  }
+
+  .circular svg {
+    display: block;
+    overflow: visible;
+  }
+</style>
+<div class="circular">
+  <svg viewBox="0 0 100 100">
+    <path d="M 0,50 a 35,35 0 1,1 0,1 z" id="circle" />
+    <text>
+      <textPath xlink:href="#circle">
+        circular reasoning works because
+      </textPath>
+    </text>
+  </svg>
+</div>
