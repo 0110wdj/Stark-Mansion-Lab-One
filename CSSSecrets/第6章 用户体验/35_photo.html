@@ -1,0 +1,49 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-23 19:22:20
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-23 20:53:22
+-->
+<div class="image-slider">
+  <div>
+    <img src="../imgs/redClothes.jpeg" alt="Before">
+  </div>
+  <img src="../imgs/Snofly.png" alt="After">
+</div>
+<style>
+  .image-slider {
+    /* position: fixed; */
+    display: inline-block;
+  }
+
+  .image-slider>div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    resize: horizontal;
+  }
+
+  .image-slider img {
+    display: block;
+    user-select: none;
+  }
+
+  .image-slider>div::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: white;
+    cursor: ew-resize;
+    padding: 5px;
+    background: linear-gradient(-45deg, white 50%, transparent 0);
+    background-clip: content-box;
+  }
+</style>
