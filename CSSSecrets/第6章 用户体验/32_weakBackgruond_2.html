@@ -1,0 +1,37 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-23 14:32:44
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-23 15:07:44
+-->
+<html>
+<style>
+  .lightbox {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    position: absolute;
+    background: beige;
+    left: 35%;
+    top: 20%;
+  }
+
+  .lightbox::before {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .4);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    content: '';
+  }
+</style>
+
+<body>
+  <div class="lightbox">背景</div>
+</body>
+
+</html>
