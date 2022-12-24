@@ -1,0 +1,139 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-24 16:27:56
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-24 16:38:45
+-->
+<style>
+  div {
+    border: 1px solid;
+    width: 100px;
+    margin: 20px;
+    display: inline-block;
+  }
+
+  .div1>li:nth-child(4)~li {
+    color: aqua;
+  }
+
+  .div2>li:only-child {
+    color: aqua;
+  }
+
+  .div3>li:first-child:nth-last-child(4),
+  .div3>li:first-child:nth-last-child(4)~li {
+    color: aqua;
+  }
+
+  .div4>li:first-child:nth-last-child(n+4),
+  .div4>li:first-child:nth-last-child(n+4)~li {
+    color: aqua;
+  }
+
+  .div5>li:first-child:nth-last-child(-n+4),
+  .div5>li:first-child:nth-last-child(-n+4)~li {
+    color: aqua;
+  }
+
+  .div6>li:first-child:nth-last-child(n+2):nth-last-child(-n+6),
+  .div6>li:first-child:nth-last-child(n+2):nth-last-child(-n+6)~li {
+    color: aqua;
+  }
+</style>
+
+<div class="div1">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+  <li>e</li>
+  <li>f</li>
+  <li>g</li>
+</div>
+<div class="div2">
+  <li>a</li>
+</div>
+<div class="div2">
+  <li>a</li>
+  <li>b</li>
+</div>
+<div class="div3">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+</div>
+<div class="div3">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+  <li>e</li>
+</div>
+<div class="div4">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+</div>
+<div class="div4">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+</div>
+<div class="div4">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+  <li>e</li>
+</div>
+<div class="div5">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+</div>
+<div class="div5">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+</div>
+<div class="div5">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+  <li>e</li>
+</div>
+<div class="div6">
+  <li>a</li>
+</div>
+<div class="div6">
+  <li>a</li>
+  <li>b</li>
+</div>
+<div class="div6">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+</div>
+<div class="div6">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+  <li>e</li>
+  <li>f</li>
+</div>
+<div class="div6">
+  <li>a</li>
+  <li>b</li>
+  <li>c</li>
+  <li>d</li>
+  <li>e</li>
+  <li>f</li>
+  <li>g</li>
+</div>
