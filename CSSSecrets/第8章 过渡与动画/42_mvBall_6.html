@@ -1,0 +1,28 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-25 20:12:19
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-25 20:59:42
+-->
+<html>
+<style>
+  input:not(:focus)+.callout {
+    transform: scale(0);
+  }
+
+  .callout {
+    transition: .5s transform;
+    transform-origin: 1.4em -.4em;
+  }
+</style>
+
+<body>
+  <label for="">
+    Your username:<input id="username" />
+    <div class="callout">Only letters, numbers, underscores (_) and hyphenss (+) allowed!</div>
+  </label>
+</body>
+
+</html>

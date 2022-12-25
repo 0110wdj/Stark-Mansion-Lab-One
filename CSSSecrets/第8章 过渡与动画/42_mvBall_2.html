@@ -1,0 +1,51 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-25 20:12:19
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-25 20:22:22
+-->
+<html>
+<style>
+  @keyframes bounce {
+
+    60%,
+    80%,
+    to {
+      transform: translateY(350px);
+    }
+
+    70% {
+      transform: translateY(250px);
+    }
+
+    90% {
+      transform: translateY(300px);
+    }
+  }
+
+  .box {
+    border-bottom: 10px solid #3ae53a;
+    width: 30px;
+    height: 370px;
+    background: linear-gradient(#58a, transparent);
+    text-align: -webkit-center;
+  }
+
+  .ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background: #cb8924;
+    animation: bounce 3s;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="ball" />
+  </div>
+</body>
+
+</html>
