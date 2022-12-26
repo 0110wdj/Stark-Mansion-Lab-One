@@ -1,0 +1,42 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-26 16:43:15
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-26 17:31:22
+-->
+<style>
+  .path {
+    width: 300px;
+    height: 300px;
+    background-color: #ffb800;
+    border-radius: 150px;
+    display: flex;
+    justify-content: center;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 10px;
+  }
+
+  @keyframes spin {
+    from {
+      transform: translate(50%, 150px) rotate(0turn) translate(-50%, -150px) translate(50%, 50%) rotate(1turn) translate(-50%, -50%);
+    }
+
+    to {
+      transform: translate(50%, 150px) rotate(1turn) translate(-50%, -150px) translate(50%, 50%) rotate(0turn) translate(-50%, -50%);
+    }
+  }
+
+  .avatar {
+    animation: spin 3s infinite linear;
+  }
+</style>
+<div class="path">
+  <img src="../imgs/SnoflyEye.png" alt="eye" class="avatar">
+</div>
