@@ -1,0 +1,31 @@
+<!--
+ * @description: 
+ * @RGX/RBX: 
+ * @Authored: LiuJie
+ * @Date: 2022-12-26 15:35:42
+ * @LastEditor: LiuJie
+ * @LastEditTime: 2022-12-26 16:00:33
+-->
+<h1>CSS is awesome!</h1>
+<style>
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+
+  @keyframes caret {
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  h1 {
+    width: 15ch;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .05em solid;
+    font-family: monospace;
+    animation: typing 6s steps(15), caret 1s steps(1) infinite;
+  }
+</style>
