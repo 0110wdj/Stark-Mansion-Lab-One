@@ -4,14 +4,6 @@
  * 思路：1、path 转为数组；2、遍历 path 数组。
 */
 
-const obj = {
-  a: {
-    b: {
-      c: [1, 2, 3]
-    }
-  }
-}
-
 function get(source, path, defaultValue = undefined) {
 
   // 如果 path 不是数组，需要切割为数组
@@ -32,6 +24,14 @@ function get(source, path, defaultValue = undefined) {
   }
 
   return source === undefined ? defaultValue : source
+}
+
+const obj = {
+  a: {
+    b: {
+      c: [1, 2, 3]
+    }
+  }
 }
 
 console.log(get(obj, 'a.b.c'));// [1,2,3]
