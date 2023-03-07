@@ -1,0 +1,43 @@
+<div class="test1">
+  需求：边框线性渐变、边框圆角、背景透明
+</div>
+
+<div class="test2">
+  如果期望的边框弯曲幅度很大
+</div>
+
+<div class="test3">
+  要么不能显示相同弯曲幅度
+</div>
+
+<div class="test4">
+  要么切割过度
+</div>
+
+<style>
+  div {
+    margin: 10px;
+    padding: 10px;
+    width: fit-content;
+    border: 5px solid;
+  }
+
+  .test1 {
+    border-radius: 10px;
+    border-image: linear-gradient(180deg, rgba(68, 221, 255, 1), rgba(77, 161, 255, 1)) 1 1;
+  }
+
+  .test2 {
+    border-radius: 20px;
+  }
+
+  .test3 {
+    border-image: linear-gradient(180deg, rgba(68, 221, 255, 1), rgba(77, 161, 255, 1)) 1 1;
+    clip-path: inset(0 round 5px);
+  }
+
+  .test4 {
+    border-image: linear-gradient(180deg, rgba(68, 221, 255, 1), rgba(77, 161, 255, 1)) 1 1;
+    clip-path: inset(0 round 20px);
+  }
+</style>
