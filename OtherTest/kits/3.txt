@@ -1,0 +1,84 @@
+denial-of-service
+runtime error
+denial-of-service
+SEGV
+use-after-poison
+SEGV
+SEGV
+SEGV
+SEGV
+SEGV
+SEGV
+SEGV
+SEGV
+SEGV
+use-after-poison
+heap-use-afrer-free
+use-after-poison
+heap-use-after-free
+SEGV
+SEGV
+SEGV
+SEGV
+use-after-poison
+SEGV
+SEGV
+SEGV
+buffer overflow
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+buffer overflow
+denial-of-service
+denial-of-service
+denial-of-service
+THE TENTH SIGABRT CAUSE SERVER CRASH OF MYSQL
+THE FIRST HEAP-USE-AFTER-FREE SECURITY ISSUE OF MYSQL SERVER
+THE FIFTH SIGABRT CAUSE SERVER CRASH OF MYSQL
+THE FIRST DEADLYSIGNAL SECURITY lSSUE OF MYSQL SERVER
+THE FIRST SIGABRT CAUSE SERVER CRASH OF MYSQL
+memory safety
+memory safety
+memory safety
+NULL pointer dereference
+memory safety
+bash command injection
+integer overflow
+memory leak
+logic error
+signed integer overflow
+integer overflow
+global-buffer-overflow
+heap-buffer-overflow
+memory safety
+memory safety
+memory safety
+memory safety
+memory safety
+memory safety
+runtime error
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
+denial-of-service
