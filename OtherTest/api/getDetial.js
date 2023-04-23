@@ -24,11 +24,11 @@ const getDetil = async (index = 0) => {
       const { custom } = JSON.parse(body)
       fs.appendFileSync('./咨询标题.txt', custom.rqsttitle + '\n')
       // const str = custom.answercontent.replaceAll('\n', '').replace('：', '').replace('：', '@@@liujie@@@').replace('承办单位', '@@@liujie@@@').split('@@@liujie@@@')[1].replaceAll(' ', '')
-      const str = custom.answercontent.replaceAll('\r\n', '').replaceAll(' ', '')
+      const str = custom.answercontent.replaceAll('\n', '').replaceAll('\r', '').replaceAll(' ', '')
       fs.appendFileSync('./咨询内容答复.txt', (str || '空') + '\n')
       fs.appendFileSync('./答复单位.txt', custom.answerou + '\n')
       fs.appendFileSync('./公开时间.txt', custom.finishtime + '\n')
-      if (index < 1680) {
+      if (index < list.length - 1) {
         getDetil(index + 1)
       }
     }
