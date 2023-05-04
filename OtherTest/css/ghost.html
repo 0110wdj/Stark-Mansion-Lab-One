@@ -1,0 +1,43 @@
+<!--
+ * @Author: LiuJie 626796235@qq.com
+ * @Date: 2023-05-02 10:58:20
+ * @LastEditors: LiuJie 626796235@qq.com
+ * @LastEditTime: 2023-05-02 11:18:11
+ * @FilePath: \Stark-Mansion-Lab-One\OtherTest\css\ghost.html
+ * @Description: Do not edit
+-->
+<style>
+  a:hover:link {
+    color: black;
+    background-color: aqua;
+  }
+
+  a:hover:visited {
+    color: blueviolet;
+    background-color: rgb(184, 17, 98);
+  }
+
+  /* 选择 id 等于 div1 且是其父元素第一个孩子的元素 */
+  #div1:first-child { 
+    background-color: burlywood;
+  }
+
+  #div1> :first-child {
+    background-color: rgb(25, 211, 96);
+  }
+</style>
+
+<div>
+  <div id="div1">
+    div1
+    <div id="div11">
+      div11
+    </div>
+  </div>
+  <div>test</div>
+  <a href="http://www.baidu.com">link1</a>
+  <a href="http://www.bing.com">link2</a>
+  <a href="http://www.snofly.cn">link3</a>
+  
+  <div id="div2">div2</div>
+</div>
