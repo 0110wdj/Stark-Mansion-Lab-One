@@ -1,0 +1,24 @@
+<style>
+  .line::before {
+    content: attr(id) ' ';
+    margin-right: 5px;
+  }
+
+  .line {
+    border: 2px red solid;
+    width: attr(width) 'px';
+  }
+
+  .background {
+    background-color: red;
+  }
+
+  .background[data-background] {
+    background-color: attr(data-background color, red);
+  }
+</style>
+
+<div class="background" data-background="lime">颜色应该是红色而不是绿色因为浏览器并不支持 attr() 的高级用法</div>
+
+
+<div id=1 class="line" width=500>line one</div>
