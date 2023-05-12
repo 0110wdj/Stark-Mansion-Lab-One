@@ -1,11 +1,3 @@
-<!--
- * @description: 
- * @RGX/RBX: 
- * @Authored: LiuJie
- * @Date: 2022-12-02 17:20:33
- * @LastEditor: LiuJie
- * @LastEditTime: 2022-12-03 13:12:19
--->
 <style>
   html {
     background-color: rgb(151 90 219);
@@ -19,6 +11,10 @@
     /* height: 200px; */
     margin: 50px;
     float: left;
+  }
+
+  div:not(.div6) {
+    display: none;
   }
 </style>
 
@@ -112,6 +108,27 @@
     transform: scaleY(1.3) perspective(0.5em) rotateX(5deg);
     transform-origin: bottom;
   }
+
+  .div6 {
+    position: relative;
+    display: inline-block;
+    padding: 0.5em 2em 0.35em 1em;
+    background: bottom;
+  }
+
+  .div6::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: #58a;
+    transform: scaleY(1.3) perspective(0.5em) rotateX(5deg);
+    transform-origin: bottom left;
+    border-radius: 7px;
+  }
 </style>
 
 <div class="div1">DIV1SNOFLY</div>
@@ -119,3 +136,4 @@
 <div class="div3">SNOFLYDIV3</div>
 <div class="div4">SNOFLYDIV4</div>
 <div class="div5">SNOFLYDIV5</div>
+<div class="div6">text length</div>
