@@ -1,4 +1,4 @@
-// 指定protobuf的版本，proto3是最新的语法版本
+// 指定protobuf的版本proto3
 syntax = "proto3";
 package server_interface;
 
@@ -50,5 +50,6 @@ message Events {
     repeated Event events = 2;
     bool success = 3;  // 整轮是否成功
     string message = 4;
+    string models = 5;  // json 字符串 [{type: "connect"}, {type: "send": model: "json string"}, {type: "receive",}, {type: "send_close"}, {type: "receive_close"}]
 }
 
