@@ -2,7 +2,7 @@
  * @Author: LiuJie 626796235@qq.com
  * @Date: 2023-06-16 13:36:19
  * @LastEditors: LiuJie 626796235@qq.com
- * @LastEditTime: 2023-06-29 14:05:17
+ * @LastEditTime: 2023-06-29 14:07:57
  * @FilePath: \Stark-Mansion-Lab-One\OtherTest\JS\protobuf.js
  * @Description: Do not edit
  */
@@ -43,8 +43,7 @@ const transProto = (base64, target) => {
         kitObj[target] = protokit.lookupType(target)
       }
       /* 解析结果 JSON 对象 */
-      result = kitObj[target].decode(buffer);
-      return result
+      return kitObj[target].decode(buffer)
     } catch (error) {
       console.log('解码异常', error);
     }
