@@ -1,5 +1,6 @@
 // 指定protobuf的版本proto3
 syntax = "proto3";
+
 package server_interface;
 
 // 定义数据结构，message 你可以想象成java的class，c语言中的struct

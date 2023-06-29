@@ -2,51 +2,59 @@
  * @Author: LiuJie 626796235@qq.com
  * @Date: 2023-06-16 13:36:19
  * @LastEditors: LiuJie 626796235@qq.com
- * @LastEditTime: 2023-06-29 10:49:16
+ * @LastEditTime: 2023-06-29 14:05:17
  * @FilePath: \Stark-Mansion-Lab-One\OtherTest\JS\protobuf.js
  * @Description: Do not edit
  */
 const protobuf = require("protobufjs");
+const util = protobuf.util;
 
 /* 引入 proto 数据结构定义，获得工具实例 */
 let protokit = null;
+/* 解析工具集合，避免重复加载解析工具 */
+const kitObj = {}
+
+if (!protokit) {
+  protobuf.load("server_interface.proto").then((res) => {
+    protokit = res;
+  }).catch(() => {
+    console.log('加载异常，重试一次');
+    protobuf.load("server_interface.proto").then((res) => {
+      protokit = res;
+    }).catch((e) => {
+      console.log('加载失败', e);
+    })
+  })
+}
 
 /**
  * 字节流数组转目标对象
- * @param {*} byteArray 字节流数组
- * @param {*} target 目标对象类型
+ * @param {string} base64 
+ * @param {string} target 目标对象类型
  */
-const transProto = (byteArray, target) => {
+const transProto = (base64, target) => {
   if (protokit) {
     try {
-      const buffer = new Buffer.from(byteArray);
-      console.log("===> buffer", buffer);
-      const msg = protokit.lookupType(target);
-      const message = msg.decode(buffer);
-      console.log('执行一次，结果：\n', message);
-      return message
+      /* base64 转 字节流数组 */
+      const buffer = util.newBuffer(util.base64.length(base64));
+      util.base64.decode(base64, buffer, 0);
+      /* 对应 target 数据结构的工具 */
+      if (!kitObj[target]) {
+        kitObj[target] = protokit.lookupType(target)
+      }
+      /* 解析结果 JSON 对象 */
+      result = kitObj[target].decode(buffer);
+      return result
     } catch (error) {
-      console.log('转换异常');
+      console.log('解码异常', error);
     }
-  } else {
-    /* 确保先初始化再执行 */
-    protobuf.load("server_interface.proto").then((res) => {
-      protokit = res;
-      console.log('初始化一次');
-      transProto(byteArray, target)
-    }).catch((e) => {
-      console.log('加载异常');
-    })
   }
+  return null
 }
 
 /* 测试代码 */
-// const pkgChart = `CA8QDxgPIEIqCggBEAkYASICT0s=`
-const pkgChart = `CPMGEA0YDSAaKioIARAIGAEiIjMwMSBNb3ZlZCBQZXJtYW5lbnRseSDor7fmsYLmiJDlip8qCggBEBgYASICT0s=`
+const pkgChart = `CDAQBxgHIA4qGwgBEAEYASITMjAwIE9LIOivt+axguaIkOWKnyoKCAEQBxgBIgJPSw==`
 
-const setpkgChart = atob(pkgChart)
-
-const byteArraysetpkgChart = new TextEncoder().encode(setpkgChart);
-
-// console.log(byteArraysetpkgChart);
-transProto(byteArraysetpkgChart, 'Chart')
+setTimeout(() => {
+  console.log(transProto(pkgChart, 'Chart'));
+}, 10);
