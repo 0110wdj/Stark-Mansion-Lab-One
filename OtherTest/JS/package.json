@@ -1,9 +1,11 @@
 {
+  "description": "pbjs -t static-module -w commonjs -o proto_pb.js *.proto",
   "name": "JS",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "pbjs": "^0.0.14",
     "protobufjs": "^7.2.3"
   }
 }
