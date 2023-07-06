@@ -2,7 +2,7 @@
  * @Author: LiuJie 626796235@qq.com
  * @Date: 2023-06-16 13:36:19
  * @LastEditors: LiuJie 626796235@qq.com
- * @LastEditTime: 2023-06-29 14:07:57
+ * @LastEditTime: 2023-07-06 13:51:14
  * @FilePath: \Stark-Mansion-Lab-One\OtherTest\JS\protobuf.js
  * @Description: Do not edit
  */
@@ -30,7 +30,7 @@ if (!protokit) {
 /**
  * 字节流数组转目标对象
  * @param {string} base64 
- * @param {string} target 目标对象类型
+ * @param {'Chart'|'Charts'|'MonitorStatus'|'RoundTick'|'Problem'|'Event'|'Events'} target 目标对象类型
  */
 const transProto = (base64, target) => {
   if (protokit) {
@@ -52,8 +52,11 @@ const transProto = (base64, target) => {
 }
 
 /* 测试代码 */
-const pkgChart = `CDAQBxgHIA4qGwgBEAEYASITMjAwIE9LIOivt+axguaIkOWKnyoKCAEQBxgBIgJPSw==`
+const pkgChart = "KiYiJOivt+axguWksei0pSBlcnJvciB0cnlpbmcgdG8gY29ubmVjdCp/EAQie1tpbmV0L3NyYy9wcm94eS90Y3AucnM6ODQ6NTRdIFtpbmV0L3NyYy9wdWJsaXNoZXIvdGNwLnJzOjkyOjI0XSBDYW5ub3QgY29ubmVjdCB0byB0YXJnZXQ6IENvbm5lY3Rpb24gcmVmdXNlZCAob3MgZXJyb3IgMTExKQ=="
 
 setTimeout(() => {
-  console.log(transProto(pkgChart, 'Chart'));
+
+  const result = transProto(pkgChart, 'Chart')
+
+  console.log(result);
 }, 10);

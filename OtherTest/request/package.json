@@ -1,0 +1,10 @@
+{
+  "name": "request",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^25.2.0",
+    "request": "^2.88.2"
+  }
+}
