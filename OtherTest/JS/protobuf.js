@@ -2,7 +2,7 @@
  * @Author: LiuJie 626796235@qq.com
  * @Date: 2023-06-16 13:36:19
  * @LastEditors: LiuJie 626796235@qq.com
- * @LastEditTime: 2023-07-06 13:51:14
+ * @LastEditTime: 2023-07-16 19:51:51
  * @FilePath: \Stark-Mansion-Lab-One\OtherTest\JS\protobuf.js
  * @Description: Do not edit
  */
@@ -52,11 +52,12 @@ const transProto = (base64, target) => {
 }
 
 /* 测试代码 */
-const pkgChart = "KiYiJOivt+axguWksei0pSBlcnJvciB0cnlpbmcgdG8gY29ubmVjdCp/EAQie1tpbmV0L3NyYy9wcm94eS90Y3AucnM6ODQ6NTRdIFtpbmV0L3NyYy9wdWJsaXNoZXIvdGNwLnJzOjkyOjI0XSBDYW5ub3QgY29ubmVjdCB0byB0YXJnZXQ6IENvbm5lY3Rpb24gcmVmdXNlZCAob3MgZXJyb3IgMTExKQ=="
+const pkgChart = ""
 
 setTimeout(() => {
 
-  const result = transProto(pkgChart, 'Chart')
+  const result = transProto(pkgChart, 'Problem')
 
   console.log(result);
+
 }, 10);
