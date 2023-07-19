@@ -28,6 +28,8 @@ $root.server_interface = (function() {
          * @property {number|null} [realValue] MonitorStatus realValue
          * @property {boolean|null} [success] MonitorStatus success
          * @property {string|null} [message] MonitorStatus message
+         * @property {number|null} [referenceValue] MonitorStatus referenceValue
+         * @property {string|null} [logs] MonitorStatus logs
          */
 
         /**
@@ -78,6 +80,22 @@ $root.server_interface = (function() {
         MonitorStatus.prototype.message = "";
 
         /**
+         * MonitorStatus referenceValue.
+         * @member {number} referenceValue
+         * @memberof server_interface.MonitorStatus
+         * @instance
+         */
+        MonitorStatus.prototype.referenceValue = 0;
+
+        /**
+         * MonitorStatus logs.
+         * @member {string} logs
+         * @memberof server_interface.MonitorStatus
+         * @instance
+         */
+        MonitorStatus.prototype.logs = "";
+
+        /**
          * Creates a new MonitorStatus instance using the specified properties.
          * @function create
          * @memberof server_interface.MonitorStatus
@@ -109,6 +127,10 @@ $root.server_interface = (function() {
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.success);
             if (message.message != null && Object.hasOwnProperty.call(message, "message"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.message);
+            if (message.referenceValue != null && Object.hasOwnProperty.call(message, "referenceValue"))
+                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.referenceValue);
+            if (message.logs != null && Object.hasOwnProperty.call(message, "logs"))
+                writer.uint32(/* id 6, wireType 2 =*/50).string(message.logs);
             return writer;
         };
 
@@ -154,6 +176,12 @@ $root.server_interface = (function() {
                     break;
                 case 4:
                     message.message = reader.string();
+                    break;
+                case 5:
+                    message.referenceValue = reader.int32();
+                    break;
+                case 6:
+                    message.logs = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -202,6 +230,12 @@ $root.server_interface = (function() {
             if (message.message != null && message.hasOwnProperty("message"))
                 if (!$util.isString(message.message))
                     return "message: string expected";
+            if (message.referenceValue != null && message.hasOwnProperty("referenceValue"))
+                if (!$util.isInteger(message.referenceValue))
+                    return "referenceValue: integer expected";
+            if (message.logs != null && message.hasOwnProperty("logs"))
+                if (!$util.isString(message.logs))
+                    return "logs: string expected";
             return null;
         };
 
@@ -225,6 +259,10 @@ $root.server_interface = (function() {
                 message.success = Boolean(object.success);
             if (object.message != null)
                 message.message = String(object.message);
+            if (object.referenceValue != null)
+                message.referenceValue = object.referenceValue | 0;
+            if (object.logs != null)
+                message.logs = String(object.logs);
             return message;
         };
 
@@ -246,6 +284,8 @@ $root.server_interface = (function() {
                 object.realValue = 0;
                 object.success = false;
                 object.message = "";
+                object.referenceValue = 0;
+                object.logs = "";
             }
             if (message.alarmValue != null && message.hasOwnProperty("alarmValue"))
                 object.alarmValue = message.alarmValue;
@@ -255,6 +295,10 @@ $root.server_interface = (function() {
                 object.success = message.success;
             if (message.message != null && message.hasOwnProperty("message"))
                 object.message = message.message;
+            if (message.referenceValue != null && message.hasOwnProperty("referenceValue"))
+                object.referenceValue = message.referenceValue;
+            if (message.logs != null && message.hasOwnProperty("logs"))
+                object.logs = message.logs;
             return object;
         };
 
@@ -283,6 +327,8 @@ $root.server_interface = (function() {
          * @property {number|null} [sendPacketCount] Chart sendPacketCount
          * @property {number|null} [receivePacketCount] Chart receivePacketCount
          * @property {Array.<server_interface.IMonitorStatus>|null} [monitorStatus] Chart monitorStatus
+         * @property {number|null} [sendPacketBytes] Chart sendPacketBytes
+         * @property {number|null} [receivePacketBytes] Chart receivePacketBytes
          */
 
         /**
@@ -342,6 +388,22 @@ $root.server_interface = (function() {
         Chart.prototype.monitorStatus = $util.emptyArray;
 
         /**
+         * Chart sendPacketBytes.
+         * @member {number} sendPacketBytes
+         * @memberof server_interface.Chart
+         * @instance
+         */
+        Chart.prototype.sendPacketBytes = 0;
+
+        /**
+         * Chart receivePacketBytes.
+         * @member {number} receivePacketBytes
+         * @memberof server_interface.Chart
+         * @instance
+         */
+        Chart.prototype.receivePacketBytes = 0;
+
+        /**
          * Creates a new Chart instance using the specified properties.
          * @function create
          * @memberof server_interface.Chart
@@ -376,6 +438,10 @@ $root.server_interface = (function() {
             if (message.monitorStatus != null && message.monitorStatus.length)
                 for (var i = 0; i < message.monitorStatus.length; ++i)
                     $root.server_interface.MonitorStatus.encode(message.monitorStatus[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+            if (message.sendPacketBytes != null && Object.hasOwnProperty.call(message, "sendPacketBytes"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.sendPacketBytes);
+            if (message.receivePacketBytes != null && Object.hasOwnProperty.call(message, "receivePacketBytes"))
+                writer.uint32(/* id 7, wireType 0 =*/56).int32(message.receivePacketBytes);
             return writer;
         };
 
@@ -426,6 +492,12 @@ $root.server_interface = (function() {
                     if (!(message.monitorStatus && message.monitorStatus.length))
                         message.monitorStatus = [];
                     message.monitorStatus.push($root.server_interface.MonitorStatus.decode(reader, reader.uint32()));
+                    break;
+                case 6:
+                    message.sendPacketBytes = reader.int32();
+                    break;
+                case 7:
+                    message.receivePacketBytes = reader.int32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -483,6 +555,12 @@ $root.server_interface = (function() {
                         return "monitorStatus." + error;
                 }
             }
+            if (message.sendPacketBytes != null && message.hasOwnProperty("sendPacketBytes"))
+                if (!$util.isInteger(message.sendPacketBytes))
+                    return "sendPacketBytes: integer expected";
+            if (message.receivePacketBytes != null && message.hasOwnProperty("receivePacketBytes"))
+                if (!$util.isInteger(message.receivePacketBytes))
+                    return "receivePacketBytes: integer expected";
             return null;
         };
 
@@ -516,6 +594,10 @@ $root.server_interface = (function() {
                     message.monitorStatus[i] = $root.server_interface.MonitorStatus.fromObject(object.monitorStatus[i]);
                 }
             }
+            if (object.sendPacketBytes != null)
+                message.sendPacketBytes = object.sendPacketBytes | 0;
+            if (object.receivePacketBytes != null)
+                message.receivePacketBytes = object.receivePacketBytes | 0;
             return message;
         };
 
@@ -539,6 +621,8 @@ $root.server_interface = (function() {
                 object.roundCount = 0;
                 object.sendPacketCount = 0;
                 object.receivePacketCount = 0;
+                object.sendPacketBytes = 0;
+                object.receivePacketBytes = 0;
             }
             if (message.roundIndex != null && message.hasOwnProperty("roundIndex"))
                 object.roundIndex = message.roundIndex;
@@ -553,6 +637,10 @@ $root.server_interface = (function() {
                 for (var j = 0; j < message.monitorStatus.length; ++j)
                     object.monitorStatus[j] = $root.server_interface.MonitorStatus.toObject(message.monitorStatus[j], options);
             }
+            if (message.sendPacketBytes != null && message.hasOwnProperty("sendPacketBytes"))
+                object.sendPacketBytes = message.sendPacketBytes;
+            if (message.receivePacketBytes != null && message.hasOwnProperty("receivePacketBytes"))
+                object.receivePacketBytes = message.receivePacketBytes;
             return object;
         };
 

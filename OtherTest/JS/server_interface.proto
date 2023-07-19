@@ -1,6 +1,5 @@
 // 指定protobuf的版本proto3
 syntax = "proto3";
-
 package server_interface;
 
 // 定义数据结构，message 你可以想象成java的class，c语言中的struct
@@ -9,6 +8,8 @@ message MonitorStatus {
     int32 real_value = 2;
     bool success = 3;
     string message = 4;
+    int32 reference_value = 5;
+    string logs = 6;
 }
 
 message Chart {
@@ -17,6 +18,8 @@ message Chart {
     int32 send_packet_count = 3;
     int32 receive_packet_count = 4;
     repeated MonitorStatus monitor_status = 5;
+    int32 send_packet_bytes = 6;
+    int32 receive_packet_bytes = 7;
 }
 
 message Charts {

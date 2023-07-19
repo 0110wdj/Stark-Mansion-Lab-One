@@ -2,7 +2,7 @@
  * @Author: LiuJie 626796235@qq.com
  * @Date: 2023-06-16 13:36:19
  * @LastEditors: LiuJie 626796235@qq.com
- * @LastEditTime: 2023-07-16 19:51:51
+ * @LastEditTime: 2023-07-18 15:45:31
  * @FilePath: \Stark-Mansion-Lab-One\OtherTest\JS\protobuf.js
  * @Description: Do not edit
  */
@@ -52,12 +52,23 @@ const transProto = (base64, target) => {
 }
 
 /* 测试代码 */
-const pkgChart = ""
+const pkgChart = "COoHEl4IARpaW2NvbW1vbi9zcmMvcHVibGlzaGVyL2RlY29yYXRvci90aW1lb3V0LnJzOjM0OjI5XSBDb25uZWN0aW5nIFRpbWVvdXQ6IGRlYWRsaW5lIGhhcyBlbGFwc2VkInhbaW5ldC9zcmMvcHJveHkvdGNwLnJzOjg0OjU0XSBbY29tbW9uL3NyYy9wdWJsaXNoZXIvZGVjb3JhdG9yL3RpbWVvdXQucnM6MzQ6MjldIENvbm5lY3RpbmcgVGltZW91dDogZGVhZGxpbmUgaGFzIGVsYXBzZWQqIFt7IkNvbm5lY3RlZCI6eyJyZXN1bHQiOmZhbHNlfX1d"
 
 setTimeout(() => {
 
-  const result = transProto(pkgChart, 'Problem')
+  const result = transProto(pkgChart, 'Event')
 
+  // delete result.ticks
   console.log(result);
-
+  // console.log(result.ticks[5]);
+  // result.ticks.forEach(tick => {
+  //   tick.monitorStatus.forEach(monitor => {
+  //     console.log(monitor);
+  //     // if (!monitor.success) {
+  //     // }
+  //     // if (monitor.logs) {
+  //     //   console.log(monitor.logs);
+  //     // }
+  //   })
+  // });
 }, 10);
