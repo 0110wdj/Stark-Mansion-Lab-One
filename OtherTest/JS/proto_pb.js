@@ -18,15 +18,30 @@ $root.server_interface = (function() {
      */
     var server_interface = {};
 
+    /**
+     * State enum.
+     * @name server_interface.State
+     * @enum {number}
+     * @property {number} Uninit=0 Uninit value
+     * @property {number} Failed=-1 Failed value
+     * @property {number} Alive=1 Alive value
+     */
+    server_interface.State = (function() {
+        var valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[0] = "Uninit"] = 0;
+        values[valuesById[-1] = "Failed"] = -1;
+        values[valuesById[1] = "Alive"] = 1;
+        return values;
+    })();
+
     server_interface.MonitorStatus = (function() {
 
         /**
          * Properties of a MonitorStatus.
          * @memberof server_interface
          * @interface IMonitorStatus
-         * @property {number|null} [alarmValue] MonitorStatus alarmValue
          * @property {number|null} [realValue] MonitorStatus realValue
-         * @property {boolean|null} [success] MonitorStatus success
+         * @property {server_interface.State|null} [state] MonitorStatus state
          * @property {string|null} [message] MonitorStatus message
          * @property {number|null} [referenceValue] MonitorStatus referenceValue
          * @property {string|null} [logs] MonitorStatus logs
@@ -48,14 +63,6 @@ $root.server_interface = (function() {
         }
 
         /**
-         * MonitorStatus alarmValue.
-         * @member {number} alarmValue
-         * @memberof server_interface.MonitorStatus
-         * @instance
-         */
-        MonitorStatus.prototype.alarmValue = 0;
-
-        /**
          * MonitorStatus realValue.
          * @member {number} realValue
          * @memberof server_interface.MonitorStatus
@@ -64,12 +71,12 @@ $root.server_interface = (function() {
         MonitorStatus.prototype.realValue = 0;
 
         /**
-         * MonitorStatus success.
-         * @member {boolean} success
+         * MonitorStatus state.
+         * @member {server_interface.State} state
          * @memberof server_interface.MonitorStatus
          * @instance
          */
-        MonitorStatus.prototype.success = false;
+        MonitorStatus.prototype.state = 0;
 
         /**
          * MonitorStatus message.
@@ -119,12 +126,10 @@ $root.server_interface = (function() {
         MonitorStatus.encode = function encode(message, writer) {
             if (!writer)
                 writer = $Writer.create();
-            if (message.alarmValue != null && Object.hasOwnProperty.call(message, "alarmValue"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.alarmValue);
             if (message.realValue != null && Object.hasOwnProperty.call(message, "realValue"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.realValue);
-            if (message.success != null && Object.hasOwnProperty.call(message, "success"))
-                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.success);
+            if (message.state != null && Object.hasOwnProperty.call(message, "state"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.state);
             if (message.message != null && Object.hasOwnProperty.call(message, "message"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.message);
             if (message.referenceValue != null && Object.hasOwnProperty.call(message, "referenceValue"))
@@ -165,14 +170,11 @@ $root.server_interface = (function() {
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
-                case 1:
-                    message.alarmValue = reader.int32();
-                    break;
                 case 2:
                     message.realValue = reader.int32();
                     break;
                 case 3:
-                    message.success = reader.bool();
+                    message.state = reader.int32();
                     break;
                 case 4:
                     message.message = reader.string();
@@ -218,15 +220,18 @@ $root.server_interface = (function() {
         MonitorStatus.verify = function verify(message) {
             if (typeof message !== "object" || message === null)
                 return "object expected";
-            if (message.alarmValue != null && message.hasOwnProperty("alarmValue"))
-                if (!$util.isInteger(message.alarmValue))
-                    return "alarmValue: integer expected";
             if (message.realValue != null && message.hasOwnProperty("realValue"))
                 if (!$util.isInteger(message.realValue))
                     return "realValue: integer expected";
-            if (message.success != null && message.hasOwnProperty("success"))
-                if (typeof message.success !== "boolean")
-                    return "success: boolean expected";
+            if (message.state != null && message.hasOwnProperty("state"))
+                switch (message.state) {
+                default:
+                    return "state: enum value expected";
+                case 0:
+                case -1:
+                case 1:
+                    break;
+                }
             if (message.message != null && message.hasOwnProperty("message"))
                 if (!$util.isString(message.message))
                     return "message: string expected";
@@ -251,12 +256,22 @@ $root.server_interface = (function() {
             if (object instanceof $root.server_interface.MonitorStatus)
                 return object;
             var message = new $root.server_interface.MonitorStatus();
-            if (object.alarmValue != null)
-                message.alarmValue = object.alarmValue | 0;
             if (object.realValue != null)
                 message.realValue = object.realValue | 0;
-            if (object.success != null)
-                message.success = Boolean(object.success);
+            switch (object.state) {
+            case "Uninit":
+            case 0:
+                message.state = 0;
+                break;
+            case "Failed":
+            case -1:
+                message.state = -1;
+                break;
+            case "Alive":
+            case 1:
+                message.state = 1;
+                break;
+            }
             if (object.message != null)
                 message.message = String(object.message);
             if (object.referenceValue != null)
@@ -280,19 +295,16 @@ $root.server_interface = (function() {
                 options = {};
             var object = {};
             if (options.defaults) {
-                object.alarmValue = 0;
                 object.realValue = 0;
-                object.success = false;
+                object.state = options.enums === String ? "Uninit" : 0;
                 object.message = "";
                 object.referenceValue = 0;
                 object.logs = "";
             }
-            if (message.alarmValue != null && message.hasOwnProperty("alarmValue"))
-                object.alarmValue = message.alarmValue;
             if (message.realValue != null && message.hasOwnProperty("realValue"))
                 object.realValue = message.realValue;
-            if (message.success != null && message.hasOwnProperty("success"))
-                object.success = message.success;
+            if (message.state != null && message.hasOwnProperty("state"))
+                object.state = options.enums === String ? $root.server_interface.State[message.state] : message.state;
             if (message.message != null && message.hasOwnProperty("message"))
                 object.message = message.message;
             if (message.referenceValue != null && message.hasOwnProperty("referenceValue"))
@@ -1235,6 +1247,7 @@ $root.server_interface = (function() {
          * @property {number|null} [startRound] Problem startRound
          * @property {Array.<string>|null} [monitorUnits] Problem monitorUnits
          * @property {Array.<server_interface.IRoundTick>|null} [ticks] Problem ticks
+         * @property {number|null} [endRound] Problem endRound
          */
 
         /**
@@ -1279,6 +1292,14 @@ $root.server_interface = (function() {
         Problem.prototype.ticks = $util.emptyArray;
 
         /**
+         * Problem endRound.
+         * @member {number} endRound
+         * @memberof server_interface.Problem
+         * @instance
+         */
+        Problem.prototype.endRound = 0;
+
+        /**
          * Creates a new Problem instance using the specified properties.
          * @function create
          * @memberof server_interface.Problem
@@ -1310,6 +1331,8 @@ $root.server_interface = (function() {
             if (message.ticks != null && message.ticks.length)
                 for (var i = 0; i < message.ticks.length; ++i)
                     $root.server_interface.RoundTick.encode(message.ticks[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            if (message.endRound != null && Object.hasOwnProperty.call(message, "endRound"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.endRound);
             return writer;
         };
 
@@ -1356,6 +1379,9 @@ $root.server_interface = (function() {
                     if (!(message.ticks && message.ticks.length))
                         message.ticks = [];
                     message.ticks.push($root.server_interface.RoundTick.decode(reader, reader.uint32()));
+                    break;
+                case 4:
+                    message.endRound = reader.int32();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1411,6 +1437,9 @@ $root.server_interface = (function() {
                         return "ticks." + error;
                 }
             }
+            if (message.endRound != null && message.hasOwnProperty("endRound"))
+                if (!$util.isInteger(message.endRound))
+                    return "endRound: integer expected";
             return null;
         };
 
@@ -1445,6 +1474,8 @@ $root.server_interface = (function() {
                     message.ticks[i] = $root.server_interface.RoundTick.fromObject(object.ticks[i]);
                 }
             }
+            if (object.endRound != null)
+                message.endRound = object.endRound | 0;
             return message;
         };
 
@@ -1465,8 +1496,10 @@ $root.server_interface = (function() {
                 object.monitorUnits = [];
                 object.ticks = [];
             }
-            if (options.defaults)
+            if (options.defaults) {
                 object.startRound = 0;
+                object.endRound = 0;
+            }
             if (message.startRound != null && message.hasOwnProperty("startRound"))
                 object.startRound = message.startRound;
             if (message.monitorUnits && message.monitorUnits.length) {
@@ -1479,6 +1512,8 @@ $root.server_interface = (function() {
                 for (var j = 0; j < message.ticks.length; ++j)
                     object.ticks[j] = $root.server_interface.RoundTick.toObject(message.ticks[j], options);
             }
+            if (message.endRound != null && message.hasOwnProperty("endRound"))
+                object.endRound = message.endRound;
             return object;
         };
 

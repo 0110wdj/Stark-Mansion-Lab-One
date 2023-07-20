@@ -3,10 +3,16 @@ syntax = "proto3";
 package server_interface;
 
 // 定义数据结构，message 你可以想象成java的class，c语言中的struct
+enum State {
+    Uninit = 0;
+    Failed = -1;
+    Alive = 1;
+}
+
 message MonitorStatus {
-    int32 alarm_value = 1;
+    // int32 alarm_value = 1;
     int32 real_value = 2;
-    bool success = 3;
+    State state = 3;
     string message = 4;
     int32 reference_value = 5;
     string logs = 6;
@@ -40,6 +46,7 @@ message Problem {
     int32 start_round = 1;
     repeated string monitor_units = 2;  //["延迟(ms)",...] 长度同monitor_status相等
     repeated RoundTick ticks = 3;
+    int32 end_round = 4;
 }
 
 message Event {
