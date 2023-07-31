@@ -1,0 +1,74 @@
+<!--
+ * @Author: LiuJie 626796235@qq.com
+ * @Date: 2023-07-28 14:17:55
+ * @LastEditors: LiuJie 626796235@qq.com
+ * @LastEditTime: 2023-07-28 14:29:25
+ * @FilePath: \Stark-Mansion-Lab-One\OtherTest\css\nth.html
+ * @Description: Do not edit
+-->
+<!-- 选中范围内的元素 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    /* 选择第一个 div 中的第 10 到 15 个 span 元素 */
+    .mydiv span:nth-of-type(n+10):nth-of-type(-n+15) {
+      /* 这里可以设置选中 span 的样式 */
+      color: red;
+      font-weight: bold;
+    }
+
+    /* 设置外部的 flex 容器 */
+    .mydiv {
+      display: flex;
+      flex-wrap: wrap;
+      /* 设置换行 */
+      justify-content: flex-start;
+      /* 可选：设置主轴上的对齐方式 */
+      align-items: flex-start;
+      /* 可选：设置侧轴上的对齐方式 */
+    }
+
+    /* 这里可以设置选中 span 的样式 */
+    .mydiv span {
+      width: 50px;
+      /* 设置 span 元素的宽度，根据实际情况调整 */
+      text-align: center;
+      /* 可选：设置文本居中 */
+      margin: 5px;
+      /* 可选：设置 span 元素之间的间距 */
+      border: 1px solid black;
+      /* 可选：设置边框样式 */
+    }
+
+    /* 每隔八个 span 元素换行 */
+    .mydiv span:nth-child(8n) {
+      flex-basis: 100%;
+      /* 设置每隔八个 span 的 flex 基准值为 100%，强制换行 */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mydiv">
+    <span>Span 1</span>
+    <span>Span 2</span>
+    <span>Span 3</span>
+    <span>Span 4</span>
+    <span>Span 5</span>
+    <span>Span 6</span>
+    <span>Span 7</span>
+    <span>Span 8</span>
+    <span>Span 9</span>
+    <span>Span 10</span>
+    <span>Span 11</span>
+    <span>Span 12</span>
+    <span>Span 13</span>
+    <span>Span 14</span>
+    <span>Span 15</span>
+    <span>Span 16</span>
+  </div>
+</body>
+
+</html>
