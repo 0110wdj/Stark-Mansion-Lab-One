@@ -16,6 +16,7 @@ message MonitorStatus {
     string message = 4;
     int32 reference_value = 5;
     string logs = 6;
+    bool has_reference_value =7;
 }
 
 message Chart {

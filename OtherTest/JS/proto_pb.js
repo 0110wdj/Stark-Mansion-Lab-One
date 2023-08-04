@@ -45,6 +45,7 @@ $root.server_interface = (function() {
          * @property {string|null} [message] MonitorStatus message
          * @property {number|null} [referenceValue] MonitorStatus referenceValue
          * @property {string|null} [logs] MonitorStatus logs
+         * @property {boolean|null} [hasReferenceValue] MonitorStatus hasReferenceValue
          */
 
         /**
@@ -103,6 +104,14 @@ $root.server_interface = (function() {
         MonitorStatus.prototype.logs = "";
 
         /**
+         * MonitorStatus hasReferenceValue.
+         * @member {boolean} hasReferenceValue
+         * @memberof server_interface.MonitorStatus
+         * @instance
+         */
+        MonitorStatus.prototype.hasReferenceValue = false;
+
+        /**
          * Creates a new MonitorStatus instance using the specified properties.
          * @function create
          * @memberof server_interface.MonitorStatus
@@ -136,6 +145,8 @@ $root.server_interface = (function() {
                 writer.uint32(/* id 5, wireType 0 =*/40).int32(message.referenceValue);
             if (message.logs != null && Object.hasOwnProperty.call(message, "logs"))
                 writer.uint32(/* id 6, wireType 2 =*/50).string(message.logs);
+            if (message.hasReferenceValue != null && Object.hasOwnProperty.call(message, "hasReferenceValue"))
+                writer.uint32(/* id 7, wireType 0 =*/56).bool(message.hasReferenceValue);
             return writer;
         };
 
@@ -184,6 +195,9 @@ $root.server_interface = (function() {
                     break;
                 case 6:
                     message.logs = reader.string();
+                    break;
+                case 7:
+                    message.hasReferenceValue = reader.bool();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -241,6 +255,9 @@ $root.server_interface = (function() {
             if (message.logs != null && message.hasOwnProperty("logs"))
                 if (!$util.isString(message.logs))
                     return "logs: string expected";
+            if (message.hasReferenceValue != null && message.hasOwnProperty("hasReferenceValue"))
+                if (typeof message.hasReferenceValue !== "boolean")
+                    return "hasReferenceValue: boolean expected";
             return null;
         };
 
@@ -278,6 +295,8 @@ $root.server_interface = (function() {
                 message.referenceValue = object.referenceValue | 0;
             if (object.logs != null)
                 message.logs = String(object.logs);
+            if (object.hasReferenceValue != null)
+                message.hasReferenceValue = Boolean(object.hasReferenceValue);
             return message;
         };
 
@@ -300,6 +319,7 @@ $root.server_interface = (function() {
                 object.message = "";
                 object.referenceValue = 0;
                 object.logs = "";
+                object.hasReferenceValue = false;
             }
             if (message.realValue != null && message.hasOwnProperty("realValue"))
                 object.realValue = message.realValue;
@@ -311,6 +331,8 @@ $root.server_interface = (function() {
                 object.referenceValue = message.referenceValue;
             if (message.logs != null && message.hasOwnProperty("logs"))
                 object.logs = message.logs;
+            if (message.hasReferenceValue != null && message.hasOwnProperty("hasReferenceValue"))
+                object.hasReferenceValue = message.hasReferenceValue;
             return object;
         };
 
