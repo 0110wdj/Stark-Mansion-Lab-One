@@ -1,13 +1,22 @@
-// 指定protobuf的版本，proto3是最新的语法版本
+// 指定protobuf的版本proto3
 syntax = "proto3";
 package server_interface;
 
 // 定义数据结构，message 你可以想象成java的class，c语言中的struct
+enum State {
+    Uninit = 0;
+    Failed = -1;
+    Alive = 1;
+}
+
 message MonitorStatus {
-    int32 alarm_value = 1;
+    // int32 alarm_value = 1;
     int32 real_value = 2;
-    bool success = 3;
+    State state = 3;
     string message = 4;
+    int32 reference_value = 5;
+    string logs = 6;
+    bool has_reference_value =7;
 }
 
 message Chart {
@@ -16,6 +25,8 @@ message Chart {
     int32 send_packet_count = 3;
     int32 receive_packet_count = 4;
     repeated MonitorStatus monitor_status = 5;
+    int32 send_packet_bytes = 6;
+    int32 receive_packet_bytes = 7;
 }
 
 message Charts {
@@ -36,6 +47,7 @@ message Problem {
     int32 start_round = 1;
     repeated string monitor_units = 2;  //["延迟(ms)",...] 长度同monitor_status相等
     repeated RoundTick ticks = 3;
+    int32 end_round = 4;
 }
 
 message Event {
@@ -50,5 +62,6 @@ message Events {
     repeated Event events = 2;
     bool success = 3;  // 整轮是否成功
     string message = 4;
+    string models = 5;  // json 字符串 [{type: "connect"}, {type: "send": model: "json string"}, {type: "receive",}, {type: "send_close"}, {type: "receive_close"}]
 }
 

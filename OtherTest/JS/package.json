@@ -1,9 +1,11 @@
 {
-  "name": "JS",
+  "description": "运行这个命令生成 protobuf 操作对象",
+  "descriptionScriipt": "pbjs -t static-module -w commonjs -o proto_pb.js *.proto",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "pbjs": "^0.0.14",
     "protobufjs": "^7.2.3"
   }
 }
