@@ -16,10 +16,10 @@ const getUrlList = async (page = 1) => {
   }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       const obj = JSON.parse(body)
-      obj.custom.infoList.forEach(item => {
-        fs.appendFileSync('./urllist.txt', item.handleurl + '\n')
+      obj.custom.infoList.forEach((item, index) => {
+        fs.appendFileSync('./urllist.txt', item.handleurl + `${index !== obj.custom.infoList.length - 1 ? '\n' : ''}`)
       });
-      if (page <= 85) {
+      if (page < 5) {
         getUrlList(page + 1)
       }
     }
