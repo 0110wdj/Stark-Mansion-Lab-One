@@ -17,6 +17,7 @@ const getDetil = async (index = 0) => {
     method: "POST",//请求方式，默认为get
     headers: {//设置请求头
       "content-type": "application/json",
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
     },
     body: JSON.stringify(requestData)//post参数字符串
   }, function (error, response, body) {
@@ -31,6 +32,9 @@ const getDetil = async (index = 0) => {
       if (index < list.length - 1) {
         getDetil(index + 1)
       }
+    } else {
+      console.log({ error });
+      console.log({ statusCode: response.statusCode });
     }
   });
 }
