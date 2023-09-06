@@ -2,21 +2,26 @@
  * @Author: LiuJie 626796235@qq.com
  * @Date: 2023-05-30 16:20:53
  * @LastEditors: LiuJie 626796235@qq.com
- * @LastEditTime: 2023-05-30 16:36:37
- * @FilePath: \Stark-Mansion-Lab-One\OtherTest\css\resize.html
+ * @LastEditTime: 2023-09-06 17:27:19
+ * @FilePath: \Stark-Mansion-Lab-One\OtherTest\css\其他\resize.html
  * @Description: Do not edit
 -->
 <div class="column">
-
+  <!-- 左侧容器 -->
   <div class="column-left">
+    <!-- 可拖动的调整栏 -->
     <div class="resize-bar"></div>
+    <!-- 拖动线，提供视觉反馈 -->
     <div class="resize-line"></div>
+    <!-- 左侧内容 -->
     <div class="resize-save">
       左侧的内容，左侧的内容，左侧的内容，左侧的内容
     </div>
   </div>
 
+  <!-- 右侧容器 -->
   <div class="column-right">
+    <!-- 右侧内容 -->
     右侧的内容，右侧的内容，右侧的内容，右侧的内容
   </div>
 </div>
@@ -55,12 +60,16 @@
     width: 200px;
     height: inherit;
     resize: horizontal;
+    /* 启用水平拖动 */
     cursor: ew-resize;
+    /* 设置鼠标指针形状 */
     opacity: 0;
+    /* 初始不可见 */
     overflow: scroll;
+    /* 允许内容滚动 */
   }
 
-  /* 拖拽线 */
+  /* 拖动线 */
   .resize-line {
     position: absolute;
     right: 0;
@@ -69,8 +78,10 @@
     border-right: 2px solid #eee;
     border-left: 1px solid #bbb;
     pointer-events: none;
+    /* 防止干扰鼠标事件 */
   }
 
+  /* 鼠标悬停和点击时，改变拖动线的外观 */
   .resize-bar:hover~.resize-line,
   .resize-bar:active~.resize-line {
     border-left: 1px dashed skyblue;
