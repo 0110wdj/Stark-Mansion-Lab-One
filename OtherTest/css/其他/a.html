@@ -1,0 +1,105 @@
+<div class="column">
+  <!-- 左侧容器 -->
+  <div class="column-left">
+    <!-- 可拖动的调整栏 -->
+    <div class="resize-bar"></div>
+    <!-- 拖动线，提供视觉反馈 -->
+    <div class="resize-line"></div>
+    <!-- 左侧内容 -->
+    <div class="resize-save">
+      左侧的内容，左侧的内容，左侧的内容，左侧的内容
+      <!-- 创建链接以跳转到不同的部分 -->
+      <ul>
+        <li><a href="#section1">跳转到第一节</a></li>
+        <li><a href="#section2">跳转到第二节</a></li>
+        <li><a href="#section3">跳转到第三节</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 右侧容器 -->
+  <div class="column-right">
+    <!-- 右侧内容 -->
+    右侧的内容，右侧的内容，右侧的内容，右侧的内容
+    <h1>页面标题</h1>
+
+    <p>这是页面的一些内容。</p>
+
+    <!-- 添加具有ID的元素，以便进行定位 -->
+    <h2 id="section1">第一节</h2>
+    <p>这是第一节的内容。</p>
+
+    <h2 id="section2">第二节</h2>
+    <p>这是第二节的内容。</p>
+
+    <h2 id="section3">第三节</h2>
+    <p>这是第三节的内容。</p>
+  </div>
+</div>
+
+<style>
+  .column {
+    overflow: hidden;
+  }
+
+  .column-left {
+    height: 100px;
+    background-color: #fff;
+    position: relative;
+    float: left;
+  }
+
+  .column-right {
+    height: 100px;
+    padding: 16px;
+    background-color: #eee;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .resize-save {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    bottom: 0;
+    left: 0;
+    padding: 16px;
+    overflow-x: hidden;
+  }
+
+  .resize-bar {
+    width: 200px;
+    height: inherit;
+    resize: horizontal;
+    /* 启用水平拖动 */
+    cursor: ew-resize;
+    /* 设置鼠标指针形状 */
+    opacity: 0;
+    /* 初始不可见 */
+    overflow: scroll;
+    /* 允许内容滚动 */
+  }
+
+  /* 拖动线 */
+  .resize-line {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-right: 2px solid #eee;
+    border-left: 1px solid #bbb;
+    pointer-events: none;
+    /* 防止干扰鼠标事件 */
+  }
+
+  /* 鼠标悬停和点击时，改变拖动线的外观 */
+  .resize-bar:hover~.resize-line,
+  .resize-bar:active~.resize-line {
+    border-left: 1px dashed skyblue;
+  }
+
+  .resize-bar::-webkit-scrollbar {
+    width: 200px;
+    height: inherit;
+  }
+</style>
