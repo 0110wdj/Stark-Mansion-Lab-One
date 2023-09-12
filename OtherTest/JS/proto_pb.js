@@ -1,22 +1,20 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
-"use strict";
-
-var $protobuf = require("protobufjs/minimal");
+import * as $protobuf from "protobufjs/minimal";
 
 // Common aliases
-var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
 
 // Exported root namespace
-var $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
+const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
-$root.server_interface = (function() {
+export const server_interface = $root.server_interface = (() => {
 
     /**
      * Namespace server_interface.
      * @exports server_interface
      * @namespace
      */
-    var server_interface = {};
+    const server_interface = {};
 
     /**
      * State enum.
@@ -27,7 +25,7 @@ $root.server_interface = (function() {
      * @property {number} Alive=1 Alive value
      */
     server_interface.State = (function() {
-        var valuesById = {}, values = Object.create(valuesById);
+        const valuesById = {}, values = Object.create(valuesById);
         values[valuesById[0] = "Uninit"] = 0;
         values[valuesById[-1] = "Failed"] = -1;
         values[valuesById[1] = "Alive"] = 1;
@@ -58,7 +56,7 @@ $root.server_interface = (function() {
          */
         function MonitorStatus(properties) {
             if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
@@ -177,9 +175,9 @@ $root.server_interface = (function() {
         MonitorStatus.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.MonitorStatus();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.MonitorStatus();
             while (reader.pos < end) {
-                var tag = reader.uint32();
+                let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 2:
                     message.realValue = reader.int32();
@@ -272,7 +270,7 @@ $root.server_interface = (function() {
         MonitorStatus.fromObject = function fromObject(object) {
             if (object instanceof $root.server_interface.MonitorStatus)
                 return object;
-            var message = new $root.server_interface.MonitorStatus();
+            let message = new $root.server_interface.MonitorStatus();
             if (object.realValue != null)
                 message.realValue = object.realValue | 0;
             switch (object.state) {
@@ -312,7 +310,7 @@ $root.server_interface = (function() {
         MonitorStatus.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
-            var object = {};
+            let object = {};
             if (options.defaults) {
                 object.realValue = 0;
                 object.state = options.enums === String ? "Uninit" : 0;
@@ -376,7 +374,7 @@ $root.server_interface = (function() {
         function Chart(properties) {
             this.monitorStatus = [];
             if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
@@ -470,7 +468,7 @@ $root.server_interface = (function() {
             if (message.receivePacketCount != null && Object.hasOwnProperty.call(message, "receivePacketCount"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.receivePacketCount);
             if (message.monitorStatus != null && message.monitorStatus.length)
-                for (var i = 0; i < message.monitorStatus.length; ++i)
+                for (let i = 0; i < message.monitorStatus.length; ++i)
                     $root.server_interface.MonitorStatus.encode(message.monitorStatus[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             if (message.sendPacketBytes != null && Object.hasOwnProperty.call(message, "sendPacketBytes"))
                 writer.uint32(/* id 6, wireType 0 =*/48).int32(message.sendPacketBytes);
@@ -506,9 +504,9 @@ $root.server_interface = (function() {
         Chart.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Chart();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Chart();
             while (reader.pos < end) {
-                var tag = reader.uint32();
+                let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
                     message.roundIndex = reader.int32();
@@ -583,8 +581,8 @@ $root.server_interface = (function() {
             if (message.monitorStatus != null && message.hasOwnProperty("monitorStatus")) {
                 if (!Array.isArray(message.monitorStatus))
                     return "monitorStatus: array expected";
-                for (var i = 0; i < message.monitorStatus.length; ++i) {
-                    var error = $root.server_interface.MonitorStatus.verify(message.monitorStatus[i]);
+                for (let i = 0; i < message.monitorStatus.length; ++i) {
+                    let error = $root.server_interface.MonitorStatus.verify(message.monitorStatus[i]);
                     if (error)
                         return "monitorStatus." + error;
                 }
@@ -609,7 +607,7 @@ $root.server_interface = (function() {
         Chart.fromObject = function fromObject(object) {
             if (object instanceof $root.server_interface.Chart)
                 return object;
-            var message = new $root.server_interface.Chart();
+            let message = new $root.server_interface.Chart();
             if (object.roundIndex != null)
                 message.roundIndex = object.roundIndex | 0;
             if (object.roundCount != null)
@@ -622,7 +620,7 @@ $root.server_interface = (function() {
                 if (!Array.isArray(object.monitorStatus))
                     throw TypeError(".server_interface.Chart.monitorStatus: array expected");
                 message.monitorStatus = [];
-                for (var i = 0; i < object.monitorStatus.length; ++i) {
+                for (let i = 0; i < object.monitorStatus.length; ++i) {
                     if (typeof object.monitorStatus[i] !== "object")
                         throw TypeError(".server_interface.Chart.monitorStatus: object expected");
                     message.monitorStatus[i] = $root.server_interface.MonitorStatus.fromObject(object.monitorStatus[i]);
@@ -647,7 +645,7 @@ $root.server_interface = (function() {
         Chart.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
-            var object = {};
+            let object = {};
             if (options.arrays || options.defaults)
                 object.monitorStatus = [];
             if (options.defaults) {
@@ -668,7 +666,7 @@ $root.server_interface = (function() {
                 object.receivePacketCount = message.receivePacketCount;
             if (message.monitorStatus && message.monitorStatus.length) {
                 object.monitorStatus = [];
-                for (var j = 0; j < message.monitorStatus.length; ++j)
+                for (let j = 0; j < message.monitorStatus.length; ++j)
                     object.monitorStatus[j] = $root.server_interface.MonitorStatus.toObject(message.monitorStatus[j], options);
             }
             if (message.sendPacketBytes != null && message.hasOwnProperty("sendPacketBytes"))
@@ -715,7 +713,7 @@ $root.server_interface = (function() {
             this.monitorUnits = [];
             this.ticks = [];
             if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
@@ -771,10 +769,10 @@ $root.server_interface = (function() {
             if (message.startTime != null && Object.hasOwnProperty.call(message, "startTime"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.startTime);
             if (message.monitorUnits != null && message.monitorUnits.length)
-                for (var i = 0; i < message.monitorUnits.length; ++i)
+                for (let i = 0; i < message.monitorUnits.length; ++i)
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.monitorUnits[i]);
             if (message.ticks != null && message.ticks.length)
-                for (var i = 0; i < message.ticks.length; ++i)
+                for (let i = 0; i < message.ticks.length; ++i)
                     $root.server_interface.Chart.encode(message.ticks[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             return writer;
         };
@@ -806,9 +804,9 @@ $root.server_interface = (function() {
         Charts.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Charts();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Charts();
             while (reader.pos < end) {
-                var tag = reader.uint32();
+                let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
                     message.startTime = reader.int32();
@@ -864,15 +862,15 @@ $root.server_interface = (function() {
             if (message.monitorUnits != null && message.hasOwnProperty("monitorUnits")) {
                 if (!Array.isArray(message.monitorUnits))
                     return "monitorUnits: array expected";
-                for (var i = 0; i < message.monitorUnits.length; ++i)
+                for (let i = 0; i < message.monitorUnits.length; ++i)
                     if (!$util.isString(message.monitorUnits[i]))
                         return "monitorUnits: string[] expected";
             }
             if (message.ticks != null && message.hasOwnProperty("ticks")) {
                 if (!Array.isArray(message.ticks))
                     return "ticks: array expected";
-                for (var i = 0; i < message.ticks.length; ++i) {
-                    var error = $root.server_interface.Chart.verify(message.ticks[i]);
+                for (let i = 0; i < message.ticks.length; ++i) {
+                    let error = $root.server_interface.Chart.verify(message.ticks[i]);
                     if (error)
                         return "ticks." + error;
                 }
@@ -891,21 +889,21 @@ $root.server_interface = (function() {
         Charts.fromObject = function fromObject(object) {
             if (object instanceof $root.server_interface.Charts)
                 return object;
-            var message = new $root.server_interface.Charts();
+            let message = new $root.server_interface.Charts();
             if (object.startTime != null)
                 message.startTime = object.startTime | 0;
             if (object.monitorUnits) {
                 if (!Array.isArray(object.monitorUnits))
                     throw TypeError(".server_interface.Charts.monitorUnits: array expected");
                 message.monitorUnits = [];
-                for (var i = 0; i < object.monitorUnits.length; ++i)
+                for (let i = 0; i < object.monitorUnits.length; ++i)
                     message.monitorUnits[i] = String(object.monitorUnits[i]);
             }
             if (object.ticks) {
                 if (!Array.isArray(object.ticks))
                     throw TypeError(".server_interface.Charts.ticks: array expected");
                 message.ticks = [];
-                for (var i = 0; i < object.ticks.length; ++i) {
+                for (let i = 0; i < object.ticks.length; ++i) {
                     if (typeof object.ticks[i] !== "object")
                         throw TypeError(".server_interface.Charts.ticks: object expected");
                     message.ticks[i] = $root.server_interface.Chart.fromObject(object.ticks[i]);
@@ -926,7 +924,7 @@ $root.server_interface = (function() {
         Charts.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
-            var object = {};
+            let object = {};
             if (options.arrays || options.defaults) {
                 object.monitorUnits = [];
                 object.ticks = [];
@@ -937,12 +935,12 @@ $root.server_interface = (function() {
                 object.startTime = message.startTime;
             if (message.monitorUnits && message.monitorUnits.length) {
                 object.monitorUnits = [];
-                for (var j = 0; j < message.monitorUnits.length; ++j)
+                for (let j = 0; j < message.monitorUnits.length; ++j)
                     object.monitorUnits[j] = message.monitorUnits[j];
             }
             if (message.ticks && message.ticks.length) {
                 object.ticks = [];
-                for (var j = 0; j < message.ticks.length; ++j)
+                for (let j = 0; j < message.ticks.length; ++j)
                     object.ticks[j] = $root.server_interface.Chart.toObject(message.ticks[j], options);
             }
             return object;
@@ -986,7 +984,7 @@ $root.server_interface = (function() {
         function RoundTick(properties) {
             this.monitorStatus = [];
             if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
@@ -1064,7 +1062,7 @@ $root.server_interface = (function() {
             if (message.receivePacketBytes != null && Object.hasOwnProperty.call(message, "receivePacketBytes"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.receivePacketBytes);
             if (message.monitorStatus != null && message.monitorStatus.length)
-                for (var i = 0; i < message.monitorStatus.length; ++i)
+                for (let i = 0; i < message.monitorStatus.length; ++i)
                     $root.server_interface.MonitorStatus.encode(message.monitorStatus[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
@@ -1096,9 +1094,9 @@ $root.server_interface = (function() {
         RoundTick.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.RoundTick();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.RoundTick();
             while (reader.pos < end) {
-                var tag = reader.uint32();
+                let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
                     message.sendPacketCount = reader.int32();
@@ -1167,8 +1165,8 @@ $root.server_interface = (function() {
             if (message.monitorStatus != null && message.hasOwnProperty("monitorStatus")) {
                 if (!Array.isArray(message.monitorStatus))
                     return "monitorStatus: array expected";
-                for (var i = 0; i < message.monitorStatus.length; ++i) {
-                    var error = $root.server_interface.MonitorStatus.verify(message.monitorStatus[i]);
+                for (let i = 0; i < message.monitorStatus.length; ++i) {
+                    let error = $root.server_interface.MonitorStatus.verify(message.monitorStatus[i]);
                     if (error)
                         return "monitorStatus." + error;
                 }
@@ -1187,7 +1185,7 @@ $root.server_interface = (function() {
         RoundTick.fromObject = function fromObject(object) {
             if (object instanceof $root.server_interface.RoundTick)
                 return object;
-            var message = new $root.server_interface.RoundTick();
+            let message = new $root.server_interface.RoundTick();
             if (object.sendPacketCount != null)
                 message.sendPacketCount = object.sendPacketCount | 0;
             if (object.receivePacketCount != null)
@@ -1200,7 +1198,7 @@ $root.server_interface = (function() {
                 if (!Array.isArray(object.monitorStatus))
                     throw TypeError(".server_interface.RoundTick.monitorStatus: array expected");
                 message.monitorStatus = [];
-                for (var i = 0; i < object.monitorStatus.length; ++i) {
+                for (let i = 0; i < object.monitorStatus.length; ++i) {
                     if (typeof object.monitorStatus[i] !== "object")
                         throw TypeError(".server_interface.RoundTick.monitorStatus: object expected");
                     message.monitorStatus[i] = $root.server_interface.MonitorStatus.fromObject(object.monitorStatus[i]);
@@ -1221,7 +1219,7 @@ $root.server_interface = (function() {
         RoundTick.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
-            var object = {};
+            let object = {};
             if (options.arrays || options.defaults)
                 object.monitorStatus = [];
             if (options.defaults) {
@@ -1240,7 +1238,7 @@ $root.server_interface = (function() {
                 object.receivePacketBytes = message.receivePacketBytes;
             if (message.monitorStatus && message.monitorStatus.length) {
                 object.monitorStatus = [];
-                for (var j = 0; j < message.monitorStatus.length; ++j)
+                for (let j = 0; j < message.monitorStatus.length; ++j)
                     object.monitorStatus[j] = $root.server_interface.MonitorStatus.toObject(message.monitorStatus[j], options);
             }
             return object;
@@ -1284,7 +1282,7 @@ $root.server_interface = (function() {
             this.monitorUnits = [];
             this.ticks = [];
             if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
@@ -1348,10 +1346,10 @@ $root.server_interface = (function() {
             if (message.startRound != null && Object.hasOwnProperty.call(message, "startRound"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.startRound);
             if (message.monitorUnits != null && message.monitorUnits.length)
-                for (var i = 0; i < message.monitorUnits.length; ++i)
+                for (let i = 0; i < message.monitorUnits.length; ++i)
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.monitorUnits[i]);
             if (message.ticks != null && message.ticks.length)
-                for (var i = 0; i < message.ticks.length; ++i)
+                for (let i = 0; i < message.ticks.length; ++i)
                     $root.server_interface.RoundTick.encode(message.ticks[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
             if (message.endRound != null && Object.hasOwnProperty.call(message, "endRound"))
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.endRound);
@@ -1385,9 +1383,9 @@ $root.server_interface = (function() {
         Problem.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Problem();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Problem();
             while (reader.pos < end) {
-                var tag = reader.uint32();
+                let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
                     message.startRound = reader.int32();
@@ -1446,15 +1444,15 @@ $root.server_interface = (function() {
             if (message.monitorUnits != null && message.hasOwnProperty("monitorUnits")) {
                 if (!Array.isArray(message.monitorUnits))
                     return "monitorUnits: array expected";
-                for (var i = 0; i < message.monitorUnits.length; ++i)
+                for (let i = 0; i < message.monitorUnits.length; ++i)
                     if (!$util.isString(message.monitorUnits[i]))
                         return "monitorUnits: string[] expected";
             }
             if (message.ticks != null && message.hasOwnProperty("ticks")) {
                 if (!Array.isArray(message.ticks))
                     return "ticks: array expected";
-                for (var i = 0; i < message.ticks.length; ++i) {
-                    var error = $root.server_interface.RoundTick.verify(message.ticks[i]);
+                for (let i = 0; i < message.ticks.length; ++i) {
+                    let error = $root.server_interface.RoundTick.verify(message.ticks[i]);
                     if (error)
                         return "ticks." + error;
                 }
@@ -1476,21 +1474,21 @@ $root.server_interface = (function() {
         Problem.fromObject = function fromObject(object) {
             if (object instanceof $root.server_interface.Problem)
                 return object;
-            var message = new $root.server_interface.Problem();
+            let message = new $root.server_interface.Problem();
             if (object.startRound != null)
                 message.startRound = object.startRound | 0;
             if (object.monitorUnits) {
                 if (!Array.isArray(object.monitorUnits))
                     throw TypeError(".server_interface.Problem.monitorUnits: array expected");
                 message.monitorUnits = [];
-                for (var i = 0; i < object.monitorUnits.length; ++i)
+                for (let i = 0; i < object.monitorUnits.length; ++i)
                     message.monitorUnits[i] = String(object.monitorUnits[i]);
             }
             if (object.ticks) {
                 if (!Array.isArray(object.ticks))
                     throw TypeError(".server_interface.Problem.ticks: array expected");
                 message.ticks = [];
-                for (var i = 0; i < object.ticks.length; ++i) {
+                for (let i = 0; i < object.ticks.length; ++i) {
                     if (typeof object.ticks[i] !== "object")
                         throw TypeError(".server_interface.Problem.ticks: object expected");
                     message.ticks[i] = $root.server_interface.RoundTick.fromObject(object.ticks[i]);
@@ -1513,7 +1511,7 @@ $root.server_interface = (function() {
         Problem.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
-            var object = {};
+            let object = {};
             if (options.arrays || options.defaults) {
                 object.monitorUnits = [];
                 object.ticks = [];
@@ -1526,12 +1524,12 @@ $root.server_interface = (function() {
                 object.startRound = message.startRound;
             if (message.monitorUnits && message.monitorUnits.length) {
                 object.monitorUnits = [];
-                for (var j = 0; j < message.monitorUnits.length; ++j)
+                for (let j = 0; j < message.monitorUnits.length; ++j)
                     object.monitorUnits[j] = message.monitorUnits[j];
             }
             if (message.ticks && message.ticks.length) {
                 object.ticks = [];
-                for (var j = 0; j < message.ticks.length; ++j)
+                for (let j = 0; j < message.ticks.length; ++j)
                     object.ticks[j] = $root.server_interface.RoundTick.toObject(message.ticks[j], options);
             }
             if (message.endRound != null && message.hasOwnProperty("endRound"))
@@ -1575,7 +1573,7 @@ $root.server_interface = (function() {
          */
         function Event(properties) {
             if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
@@ -1674,9 +1672,9 @@ $root.server_interface = (function() {
         Event.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Event();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Event();
             while (reader.pos < end) {
-                var tag = reader.uint32();
+                let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
                     message.type = reader.int32();
@@ -1751,7 +1749,7 @@ $root.server_interface = (function() {
         Event.fromObject = function fromObject(object) {
             if (object instanceof $root.server_interface.Event)
                 return object;
-            var message = new $root.server_interface.Event();
+            let message = new $root.server_interface.Event();
             if (object.type != null)
                 message.type = object.type | 0;
             if (object.success != null)
@@ -1778,7 +1776,7 @@ $root.server_interface = (function() {
         Event.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
-            var object = {};
+            let object = {};
             if (options.defaults) {
                 object.type = 0;
                 object.success = false;
@@ -1840,7 +1838,7 @@ $root.server_interface = (function() {
         function Events(properties) {
             this.events = [];
             if (properties)
-                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
                         this[keys[i]] = properties[keys[i]];
         }
@@ -1912,7 +1910,7 @@ $root.server_interface = (function() {
             if (message.roundIndex != null && Object.hasOwnProperty.call(message, "roundIndex"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.roundIndex);
             if (message.events != null && message.events.length)
-                for (var i = 0; i < message.events.length; ++i)
+                for (let i = 0; i < message.events.length; ++i)
                     $root.server_interface.Event.encode(message.events[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
             if (message.success != null && Object.hasOwnProperty.call(message, "success"))
                 writer.uint32(/* id 3, wireType 0 =*/24).bool(message.success);
@@ -1950,9 +1948,9 @@ $root.server_interface = (function() {
         Events.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Events();
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.server_interface.Events();
             while (reader.pos < end) {
-                var tag = reader.uint32();
+                let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
                     message.roundIndex = reader.int32();
@@ -2012,8 +2010,8 @@ $root.server_interface = (function() {
             if (message.events != null && message.hasOwnProperty("events")) {
                 if (!Array.isArray(message.events))
                     return "events: array expected";
-                for (var i = 0; i < message.events.length; ++i) {
-                    var error = $root.server_interface.Event.verify(message.events[i]);
+                for (let i = 0; i < message.events.length; ++i) {
+                    let error = $root.server_interface.Event.verify(message.events[i]);
                     if (error)
                         return "events." + error;
                 }
@@ -2041,14 +2039,14 @@ $root.server_interface = (function() {
         Events.fromObject = function fromObject(object) {
             if (object instanceof $root.server_interface.Events)
                 return object;
-            var message = new $root.server_interface.Events();
+            let message = new $root.server_interface.Events();
             if (object.roundIndex != null)
                 message.roundIndex = object.roundIndex | 0;
             if (object.events) {
                 if (!Array.isArray(object.events))
                     throw TypeError(".server_interface.Events.events: array expected");
                 message.events = [];
-                for (var i = 0; i < object.events.length; ++i) {
+                for (let i = 0; i < object.events.length; ++i) {
                     if (typeof object.events[i] !== "object")
                         throw TypeError(".server_interface.Events.events: object expected");
                     message.events[i] = $root.server_interface.Event.fromObject(object.events[i]);
@@ -2075,7 +2073,7 @@ $root.server_interface = (function() {
         Events.toObject = function toObject(message, options) {
             if (!options)
                 options = {};
-            var object = {};
+            let object = {};
             if (options.arrays || options.defaults)
                 object.events = [];
             if (options.defaults) {
@@ -2088,7 +2086,7 @@ $root.server_interface = (function() {
                 object.roundIndex = message.roundIndex;
             if (message.events && message.events.length) {
                 object.events = [];
-                for (var j = 0; j < message.events.length; ++j)
+                for (let j = 0; j < message.events.length; ++j)
                     object.events[j] = $root.server_interface.Event.toObject(message.events[j], options);
             }
             if (message.success != null && message.hasOwnProperty("success"))
@@ -2117,4 +2115,4 @@ $root.server_interface = (function() {
     return server_interface;
 })();
 
-module.exports = $root;
+export { $root as default };
