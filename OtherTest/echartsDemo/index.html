@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>ECharts</title>
+  <!-- 引入刚刚下载的 ECharts 文件 -->
+  <script src="./lib/echarts.js"></script>
+</head>
+
+<body>
+  <script>
+    var problemTypeData = {
+      count: [
+        {
+          "id": 3,
+          "count": 7
+        },
+        {
+          "id": 4,
+          "count": 8
+        }
+      ]
+    } 
+  </script>
+
+  <script>
+    var replayTestData = {
+      "updates": [
+        {
+          "id": 791117,
+          "updateAt": 1700885340000,
+          "problemCount": 2,
+          "caseCount": 67,
+        }
+      ],
+      "test": {
+        "id": 857,
+        "problemCount": 2,
+        "caseCount": 67,
+        "createBy": 1,
+        "createAt": 1700885318969,
+        "updateAt": 1700885318969,
+        "stopAt": 1700886496429,
+      }
+    }
+  </script>
+
+  <!-- data insert position -->
+
+  <!-- dom -->
+  <div id="problemType" style="width: 600px;height:400px;background: rgb(6, 18, 38);"></div>
+  <script type="text/javascript" src="./problemType.js"></script>
+  <br />
+
+  <div id="replayTest" style="width: 1200px;height:400px;background: rgb(6, 18, 38);"></div>
+  <script src="./replayTest.js"></script>
+  <br />
+</body>
+
+</html>
