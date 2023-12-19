@@ -2,9 +2,9 @@ var request = require('request');
 const fs = require('fs')
 
 /* 获取某页数据 */
-const getUrlList = async (page = 1) => {
+const getUrlList = async (start = 1, end = 3) => {
   const url = 'https://www.sczwfw.gov.cn/cns-bmfw-websdt/rest/cnspublic/scwebsitecaseinfoaction/getInteractCaseInfoListByCondition'
-  const requestData = { "pageSize": 20, "currentPageIndex": page, "title": "", "rqstType": "10", "webrqsttime": "", "areaCode": "510000000000" }
+  const requestData = { "pageSize": 20, "currentPageIndex": start, "title": "", "rqstType": "10", "webrqsttime": "", "areaCode": "510000000000" }
 
   // "rqstType": "10" 咨询, "15" 建议, "20" 投诉
 
@@ -16,14 +16,14 @@ const getUrlList = async (page = 1) => {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
     },
     body: JSON.stringify(requestData) //post参数字符串
-  }, function (error, response, body) {
+  }, async function (error, response, body) {
     if (!error && response.statusCode == 200) {
       const obj = JSON.parse(body)
       obj.custom.infoList.forEach((item, index) => {
-        fs.appendFileSync('./urllist.txt', item.handleurl + `${index !== obj.custom.infoList.length - 1 ? '\n' : ''}`)
+        fs.appendFileSync('./urllist.txt', item.handleurl + '\n')
       });
-      if (page < 3) {
-        getUrlList(page + 1)
+      if (start <= end) {
+        await getUrlList(start + 1)
       }
     } else {
       console.log({ error });
@@ -32,4 +32,4 @@ const getUrlList = async (page = 1) => {
   });
 }
 
-getUrlList()
+getUrlList(2, 4)
