@@ -486,3 +486,72 @@ indexArr = [2,0,1]
 此时耗时上限 Θ(n)Θ(n) = Θ(n^2)
 
 失败...
+
+方案二：修改归并排序
+
+归并排序的目标是获得局部有序数组，再不断合并，得到整体的有序数组。
+
+同样的，我们期望得到局部的逆序对数量，再不断合并，得到合并后的逆序对数量。
+
+注意区别：逆序对的获取，只有合并的过程中才会产生，因为涉及到不同局部的值大小比较。
+
+关键点：
+1、局部有序，可以使两个局部数组合并时，轻松点获得逆序对数量。
+2、数组中的逆序对在合并时确定，且不会改变，且和之后的数组元素排序方式无关。之所以排序，是为了后续比较更高效。
+
+```js
+function countInversions(arr) {
+  // 归并排序
+  function mergeSort(arr) {
+    if (arr.length <= 1) {
+      return [arr, 0];
+    }
+
+    const mid = Math.floor(arr.length / 2);
+    const [left, leftInv] = mergeSort(arr.slice(0, mid)); // 对左半部分进行归并排序
+    const [right, rightInv] = mergeSort(arr.slice(mid)); // 对右半部分进行归并排序
+    const [merged, mergeInv] = merge(left, right); // 合并左右两部分并计算逆序对数量
+
+    const totalInv = leftInv + rightInv + mergeInv; // 计算总的逆序对数量
+    return [merged, totalInv];
+  }
+
+  // 合并并计算逆序对数量
+  function merge(left, right) {
+    let merged = [];
+    let inversions = 0;
+    let i = 0;
+    let j = 0;
+
+    while (i < left.length && j < right.length) {
+      if (left[i] <= right[j]) {
+        merged.push(left[i]);
+        i++;
+      } else {
+        merged.push(right[j]);
+        j++;
+        // 如果右边的元素小于左边的元素，则形成逆序对
+        inversions += left.length - i;
+      }
+    }
+
+    merged = merged.concat(left.slice(i)).concat(right.slice(j)); // 处理剩余的元素
+
+    return [merged, inversions];
+  }
+
+  // 使用归并排序计算逆序对数量
+  const [, invCount] = mergeSort(arr);
+  return invCount;
+}
+
+// 测试数据
+const testData = [7, 5, 3, 1, 2, 4, 6]; // 12个逆序对
+// const testData = [1, 3, 4, 2]; // 2个逆序对
+const inversionCount = countInversions(testData);
+console.log("给定数组中的逆序对数量为:", inversionCount);
+```
+
+上述操作只是在原归并排序的基础上，增加了常量消耗的判断操作和赋值操作。
+
+时间复杂度保持为 Θ(nlgn)。
