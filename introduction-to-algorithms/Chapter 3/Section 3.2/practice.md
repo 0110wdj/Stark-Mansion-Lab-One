@@ -52,11 +52,67 @@ $$
 证明过程：
 
 $$
-log(a^{log_bc}) = log_bc * log(a)\\
-log(c^{log_ba}) = log_ba * log(c)\\
-需证明 log_bc * loga = log_ba * logc\\
+log(a^{log_bc}) = log_bc⋅log(a)\\
+log(c^{log_ba}) = log_ba⋅log(c)\\
+需证明 log_bc⋅loga = log_ba⋅logc\\
 \frac {log_bc}{log_ba}=\frac {logc}{loga}\\
 log_ac =log_ac\\
 $$
 
 证毕
+
+### 3.2-3 证明等式(3.19)。并证明 \(n! = ω(2^n)\) 且 \(n! = ο(n^n)\)
+
+等式(3.19)原文：
+
+$$
+lg(n!) = Θ(nlgn)
+$$
+
+证明 1：
+
+根据 n! 的定义：n! = 1⋅2⋅3⋅⋅⋅n，可得：（当 n > 1 时成立）
+\(2^n\) = 2⋅2⋅2⋅⋅⋅2 ≤ n! ≤ n⋅n⋅n⋅⋅⋅n = \(n^n\)
+
+求除法极限：
+
+$$
+\lim_{x \to n} \frac {2^n}{n!} = \frac {2⋅2⋅2⋅⋅⋅2}{1⋅2⋅3⋅⋅⋅n} = 2⋅1⋅\frac {2}{3}⋅⋅⋅\frac {2}{n-1}⋅\frac {2}{n}  = 0 \\
+---- \\
+---- \\
+\lim_{x \to n} \frac {n^n}{n!} = \frac {n⋅n⋅n⋅⋅⋅n}{1⋅2⋅3⋅⋅⋅n} = n⋅\frac {n}{2}⋅\frac {n}{3}⋅⋅⋅⋅\frac {n}{n-1}⋅1  = \infty \\
+$$
+
+**证得 \(n! = ω(2^n)\) 且 \(n! = ο(n^n)\)**
+
+证明 2：
+
+先列出定义：
+
+$$
+Θ(g(n))={f(n):存在正常量 c_1、c_2 和 n_0，使得对所有 n \geq n_0，有 0 \leq c_1g(n) \leq f(n) \leq c_2g(n)}
+$$
+
+需要证明:
+
+$$
+c_1nlgn ≤ lg(n!) ≤ c_2nlgn\\
+即 nlgn^{c_1} ≤ lg(n!) ≤ nlgn^{c_2}\\
+$$
+
+证明：
+
+$$
+已知 n! = ω(2^n) 且 n! = ο(n^n)\\
+则有 2^n < n! < n^n\\
+根据函数单调性 lg(2^n) < lg(n!) < lg(n^n)\\
+即 nlg2 < lg(n!) < nlgn
+$$
+
+显然，存在 \(c_1\) 和 \(c_2\) 使得下面不等式成立：
+
+$$
+nlgn^{c_1} ≤ lg(n!) ≤ nlgn^{c_2}
+$$
+
+证毕(存在疑惑)
