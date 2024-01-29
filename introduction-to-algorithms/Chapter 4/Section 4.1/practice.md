@@ -162,3 +162,37 @@ if (rightIndex === leftIndex + 1) {
 **结果处理**：如果结果为负数，则返回空子数组结果。
 
 ### 4.1.5 使用如下思想为最大子数组问题设计一个非递归的、线性时间的算法。从数组的左边界开始，由左至右处理，记录到目前为止已经处理过的最大子数组。若已知 \(A[1..j]\) 的最大子数组，基于如下性质将解扩展为 \(A[1..j+1]\) 的最大子数组: \(A[1..j+1]\) 的最大子数组要么是 \(A[1..j]\) 的最大子数组，要么是某个子数组 \(A[i..j+1](1 \leq i \leq j+1)\)。在已知 \(A[1..j]\)的最大子数组的情况下，可以在线性时间内找出形如\(A[i..j+1]\)的最大子数组。
+
+```ts
+const testArr = [
+  13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7,
+];
+// resultArr = [18, 20, -7, 12] , result = [7,10,43]
+
+const findMaximumSubarray = (array: number[]) => {
+  let maxSub = [0, 0, array[0]];
+  let rightSub = [0, 0, array[0]];
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > 0) {
+      if (rightSub[2] < 0) {
+        rightSub = [i, i, array[i]];
+      } else {
+        rightSub = [rightSub[0], i, rightSub[2] + array[i]];
+      }
+      if (maxSub[1] === i - 1) {
+        maxSub = [maxSub[0], maxSub[1] + 1, maxSub[2] + array[i]];
+      } else {
+        if (rightSub[2] > maxSub[2]) {
+          maxSub = [...rightSub];
+        }
+      }
+    } else {
+      rightSub = [rightSub[0], rightSub[1] + 1, rightSub[2] + array[i]];
+    }
+  }
+  return maxSub;
+};
+
+console.log(findMaximumSubarray(testArr));
+```
