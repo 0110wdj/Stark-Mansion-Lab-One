@@ -150,3 +150,41 @@ C =
 62 & 66
 \end{bmatrix}
 $$
+
+### 4.2-2 为 Strassen 算法编写伪代码。
+
+先简单假设输入矩阵 A B 规模是 2 的幂。
+
+算法思路：
+1、将每个大矩阵分为四个子矩阵，直到最小的子矩阵元素为数字。
+2、通过 Strassen 算法，将子矩阵的八次乘法运算，改为七次乘法运算。
+
+实现思路：分治法求解。
+
+```c
+// 基本矩阵的加减法
+CalcMatrixAdditionOrSubtraction(baseMatrixA,baseMatrixB,operator)
+  // 过程略
+  return baseMatrixA operator baseMatrixB
+
+// 基本矩阵的乘法
+CalcMatrixMultiplication(baseMatrixA,baseMatrixB)
+  // 过程略
+  return baseMatrixA * baseMatrixB
+
+// 输入规模 n 的矩阵 A B
+// 用 A_11 A_12 A_21 A_22 表示 A 的子矩阵， B 同理
+CalcStrassen(A,B)
+  if A_11 is number
+    return CalcMatrixMultiplication(A,B)
+  for i = 1 to 11
+    // 根据 Strassen 算法定义 10 个 S 矩阵
+    S_i = CalcMatrixAdditionOrSubtraction(subMatrix,subMatrix,operator)
+  for j = 1 to 8
+    // 根据 Strassen 算法定义 7 个 P 矩阵
+    // 由于不是基本矩阵，需要递归得到
+    P_j = CalcStrassen(subMatrixOrS_i,subMatrixOrS_i)
+  // 元素具备之后，根据 Strassen 算法加减运算得到 C
+  // 过程略
+  return C
+```
