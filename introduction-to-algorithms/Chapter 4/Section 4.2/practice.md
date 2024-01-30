@@ -188,3 +188,136 @@ CalcStrassen(A,B)
   // 过程略
   return C
 ```
+
+### 4.2-3
+
+### 4.2-4
+
+### 4.2-5
+
+### 4.2-6 用 Strassen 算法作为子进程来进行一个\(kn \times n\)矩阵和一个\(n \times kn\)矩阵相乘，最快需要花费多长时间？对两个输入矩阵规模互换的情况，回答相同的问题。
+
+\(kn \times n\) 认为是 \(kn\) 规模，则时间消耗都是：\(Ο((kn)^{\lg 7})\)
+
+### 4.2-7 设计算法，仅使用三次实数乘法即可完成复数 \(a + bi\) 和 \(c + di\) 相乘。算法需接收 a、b、c 和 d 为输人，分别生成实部 \(ac-bd\) 和虚部 \(ad+bc\)。
+
+解题思路：
+1、观察 ac - bd 和 ad + bc，元素有四项： ac ad bc bd
+2、结构上看来恰好是矩阵相乘
+3、为了符合符号变化，加入虚数
+4、改变问题为：
+
+$$
+\begin{bmatrix}
+a & bi & bi & a
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+c \\ di \\ c \\ di
+\end{bmatrix} =
+\begin{bmatrix}
+ac - bd + bci + adi
+\end{bmatrix}=
+\begin{bmatrix}
+ac - bd + (ad+bc)i
+\end{bmatrix}
+$$
+
+5、参考 Strassen 算法，将 4 次乘法减少到 3 次
+
+$$
+\begin{bmatrix}
+a & bi & bi & a
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+c \\ di \\ c \\ di
+\end{bmatrix} =
+\begin{bmatrix}
+a & bi & bi & a \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+c & 0 & 0 & 0 \\
+di & 0 & 0 & 0 \\
+c  & 0 & 0 & 0 \\
+di & 0 & 0 & 0
+\end{bmatrix}
+$$
+
+$$
+对子矩阵 C_{sub1} =
+\begin{bmatrix}
+a & bi  \\
+0 & 0   \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+c & 0  \\
+di & 0   \\
+\end{bmatrix}
+$$
+
+$$
+\begin{align*}
+S_2 & = A_{11} + A_{12} = a + bi \\
+S_4 & = B_{21} - B_{11} = di - c \\
+S_5 & = A_{11} + A_{22} = a  \\
+S_6 & = B_{11} + B_{22} = c \\
+S_7 & = A_{12} - A_{22} = bi \\
+S_8 & = B_{21} + B_{22} = di \\
+\end{align*}
+$$
+
+$$
+\begin{align*}
+P_2 & = S_2 \cdot B_{22} = 0 \\
+P_4 & = A_{22} \cdot S_4 = 0 \\
+P_5 & = S_5 \cdot S_6 = a \cdot c = ac\\
+P_6 & = S_7 \cdot S_8 = bi \cdot di = -bd \\
+\end{align*}
+$$
+
+$$
+\begin{align*}
+C\_{sub1} & = P_5 + P_4 - P_2 + P_6 \\
+& = ac - bd
+\end{align*}
+$$
+
+$$
+对子矩阵 C\_{sub2} =
+\begin{bmatrix}
+bi & a \\
+0 & 0 \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+c & 0 \\
+di & 0 \\
+\end{bmatrix}=cbi+adi
+$$
+
+这个写法是将 8 次乘法减为 7 次乘法的，并不适用将 4 次乘法减少为 3 次乘法的情况。
+
+改写 Strassen 算法：
+
+$$
+\begin{align*}
+P_1 & = a \cdot (c - d) \\
+P_2 & = (a + b) \cdot d \\
+P_3 & = b \cdot (c + d) \\
+\end{align*}
+$$
+
+$$
+\begin{align*}
+P_1 + P_2 & = ac - bd \\
+P_3 - P_2 & = cb - ad
+\end{align*}
+$$
+
+完成
