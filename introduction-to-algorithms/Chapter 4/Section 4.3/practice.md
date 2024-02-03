@@ -113,3 +113,26 @@ $$
 符合边界条件。
 
 证毕
+
+### 4.3-5 证明：归并排序的“严格”递归式(4.3)的解为 \(Θ(n\lg n)\)。
+
+式(4.3)原文为：
+
+$$
+T(n)= \begin{cases}
+  Θ(1) & 若 n = 1 \\
+  T(\lceil n/2 \rceil) + T(\lfloor n/2 \rfloor) + Θ(n)  & 若 n > 1
+\end{cases}
+$$
+
+代入法证明步骤：
+1、猜测解的形式。
+2、用数学归纳法求出解中的常数，并证明解是正确的。
+
+证明过程：
+
+1、猜测：\(T(n) = Θ(n\lg n)\)，则需要证明 \(c_1n\lg n \leq T(n) \leq c_2 n\lg n\)。
+
+2、归纳证明：
+
+假定此下界对所有正数 \(m < n\) 都成立，特别是对于 \(m = \lfloor n/2 \rfloor\)，有 \(c_1\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor \leq T(\lfloor n/2 \rfloor) \leq c_2\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor\)。
