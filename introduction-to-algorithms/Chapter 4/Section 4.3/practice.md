@@ -8,21 +8,26 @@
 
 证明过程：
 
-1、猜测：\(T(n) = Ο(n^2)\)。
+1、猜测：\(T(n) = Ο(n^2)\)，则需要证明 \(T(n) \leq cn^2\)。
 
-2、需要证明：
+2、归纳证明：
+
+假定此上界对所有正数 \(m < n\) 都成立，特别是对于 \(m = n - 1\)，有 \(T(n - 1) \leq c(n-1)^2\)。
+
+将其代入递归式，得到：
 
 $$
 \begin{align*}
+T(n) & \leq c(n-1)^2 +n \\
+T(n) & \leq cn^2 - 2cn + 1 +n \\
+T(n) & \leq cn^2 + (1- 2c)n + 1 \\
+当 c 大于 0.5 时，可得：\\
+T(n) & \leq cn^2 + (1- 2c)n + 1 \leq cn^2 \\
 T(n) & \leq cn^2 \\
-c(n-1)^2 + n & \leq cn^2 \\
-c(n^2-2n + 1) + n & \leq cn^2 \\
-cn^2-2cn + c + n & \leq cn^2 \\
-(1-2c)n + c & \leq 0 \\
 \end{align*}
 $$
 
-显然 c 大于 0.5 时，对一定规模的 n 上式成立。
+证明完毕
 
 ### 4.3-2 证明 \(T(n)=T(\lceil n/2 \rceil)+1\)的解为 \(Ο(\lg n)\)。
 
@@ -32,17 +37,22 @@ $$
 
 证明过程：
 
-1、猜测：\(T(n) = Ο(\lg n)\)。
-2、需要证明：
+1、猜测：\(T(n) = Ο(\lg n)\)，则需要证明 \(T(n) \leq c\lg n\)。
+2、归纳证明：
+
+假定此上界对所有正数 \(m < n\) 都成立，特别是对于 \(m = \lceil n/2 \rceil\)，有 \(T(\lceil n/2 \rceil) \leq c\lg \lceil n/2 \rceil\)。
+
+将其代入递归式，得到：
 
 $$
 \begin{align*}
+T(n) & \leq c\lg \lceil n/2\rceil + 1 \\
+T(n) & \leq c\lg(n/2) + 1 \\
+T(n) & \leq c\lg n - c\lg 2 + 1 \\
+T(n) & \leq c\lg n - c + 1 \\
+当 c 在 0 和 1 之间时，可得：\\
+T(n) & \leq c\lg n - c + 1 \leq c\lg n \\
 T(n) & \leq c\lg n \\
-c(\lg \lceil n/2 \rceil) + 1 & \leq c\lg n \\
-\lg \lceil n/2 \rceil + 1/c & \leq \lg n \\
-1/c & \leq \lg n - \lg \lceil n/2 \rceil \\
-1/c & \leq \lg n/(\lceil n/2 \rceil) \\
-1 & \leq c \\
 \end{align*}
 $$
 
@@ -57,7 +67,7 @@ $$
 证明过程：
 
 1、猜测：\(T(n) = Ω(n \lg n)\)，则需要证明 \(T(n) \geq cn\lg n\)。
-2、证明过程：
+2、归纳证明：
 
 假定此下界对对所有正数 \(m < n\) 都成立，特别是对于 \(m = \lfloor n/2 \rfloor\)，有 \(T(\lfloor n/2 \rfloor) \geq c\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor\)。
 
@@ -69,7 +79,7 @@ T(n) & \geq 2c\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor + n \\
 T(n) & \geq cn\lg(n/2) + n \\
 T(n) & \geq cn\lg n - cn\lg 2 + n \\
 T(n) & \geq cn\lg n - cn + n \\
-当 c 在 0 和 1 直接时，可得：\\
+当 c 在 0 和 1 之间时，可得：\\
 T(n) & \geq cn\lg n - cn + n \geq cn\lg n \\
 T(n) & \geq cn\lg n \\
 \end{align*}
