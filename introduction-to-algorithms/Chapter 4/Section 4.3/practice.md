@@ -69,7 +69,7 @@ $$
 1、猜测：\(T(n) = Ω(n \lg n)\)，则需要证明 \(T(n) \geq cn\lg n\)。
 2、归纳证明：
 
-假定此下界对对所有正数 \(m < n\) 都成立，特别是对于 \(m = \lfloor n/2 \rfloor\)，有 \(T(\lfloor n/2 \rfloor) \geq c\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor\)。
+假定此下界对所有正数 \(m < n\) 都成立，特别是对于 \(m = \lfloor n/2 \rfloor\)，有 \(T(\lfloor n/2 \rfloor) \geq c\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor\)。
 
 将其代入递归式，得到：
 
@@ -86,3 +86,30 @@ T(n) & \geq cn\lg n \\
 $$
 
 证明完成。
+
+### 4.3-4 证明：通过做出不同的归纳假设，我们不必调整归纳证明中的边界条件，即可克服归纳式(4.19)中边界条件 \(T(n)=1\) 带来的困难。
+
+先列出归纳式(4.19)原文：
+
+$$
+T(n) = 2T(\lfloor n/2 \rfloor) + n
+$$
+
+1、猜测：\(T(n) = Ο(n \lg n + n)\)，则需要证明 \(T(n) \leq cn\lg n + cn\)。
+2、归纳证明：
+
+假定此上界对所有正数 \(m < n\) 都成立，特别是对于 \(m = \lfloor n/2 \rfloor\)，有 \(T(\lfloor n/2 \rfloor) \leq c\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor + c\lfloor n/2 \rfloor\)。
+
+那么代入的结果为：
+
+$$
+cn\lg n +  n \\
+仍能证明猜测：
+cn\lg n +  n \leq cn\lg n + cn \\
+$$
+
+\(T(1) = c1\lg 1 + 1 = 1\)
+
+符合边界条件。
+
+证毕
