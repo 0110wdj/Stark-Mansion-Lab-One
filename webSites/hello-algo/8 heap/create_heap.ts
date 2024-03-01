@@ -38,4 +38,4 @@ const createHeap = (nums: number[]) => {
   return nums
 }
 
-console.log(creatHeap([7, 3, 2, 6, 0, 1, 5, 4]));
+console.log(createHeap([7, 3, 2, 6, 0, 1, 5, 4]));
