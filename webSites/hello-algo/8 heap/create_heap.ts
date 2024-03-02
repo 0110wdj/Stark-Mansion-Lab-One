@@ -20,7 +20,7 @@ const createHeap = (nums: number[]) => {
       if (r < n && nums[r] > nums[ma]) {
         ma = r;
       }
-      // 若节点 i 最大或索引 l, r 越界，则无须继续堆化，跳出
+      // 若节点 i 最大或索引 l, r 越界，则无须继续堆化，跳出 （说明此时后续子树已是堆了）
       if (ma === i) {
         break;
       }
@@ -31,6 +31,9 @@ const createHeap = (nums: number[]) => {
     }
   }
 
+  // 叶节点已经是堆了
+  // 从下往上，从两层堆化，到 lgn 层堆化，即可完成整体的堆化
+  // 某次堆化，在 k 层中进行，此时 k-1 层下的子树都是堆
   for (let i = Math.floor(nums.length / 2) - 1; i >= 0; i--) {
     siftDown(nums, nums.length, i);
   }
@@ -39,3 +42,4 @@ const createHeap = (nums: number[]) => {
 }
 
 console.log(createHeap([7, 3, 2, 6, 0, 1, 5, 4]));
+console.log(createHeap([7, 3, 2, 6, 0, 1, 5, 4, 99, 99, 999, 9999]));
