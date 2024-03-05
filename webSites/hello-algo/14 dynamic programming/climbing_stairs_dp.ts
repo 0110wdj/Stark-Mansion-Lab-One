@@ -9,4 +9,16 @@ const climbing_stairs_dp = (n: number): number => {
   return res[n]
 }
 
-console.log(climbing_stairs_dp(3));
+const climbingStairsDPComp = (n: number): number => {
+  if (n === 1 || n === 2) return n
+  let a = 1, b = 2, res = 0
+  for (let i = 3; i <= n; i++) {
+    res = a + b
+    a = b
+    b = res
+  }
+  return res
+}
+
+console.log(climbingStairsDPComp(3));
+// console.log(climbing_stairs_dp(3));
