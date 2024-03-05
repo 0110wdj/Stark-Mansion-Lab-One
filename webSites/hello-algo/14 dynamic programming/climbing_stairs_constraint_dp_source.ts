@@ -17,3 +17,5 @@ function climbingStairsConstraintDP(n: number): number {
   }
   return dp[n][1] + dp[n][2];
 }
+
+console.log(climbingStairsConstraintDP(3));
