@@ -26,21 +26,10 @@ interface ListNode {
  Do not return anything, modify it in-place instead.
  */
 function deleteNode(node: ListNode | null): void {
-  while (node) {
-    if (node.next !== null) {
-      if (node.next.next === null) {
-        node.val = node.next.val
-        node.next = null
-        break
-      } else {
-        node.val = node.next.val
-        node.next = node.next
-        node = node.next
-      }
-    } else {
-      break
-    }
-  }
+  if (!node) return
+  if (!node.next) return
+  node.val = node.next.val
+  node.next = node.next.next
 };
 // @lc code=end
 
