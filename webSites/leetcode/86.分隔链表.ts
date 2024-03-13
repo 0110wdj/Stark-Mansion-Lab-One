@@ -33,20 +33,20 @@ function partition(head: ListNode | null, x: number): ListNode | null {
   while (head !== null) {
     if (head.val < x) {
       if (!smallerHead) {
-        smallerHead = { val: head.val, next: null }
+        smallerHead = head
         smaller = smallerHead
       } else {
         if (!smaller) break
-        smaller.next = { val: head.val, next: null }
+        smaller.next = head
         smaller = smaller.next
       }
     } else {
       if (!greaterHead) {
-        greaterHead = { val: head.val, next: null }
+        greaterHead = head
         greater = greaterHead
       } else {
         if (!greater) break
-        greater.next = { val: head.val, next: null }
+        greater.next = head
         greater = greater.next
       }
     }
