@@ -11,3 +11,5 @@ new Promise(() => {
 }).then(() => {
   console.log(6);
 })
+
+// console 1 4 6
