@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hello React!</title>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    A: 0
+                };
+            }
+            click1 = () => {
+                this.setState(prevState => ({
+                    A: prevState.A + 1
+                }));
+                console.log('a1---', this.state.A);
+                this.setState(prevState => ({
+                    A: prevState.A + 1
+                }));
+                console.log('a2---', this.state.A);
+                this.setState(prevState => ({
+                    A: prevState.A + 1
+                }));
+                console.log('a3---', this.state.A);
+                //  setState 是异步更新的
+            }
+            render() {
+                return (
+                    <button onClick={this.click1}>A: {this.state.A}</button>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+
+</html>
