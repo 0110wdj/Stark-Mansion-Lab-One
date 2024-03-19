@@ -6,7 +6,22 @@
 
 // @lc code=start
 function reverseWords(s: string): string {
-  return s.trim().split(/\s+/).reverse().join(' ')
+  // return s.trim().split(/\s+/).reverse().join(' ')
+  let i = s.length, p = i;
+  const res: string[] = []
+  while (i >= 0) {
+    if (s.charAt(i) === ' ' || s.charAt(i) === '') {
+      i--
+      continue
+    }
+    p = i
+    while (p >= 0 && s.charAt(p) !== ' ' && s.charAt(p) !== '') {
+      p--
+    }
+    res.push(s.slice(p + 1, i + 1))
+    i = p
+  }
+  return res.join(' ')
 };
 // @lc code=end
 
