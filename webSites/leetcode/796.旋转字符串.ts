@@ -21,7 +21,7 @@ function rotateString(s: string, goal: string): boolean {
           right++
         } else {
           // console.log('??');
-          p++
+          p = right
           flag = false
           break
         }
