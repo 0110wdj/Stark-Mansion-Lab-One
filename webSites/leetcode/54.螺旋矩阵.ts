@@ -6,24 +6,47 @@
 
 // @lc code=start
 function spiralOrder(matrix: number[][]): number[] {
-  let res: number[] = []
-  
-  const trsf = (matrix: number[][]): number[][] => {
-    const res: number[][] = Array.from({ length: matrix[0].length }, () => [])
-    for (let i = 0; i < matrix.length; i++) {
-      for (let j = 0; j < matrix[0].length; j++) {
-        res[j][i] = matrix[i][j]
-      }
-    }
-    return res.reverse()
-  }
+  const res: number[] = []
+  let l = 0, r = matrix[0].length - 1, t = 0, b = matrix.length - 1;
+  let state: 'l2r' | 't2b' | 'r2l' | 'b2t' = 'l2r'
+  // console.log('init:', { state, l, t, r, b });
 
-  while (true) {
-    res = res.concat(matrix[0])
-    matrix.shift()
-    if (matrix.length === 0) return res
-    matrix = trsf(matrix)
+  while (l <= r && t <= b) {
+    switch (state) {
+      case 'l2r':
+        for (let i = l; i <= r; i++) {
+          res.push(matrix[t][i])
+        }
+        t++
+        state = 't2b'
+        break;
+      case 't2b':
+        for (let i = t; i <= b; i++) {
+          res.push(matrix[i][r])
+        }
+        r--
+        state = 'r2l'
+        break
+      case 'r2l':
+        for (let i = r; i >= l; i--) {
+          res.push(matrix[b][i])
+        }
+        b--
+        state = 'b2t'
+        break
+      case 'b2t':
+        for (let i = b; i >= t; i--) {
+          res.push(matrix[i][l])
+        }
+        l++
+        state = 'l2r'
+        break
+      default:
+        break;
+    }
+    // console.log('then:', { state, l, t, r, b });
   }
+  return res
 };
 // @lc code=end
 
