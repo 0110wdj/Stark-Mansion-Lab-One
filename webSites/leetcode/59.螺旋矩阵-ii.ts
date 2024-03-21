@@ -13,32 +13,29 @@ function generateMatrix(n: number): number[][] {
   while (l <= r && t <= b) {
     switch (state) {
       case 'l2r':
-        // new idea
-        var newArr: number[] = []
         for (let i = l; i <= r; i++) {
-          newArr.push(val++);
+          res[t][i] = val++
         }
-        res[t] = [...res[t].slice(0, l), ...newArr, ...res[t].slice(r)]
         t++
         state = 't2b'
         break;
       case 't2b':
         for (let i = t; i <= b; i++) {
-          res[i].push(val++)
+          res[i][r] = val++
         }
         r--
         state = 'r2l'
         break
       case 'r2l':
         for (let i = r; i >= l; i--) {
-          res[b].unshift(val++)
+          res[b][i] = val++
         }
         b--
         state = 'b2t'
         break
       case 'b2t':
         for (let i = b; i >= t; i--) {
-          res[i].unshift(val++)
+          res[i][l] = val++
         }
         l++
         state = 'l2r'
@@ -46,10 +43,9 @@ function generateMatrix(n: number): number[][] {
       default:
         break;
     }
-    // console.log('then:', { state, l, t, r, b });
   }
   return res
 };
 // @lc code=end
 
-console.log(generateMatrix(3));
+console.log(generateMatrix(4));
