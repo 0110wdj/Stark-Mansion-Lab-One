@@ -29,21 +29,21 @@
  * }
  */
 
-function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
-  if (root === null || root === p || root === q) {
-    return root
-  } else {
-    const targetLeft = lowestCommonAncestor(root.left, p, q)
-    const targetRight = lowestCommonAncestor(root.right, p, q)
-    if (targetRight === null) {
-      return targetLeft
-    }
-    if (targetLeft === null) {
-      return targetRight
-    }
-    return root
-  }
-};
+// function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
+//   if (root === null || root === p || root === q) {
+//     return root
+//   } else {
+//     const targetLeft = lowestCommonAncestor(root.left, p, q)
+//     const targetRight = lowestCommonAncestor(root.right, p, q)
+//     if (targetRight === null) {
+//       return targetLeft
+//     }
+//     if (targetLeft === null) {
+//       return targetRight
+//     }
+//     return root
+//   }
+// };
 // @lc code=end
 
 const root: TreeNode = {
