@@ -7,7 +7,7 @@
 // @lc code=start
 function fib(n: number): number {
   if (n === 0 || n === 1) return n;
-  let state = [0, 1, 2], i = 3;
+  let state = [0, 1, 1], i = 3;
   for (; i <= n; i++) {
     state[i % 3] = state[(i - 1) % 3] + state[(i - 2) % 3]
   }
