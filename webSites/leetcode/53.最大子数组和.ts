@@ -6,25 +6,14 @@
 
 // @lc code=start
 function maxSubArray(nums: number[]): number {
-  if (nums.length === 0) return -Infinity
   if (nums.length === 1) return nums[0]
-  const mid = Math.floor(nums.length / 2)
-  const leftMax = maxSubArray(nums.slice(0, mid))
-  const rightMax = maxSubArray(nums.slice(mid))
-  let corssMidLeftMax = -Infinity;
-  let corssMidRightMax = -Infinity;
-  let tmp = 0
-  for (let i = mid; i < nums.length; i++) {
-    tmp += nums[i]
-    corssMidRightMax = Math.max(corssMidRightMax, tmp)
+  const dp: number[] = [nums[0], -Infinity]
+  let max = -Infinity
+  for (let i = 1; i < nums.length; i++) {
+    dp[i % 2] = nums[i] + Math.max(0, dp[(i - 1) % 2])
+    max = Math.max(max, ...dp)
   }
-  tmp = 0
-  for (let i = mid; i >= 0; i--) {
-    tmp += nums[i]
-    corssMidLeftMax = Math.max(corssMidLeftMax, tmp)
-  }
-  let corssMidMax = corssMidLeftMax + corssMidRightMax - nums[mid];
-  return Math.max(leftMax, rightMax, corssMidMax)
+  return max
 };
 // @lc code=end
 
