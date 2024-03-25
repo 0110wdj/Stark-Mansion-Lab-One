@@ -40,11 +40,17 @@
 
 ### 9、“hello-algo”目录下的部分测试代码来自网站 [hello 算法](https://www.hello-algo.com/)
 
-阅读时间 2023.12.09 - 。
+阅读时间 2023.12.09 - 2023.12.18。
 
 ### 10、“introduction-to-algorithms”目录下包括 code 和 practice, 来自《算法导论（第三版）》
 
 更新时间 2023.12.25 - 。
+
+### 11、“leetcode”目录下的算法题题目来自 leetcode 官网
+
+#### 11.1 题单 [Krahets 笔面试精选 88 题](https://leetcode.cn/studyplan/selected-coding-interview/)
+
+更新时间 2023.12.18 - 。
 
 ## 二、网页游戏等小程序的记录
 
