@@ -11,36 +11,11 @@ type MyNode = {
 }
 
 function findTheWinner(n: number, k: number): number {
-  if (n === 1) return 1
-  let node: MyNode = {
-    val: 1,
-    next: null
+  let x = 0;
+  for (let i = 2; i < n + 1; i++) {
+    x = (x + k) % i
   }
-  let head = node
-  for (let i = 2; i <= n + 1; i++) {
-    if (i === n + 1) {
-      head.next = node
-    } else {
-      head.next = { val: i, next: null }
-      head = head.next
-    }
-  }
-  // console.log(node);
-  // console.log(node.next);
-  // console.log(node.next?.next);
-  // console.log(node.next?.next?.next);
-
-  while (head.next !== null && head.next !== head) {
-    for (let i = 1; i < k; i++) {
-      if (head.next) {
-        head = head.next
-      }
-    }
-    if (head.next) {
-      head.next = head.next.next
-    }
-  }
-  return head.val
+  return x + 1
 };
 // @lc code=end
 
