@@ -1,0 +1,44 @@
+<html>
+
+<head>
+  <style>
+    .box {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+  </div>
+  <script>
+    const boxNode = document.getElementById('box')
+
+    function setPosition(x, y) {
+      boxNode.style.top = x
+      boxNode.style.left = y
+    }
+    let isCatch = false
+
+    function changeCatchState() {
+      isCatch = !isCatch
+      console.log(isCatch);
+    }
+
+    function moveMouse(e) {
+      if (isCatch && e.toElement === document.body) {
+        setPosition(e.offsetY, e.offsetX)
+      }
+    }
+    window.removeEventListener('click', changeCatchState)
+    window.removeEventListener('mousemove', moveMouse)
+
+    window.addEventListener('click', changeCatchState)
+    window.addEventListener('mousemove', moveMouse)
+  </script>
+</body>
+
+</html>
