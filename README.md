@@ -46,7 +46,7 @@
 
 更新时间 2023.12.25 - 。
 
-### 11、“leetcode”目录下的算法题题目来自 leetcode 官网
+### 11、“leetcode”或“LCR”目录下的算法题题目来自 leetcode 官网
 
 #### 11.1 题单 [Krahets 笔面试精选 88 题](https://leetcode.cn/studyplan/selected-coding-interview/)
 
