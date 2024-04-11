@@ -6,6 +6,7 @@
 
 // @lc code=start
 function spiralOrder(matrix: number[][]): number[] {
+  if (matrix.length === 0) { return [] }
   const res: number[] = []
   let l = 0, r = matrix[0].length - 1, t = 0, b = matrix.length - 1;
   let state: 'l2r' | 't2b' | 'r2l' | 'b2t' = 'l2r'
