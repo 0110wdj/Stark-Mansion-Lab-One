@@ -8,7 +8,7 @@ async function async2() {
 }
 console.log('script start')//1
 setTimeout(function () {
-  console.log('setTimeout')//9
+  console.log('setTimeout')//8
 }, 0)
 async1();
 new Promise(function (resolve) {
@@ -16,7 +16,5 @@ new Promise(function (resolve) {
   resolve();
 }).then(function () {
   console.log('promise2')//7
-}).then(function () {
-  console.log('promise3')//8
 })
 console.log('script end')//5
