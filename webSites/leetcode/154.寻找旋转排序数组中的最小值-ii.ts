@@ -9,7 +9,6 @@ function findMin(nums: number[]): number {
   let i = 0, j = nums.length - 1;
   while (i < j) {
     const m = Math.floor(i + (j - i) / 2)
-    // console.log({ m });
     if (nums[i] < nums[j]) return nums[i]
     if (nums[m] < nums[m - 1]) return nums[m]
 
