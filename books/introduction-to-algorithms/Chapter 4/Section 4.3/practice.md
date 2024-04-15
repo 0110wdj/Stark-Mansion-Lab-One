@@ -135,4 +135,22 @@ $$
 
 2、归纳证明：
 
-假定此下界对所有正数 \(m < n\) 都成立，特别是对于 \(m = \lfloor n/2 \rfloor\)，有 \(c_1\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor \leq T(\lfloor n/2 \rfloor) \leq c_2\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor\)。
+假定此上界对所有正数 \(m < n\) 都成立，特别是对于 \(m = \lfloor n/2 \rfloor\)，有 \(c_1\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor \leq T(\lfloor n/2 \rfloor) \leq c_2\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor\)，对于 \(m = \lceil n/2 \rceil\)，有 \(c_1\lceil n/2 \rceil\lg \lceil n/2 \rceil \leq T(\lceil n/2 \rceil) \leq c_2\lceil n/2 \rceil\lg \lceil n/2 \rceil\)。带入原式得：
+
+$$
+\begin{align*}
+T(n) & \leq c_2\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor\\
+T(n) & \leq c_2\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor + c_2\lceil n/2 \rceil\lg \lceil n/2 \rceil + Ο(n)\\
+ c_2\lfloor n/2 \rfloor\lg \lfloor n/2 \rfloor + c_2\lceil n/2 \rceil\lg \lceil n/2 \rceil & \leq
+\end{align*}\\
+$$
+
+### 4.3-6 证明：\(T(n)=2T(\lfloor n/2 \rfloor +17)+n\) 的解为 \(Θ(n\lg n)\)。
+
+代入法证明步骤：
+1、猜测解的形式。
+2、用数学归纳法求出解中的常数，并证明解是正确的。
+
+证明过程：
+
+1、猜测：\(T(n) = Θ(n\lg n)\)，，则需要证明 \(c_1n\lg n \leq T(n) \leq c_2 n\lg n\)。
