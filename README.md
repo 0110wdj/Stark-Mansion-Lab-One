@@ -1,4 +1,8 @@
-# Stark-Mansion-Lab-One
+# introduction
+
+This is a personal code store for _snofly_ (alias _0110wdj_)。There are some program code from books, network and myself test。
+
+## Some code in the program book
 
 ## 一、记录学习前端开发中遇到的一些例子，都是手动实践的书中代码。
 
