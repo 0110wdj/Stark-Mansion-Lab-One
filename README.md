@@ -19,7 +19,7 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 10  | [Interview 75](https://leetcode.cn/studyplan/coding-interviews/)                     | leetcode                                                                                                                    | reading           |
 | 11  | 算法导论（第三版）                                                                   | [美] Thomas H.Cromen, Charles E.Leiserson, Ronald L.Rivest, Clifford Stein 著 殷建平 徐云 王刚 刘晓光 苏明 邹恒明 王宏志 译 | pasued            |
 
-### main loadmap
+### main roadmap
 
 > （2021.10.06）《术业有专攻》之《温故知新》第一章 阅读 JS 书。
 
