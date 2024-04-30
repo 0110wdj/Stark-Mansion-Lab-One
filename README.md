@@ -16,8 +16,8 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 8   | CSS 权威指南（第四版）                                                               | Eric A. Meyer / Estelle Weyl 著 安道 译                                                                                     | 2023-12-09        |
 | 9   | [hello 算法](https://www.hello-algo.com/)                                            | 靳宇栋([@krahets](https://github.com/krahets))                                                                              | 2024-03-18        |
 | 10  | [Krahets 笔面试精选 88 题](https://leetcode.cn/studyplan/selected-coding-interview/) | leetcode                                                                                                                    | 2024-03-27        |
-| 10  | [Interview 75](https://leetcode.cn/studyplan/coding-interviews/)                     | leetcode                                                                                                                    | reading           |
-| 11  | 算法导论（第三版）                                                                   | [美] Thomas H.Cromen, Charles E.Leiserson, Ronald L.Rivest, Clifford Stein 著 殷建平 徐云 王刚 刘晓光 苏明 邹恒明 王宏志 译 | pasued            |
+| 11  | [Interview 75](https://leetcode.cn/studyplan/coding-interviews/)                     | leetcode                                                                                                                    | practicing        |
+| 12  | 算法导论（第三版）                                                                   | [美] Thomas H.Cromen, Charles E.Leiserson, Ronald L.Rivest, Clifford Stein 著 殷建平 徐云 王刚 刘晓光 苏明 邹恒明 王宏志 译 | pasued            |
 
 ### main roadmap
 
