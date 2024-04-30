@@ -18,6 +18,8 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 10  | [Krahets 笔面试精选 88 题](https://leetcode.cn/studyplan/selected-coding-interview/) | leetcode                                                                                                                    | 2024-03-27        |
 | 11  | [Interview 75](https://leetcode.cn/studyplan/coding-interviews/)                     | leetcode                                                                                                                    | practicing        |
 | 12  | 算法导论（第三版）                                                                   | [美] Thomas H.Cromen, Charles E.Leiserson, Ronald L.Rivest, Clifford Stein 著 殷建平 徐云 王刚 刘晓光 苏明 邹恒明 王宏志 译 | pasued            |
+| 13  | 图解 HTTP                                                                            | [日] 上野 宣 著 于均良 译                                                                                                   | reading           |
+| 14  | 深入浅出 Node.js                                                                     | 朴灵                                                                                                                        | reading           |
 
 ### main roadmap
 
@@ -39,7 +41,8 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 
 > （2023.04.07）《术业有专攻》之《理论核心》第一章 风格迥异：阅读《CSS 权威指南》
 
-> （2023.09.10）《术业有专攻》之《理论核心》第二章 回顾与完成：阅读《CSS 权威指南》下册，快速阅读《你不知道的 JavaScript》下
-> 《术业有专攻》之《工具实践》第一章 打包优化：主要查阅 webpack 文档
+> （2023.09.10）《术业有专攻》之《理论核心》第二章 回顾与完成：阅读《CSS 权威指南》下册，快速阅读《你不知道的 JavaScript》下卷；《术业有专攻》之《工具实践》第一章 打包优化：主要查阅 webpack 文档
 
 > （2023.12.09）《术业有专攻》之《工具实践》第二章 个人网站升级：阅读 next.js 文档并重构后端 ；《术业有专攻》之《温故知新》第四章 算法入门：回顾基础数据结构与算法;《术业有专攻》之《理论核心》第三章 算法基础：阅读《算法导论》
+
+> （2024.04.30）《术业有专攻》之《工具实践》第三章 个人网站升级：重构前端工程代码；《术业有专攻》之《理论核心》第四章 阅读《深入浅出 Node.js》、《图解 HTTP》
