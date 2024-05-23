@@ -1,24 +1,13 @@
 function iceBreakingGame(num: number, target: number): number {
-  let np = num;
-  let now = -1;
-  const people: (number | null)[] = Array.from({ length: num }, (v, i) => i)
-  // console.log(people);
-
-  while (np > 0) {
-    let i = now;
-    for (let j = 0; j < target; j++) {
-      i = (i + 1) % num;
-      if (people[i] === null) {
-        j--;
-      }
-    }
-    people[i] = null;
-    now = i;
-    np--;
-    // console.log(JSON.stringify(people), i);
+  let x = 0;
+  for (let i = 2; i <= num; i++) {
+    x = (x + target) % i;
   }
-  return now;
+  return x;
 };
 
+console.log(new Date());
 console.log(1, iceBreakingGame(7, 4));
-console.log(0, iceBreakingGame(12, 5));
+// console.log(iceBreakingGame(1200, 116922));
+// console.log(0, iceBreakingGame(70866, 116922));
+console.log(new Date());
