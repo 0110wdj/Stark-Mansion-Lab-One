@@ -4,6 +4,10 @@
  * [146] LRU 缓存
  */
 
+// 最总算法没有写出来，从结构上来看，思路是正确的
+// 已经花费太多时间了，很少写双向链表，可能编码技能上有些欠缺，需要提升之后再来处理这个问题
+// paused
+
 class ListNode {
     val: number
     next: ListNode | null
