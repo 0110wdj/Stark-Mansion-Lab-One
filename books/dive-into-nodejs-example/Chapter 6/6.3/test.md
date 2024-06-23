@@ -1,0 +1,1 @@
+Thoes are some words writed by English.
