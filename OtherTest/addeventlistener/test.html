@@ -1,0 +1,23 @@
+<button id="d1">test1</button>
+<button id="d2">test2</button>
+
+<script>
+  var d1 = document.getElementById('d1');
+  var d2 = document.getElementById('d2');
+
+  // 会增加多个事件监听函数
+  d1.addEventListener('click', function () {
+    console.log('d1-1');
+  });
+  d1.addEventListener('click', function () {
+    console.log('d1-2');
+  });
+
+  // 只会增加一个事件监听函数
+  d2.onclick = () => {
+    console.log('d2-1');
+  }
+  d2.onclick = () => {
+    console.log('d2-2');
+  }
+</script>
