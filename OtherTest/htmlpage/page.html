@@ -1,0 +1,87 @@
+<!-- 导入的数据部分 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./paged.polyfill.js"></script> -->
+    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+    <style media="screen">
+        /* 页面预览效果，打印无效 */
+        html,
+        body {
+            margin: 0;
+            background-color: #ddd;
+        }
+
+        .pagedjs_page {
+            margin: 20px auto;
+            background: white;
+            box-shadow: 4px 4px 8px 0px #888;
+        }
+    </style>
+    <style>
+        @page {
+            size: A4;
+
+            @bottom-center {
+                content: '第' counter(page) '页'
+            }
+        }
+
+        @page: first {
+            @bottom-center {
+                content: none
+            }
+        }
+
+        .page {
+            break-after: always;
+        }
+
+        .page-ref::before {
+            content: target-counter(attr(href url), page)
+        }
+
+        .content-ref::before {
+            content: target-text(attr(href url))
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <h1>标题</h1>
+    </div>
+    <div class="page">
+        <h2 id="catelog">目录</h2>
+        <div><a href="#h_1" class="content-ref">......<a href="#h_1" class="page-ref"></a></a></div>
+        <div><a href="#h_2" class="content-ref">......<a href="#h_2" class="page-ref"></a></a></div>
+        <div style="padding-left: 16px;"><a href="#h_2_1" class="content-ref">......<a href="#h_2_1"
+                    class="page-ref"></a></a></div>
+        <div style="padding-left: 16px;"><a href="#h_2_2" class="content-ref">......<a href="#h_2_2"
+                    class="page-ref"></a></a></div>
+        <div><a href="#h_3" class="content-ref">......<a href="#h_3" class="page-ref"></a></a></div>
+        <div><a href="#h_4" class="content-ref">......<a href="#h_4" class="page-ref"></a></a></div>
+    </div>
+    <div class="page">
+        <h2 id="h_1">测试汇总</h2>
+    </div>
+    <div class="page">
+        <h2 id="h_2">测试配置</h2>
+        <h3 id="h_2_1">测试协议：ARP</h3>
+        <h3 id="h_2_2">测试套件：ARP</h3>
+    </div>
+    <div class="page">
+        <h2 id="h_3">测试数据</h2>
+    </div>
+    <div class="page">
+        <h2 id="h_4">异常数据</h2>
+    </div>
+
+</body>
+
+</html>
