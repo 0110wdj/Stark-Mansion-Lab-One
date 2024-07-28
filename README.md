@@ -18,9 +18,10 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 10  | [Krahets 笔面试精选 88 题](https://leetcode.cn/studyplan/selected-coding-interview/) | leetcode                                                                                                                    | 2024-03-27        |
 | 11  | [Interview 75](https://leetcode.cn/studyplan/coding-interviews/)                     | leetcode                                                                                                                    | 2024-06-02        |
 | 12  | 算法导论（第三版）                                                                   | [美] Thomas H.Cromen, Charles E.Leiserson, Ronald L.Rivest, Clifford Stein 著 殷建平 徐云 王刚 刘晓光 苏明 邹恒明 王宏志 译 | pasued            |
-| 13  | 图解 HTTP                                                                            | [日] 上野 宣 著 于均良 译                                                                                                   | 2024-06-10           |
-| 14  | 深入浅出 Node.js                                                                     | 朴灵                                                                                                                        | reading           |
-| 15  | [LeetCode 热题 100](https://leetcode.cn/studyplan/top-100-liked/)                     | leetcode                                                                                                                    | practicing           |
+| 13  | 图解 HTTP                                                                            | [日] 上野 宣 著 于均良 译                                                                                                   | 2024-06-10        |
+| 14  | 深入浅出 Node.js                                                                     | 朴灵                                                                                                                        | 2024-07-28        |
+| 15  | [LeetCode 热题 100](https://leetcode.cn/studyplan/top-100-liked/)                    | leetcode                                                                                                                    | pasued        |
+| 16  | JavaScript 设计模式与开发实践                                                                     | 曾探                                                                                                                        | reading        |
 
 ### main roadmap
 
@@ -47,3 +48,5 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 > （2023.12.09）《术业有专攻》之《工具实践》第二章 个人网站升级：阅读 next.js 文档并重构后端 ；《术业有专攻》之《温故知新》第四章 算法入门：回顾基础数据结构与算法;《术业有专攻》之《理论核心》第三章 算法基础：阅读《算法导论》
 
 > （2024.04.30）《术业有专攻》之《工具实践》第三章 个人网站升级：重构前端工程代码；《术业有专攻》之《理论核心》第四章 阅读《深入浅出 Node.js》、《图解 HTTP》
+
+> （2024.07.28）《术业有专攻》之《理论核心》第五章 阅读《JavaScript 设计模式与开发实践》
