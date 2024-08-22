@@ -1,0 +1,14 @@
+<script>
+  // 导入 js
+  // import { Buffer } from 'buffer'
+  // import { configure } from 'pcap-generator'
+
+  const generator = configure({ Buffer: Buffer })
+  const ipPackets = [{
+    timestamp: 1802869.484431046, // microseconds
+    buffer: Buffer.from('4500002d000000000011d0970a0a0a0a0b0b0b0b450000210019ffff7b2268656c6c6f223a22776f726c64227d', 'hex')
+  }]
+  const pcapFile = generator(ipPackets)
+
+  console.log('This here is your pcap file in hex:', pcapFile.toString('hex'))
+</script>
