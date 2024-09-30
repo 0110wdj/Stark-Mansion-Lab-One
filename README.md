@@ -20,10 +20,11 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 12  | 算法导论（第三版）                                                                   | [美] Thomas H.Cromen, Charles E.Leiserson, Ronald L.Rivest, Clifford Stein 著 殷建平 徐云 王刚 刘晓光 苏明 邹恒明 王宏志 译 | pasued            |
 | 13  | 图解 HTTP                                                                            | [日] 上野 宣 著 于均良 译                                                                                                   | 2024-06-10        |
 | 14  | 深入浅出 Node.js                                                                     | 朴灵                                                                                                                        | 2024-07-28        |
-| 15  | [LeetCode 热题 100](https://leetcode.cn/studyplan/top-100-liked/)                    | leetcode                                                                                                                    | pasued        |
-| 16  | JavaScript 设计模式与开发实践                                                                     | 曾探                                                                                                                        | reading        |
+| 15  | [LeetCode 热题 100](https://leetcode.cn/studyplan/top-100-liked/)                    | leetcode                                                                                                                    | pasued            |
+| 16  | JavaScript 设计模式与开发实践                                                        | 曾探                                                                                                                        | 2024-09-11        |
+| 17  | Webpack 实战 入门、进阶、调优                                                        | 居玉皓                                                                                                                      | reading           |
 
-### main roadmap
+### 主线 1.0
 
 > （2021.10.06）《术业有专攻》之《温故知新》第一章 阅读 JS 书。
 
@@ -50,3 +51,11 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 > （2024.04.30）《术业有专攻》之《工具实践》第三章 个人网站升级：重构前端工程代码；《术业有专攻》之《理论核心》第四章 阅读《深入浅出 Node.js》、《图解 HTTP》
 
 > （2024.07.28）《术业有专攻》之《理论核心》第五章 阅读《JavaScript 设计模式与开发实践》
+
+### 主线 2.0 序列专题
+
+> 一、webpack（2024.09.30）
+> 1、阅读书籍《webpack 实战》
+> 2、参加山月训练营
+> 3、输出 blog
+> 4、理解并优化工作项目
