@@ -40,7 +40,7 @@ class Solution {
     // }
     // }
 
-    public boolean isValidLeftBST(TreeNode root, int lower, int upper) {
+    public boolean isValidLeftBST(TreeNode root, Long lower, Long upper) {
         if (root == null) {
             return true;
         }
@@ -68,17 +68,17 @@ class Solution {
             }
         }
 
-        if (!isValidLeftBST(root.left, lower, root.val)) {
+        if (!isValidLeftBST(root.left, lower, Long.valueOf(root.val))) {
             return false;
         }
-        if (!isValidLeftBST(root.right, root.val, upper)) {
+        if (!isValidLeftBST(root.right, Long.valueOf(root.val), upper)) {
             return false;
         }
         return true;
     }
 
     public boolean isValidBST(TreeNode root) {
-        return isValidLeftBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        return isValidLeftBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 }
 // @lc code=end
