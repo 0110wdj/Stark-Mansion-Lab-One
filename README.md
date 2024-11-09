@@ -22,7 +22,7 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 14  | 深入浅出 Node.js                                                                     | 朴灵                                                                                                                        | 2024-07-28        |
 | 15  | [LeetCode 热题 100](https://leetcode.cn/studyplan/top-100-liked/)                    | leetcode                                                                                                                    | practicing        |
 | 16  | JavaScript 设计模式与开发实践                                                        | 曾探                                                                                                                        | 2024-09-11        |
-| 17  | Webpack 实战 入门、进阶、调优                                                        | 居玉皓                                                                                                                      | reading           |
+| 17  | Webpack 实战 入门、进阶、调优                                                        | 居玉皓                                                                                                                      | 2024-11-09        |
 
 ### 主线 1.0
 
@@ -63,7 +63,7 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 
 > 一、webpack（2024.09.30）
 >
-> - 1、阅读书籍《webpack 实战》
+> - 1、阅读书籍《webpack 实战》✅ [practice code](https://github.com/0110wdj/webpack-in-action)
 > - 2、参加山月训练营
-> - 3、输出 blog
-> - 4、理解并优化工作项目
+> - 3、输出 blog ✅
+> - 4、理解并优化工作项目 ✅
