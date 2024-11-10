@@ -24,6 +24,16 @@
 
 ![alt text](imgs/intr-04-jdk.png)
 
-## 安装
+## 05 安装
 
 略。
+
+## 06 hello world
+
+```Java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
