@@ -23,3 +23,7 @@
 - JVM：Java Virtual Machine ，Java 虚拟机，运行 Java 字节码的虚拟机。
 
 ![alt text](imgs/intr-04-jdk.png)
+
+## 安装
+
+略。
