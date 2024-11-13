@@ -27,3 +27,5 @@ replay_pid*
 node_modules
 
 .vscode/
+.idea
+*.iml
