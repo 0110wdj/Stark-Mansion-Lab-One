@@ -14,5 +14,8 @@
     "buffer": "^6.0.3",
     "iconv-lite": "^0.6.3",
     "pcap-generator": "^0.2.3"
+  },
+  "devDependencies": {
+    "axios": "^1.7.7"
   }
 }
