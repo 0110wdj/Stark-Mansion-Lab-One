@@ -1,4 +1,4 @@
-package operator;
+package cn.snofly.operator;
 
 public class Demo7 {
     public static void main(String[] args) {

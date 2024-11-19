@@ -1,4 +1,4 @@
-package base;
+package cn.snofly.base;
 
 public class Demo1 {
     public static void main(String[] args) {
