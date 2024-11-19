@@ -2,6 +2,17 @@ package base;
 
 public class Main {
     public static void main(String[] args) {
+        // 单行注释
+        System.out.println("Hello world!");
+        /*
+        多行注释
+         */
+
+        // JavaDoc:文档注释 /** */
+        /**
+         * @Description Hello word
+         * @Author Snofly
+         */
 //        float f = 0.1f;
 //        Double d = 1.0/10;
 //        System.out.println(f==d);
