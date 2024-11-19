@@ -161,3 +161,23 @@ final double PI = 3.14;
 略
 
 ## 11 包机制
+
+- 为了更好地组织类，Java 提供了包机制，用于区别类名的命名空间。
+- 包语句的语法格式为：
+
+```
+package pkg1[. pkg2[. pkg3...]];
+```
+
+- 一般利用公司域名倒置作为包名；
+- 为了能够使用某一个包的成员，我们需要在 Java 程序中明确导入该包。使用 "import" 语句可完成此功能
+
+```
+import package1[. package2...].(classname|*);
+```
+
+## 12 JavaDoc 生成
+
+```bash
+javadoc -encoding UTF-8 -charset UTF-8 文件名.java
+```
