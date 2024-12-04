@@ -71,3 +71,30 @@ for (初始化;布尔表达式;更新) {
 
 // 100.for 快捷方式
 ```
+
+## 09 打印九九乘法表
+
+```Java
+public class ForDemo04 {
+    public static void main(String[] args) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print((j + 1) + "*" + (i + 1) + "=" + (i + 1) * (j + 1) + "\t");
+            }
+            System.out.println("");
+        }
+    }
+}
+```
+
+## 10 增强 for 循环
+
+略
+
+## 11 break、continue、goto
+
+略
+
+## 12 打印三角形及 DEBUG
+
+略
