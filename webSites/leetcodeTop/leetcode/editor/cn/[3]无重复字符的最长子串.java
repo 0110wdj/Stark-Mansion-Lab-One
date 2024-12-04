@@ -9,44 +9,34 @@
 //leetcode submit region end(Prohibit modification and deletion)
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 class Solution {
     public static int lengthOfLongestSubstring(String s) {
-        int i = 0;
-        int j = 0;
-        int maxLen = 0;
-        final int STRING_LENGTH = s.length();
-        Map charMap = new HashMap<>();
-        while (i < STRING_LENGTH && j < STRING_LENGTH) {
-            if (j == i) {
-                j++;
-                continue;
+        Set<Character> occ = new HashSet<>();
+        int n = s.length();
+        int rk = -1, ans = 0;
+        for (int i = 0; i < n; i++) {
+            if (i != 0) {
+                occ.remove(s.charAt(i - 1));
             }
-            char nowRight = s.charAt(j);
-            int pre = charMap.size();
-            charMap.put(nowRight, 1);
-            if (charMap.size() == pre) {
-                maxLen = Math.max(maxLen, j - i - 1);
-                while (i < j) {
-                    char nowLeft = s.charAt(i);
-                    charMap.remove(nowLeft);
-                    if (nowLeft == nowRight) {
-                        i++;
-                        break;
-                    }
-                    i++;
-                }
-            } else {
-                j++;
+            // 一旦出现重复，则右侧暂停滑动，直到左侧滑动排除重读的那个字符
+            while (rk + 1 < n && !occ.contains(s.charAt(rk + 1))) {
+                occ.add(s.charAt(rk + 1));
+                rk++;
             }
+            ans = Math.max(ans, rk - i + 1);
         }
-        return Math.max(maxLen, j - i - 1);
+        return ans;
     }
 
     public static void main(String[] args) {
         System.out.println(lengthOfLongestSubstring("abcabcbb"));
         System.out.println(lengthOfLongestSubstring("bbbbb"));
         System.out.println(lengthOfLongestSubstring("pwwkew"));
+        System.out.println(lengthOfLongestSubstring(" "));
+        System.out.println(lengthOfLongestSubstring("au"));
     }
 }
