@@ -1,0 +1,53 @@
+// 88 合并两个有序数组
+
+//leetcode submit region begin(Prohibit modification and deletion)
+//class Solution {
+//    public void merge(int[] nums1, int m, int[] nums2, int n) {
+//        int i = m - 1;
+//        int j = n - 1;
+//        while (j >= 0) {
+//            if (i < 0 || nums2[j] >= nums1[i]) {
+//                nums1[i + j + 1] = nums2[j];
+//                j--;
+//            } else {
+//                nums1[i + j + 1] = nums1[i];
+//                i--;
+//            }
+//        }
+//    }
+//}
+//leetcode submit region end(Prohibit modification and deletion)
+
+class Solution88 {
+    static public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        while (j >= 0) {
+            if (i < 0 || nums2[j] >= nums1[i]) {
+                nums1[i + j + 1] = nums2[j];
+                j--;
+            } else {
+                nums1[i + j + 1] = nums1[i];
+                i--;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 2, 3, 0, 0, 0};
+        int[] nums2 = {2, 5, 6};
+        int m = 3, n = 3;
+        Solution88.merge(nums1, m, nums2, n);
+        int[] case1 = {1, 2, 2, 3, 5, 6};
+        Boolean case1Check = true;
+        for (int i = 0; i < case1.length; i++) {
+            System.out.print(case1[i] + "\t");
+            System.out.print(nums1[i] + "\t");
+            if (case1[i] != nums1[i]) {
+                case1Check = false;
+            }
+            System.out.println();
+        }
+        System.out.println("case1Check:" + case1Check);
+    }
+}
