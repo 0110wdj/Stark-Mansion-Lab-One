@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/webSites/Java-kuangstudy/JavaTest/JavaTest.iml" filepath="$PROJECT_DIR$/webSites/Java-kuangstudy/JavaTest/JavaTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webSites/Java-kuangstudy/Java-kuangstudy.iml" filepath="$PROJECT_DIR$/webSites/Java-kuangstudy/Java-kuangstudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webSites/leetcodeTop/leetcodeTop.iml" filepath="$PROJECT_DIR$/webSites/leetcodeTop/leetcodeTop.iml" />
     </modules>
   </component>
 </project>
