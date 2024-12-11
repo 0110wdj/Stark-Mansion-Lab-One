@@ -1,0 +1,46 @@
+<script>
+  /* 节流函数：delay 毫秒内只运行一次，且需要等待 Promise 完成 */
+  function throttlePromise(func, delay) {
+    let timerId;
+    let isRunning = false;
+
+    return async function (...args) {
+      if (timerId) return;
+
+      // 如果当前有一个调用在进行中，直接返回
+      if (isRunning) return;
+      // 如果没有执行中的调用，标记为正在执行
+      isRunning = true;
+
+      await func.apply(this, args);
+
+      timerId = setTimeout(() => {
+        isRunning = false;
+        timerId = undefined;
+      }, delay);
+    };
+  }
+
+</script>
+
+<script>
+  function apiCall() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 2000); // 模拟 API 请求的时间
+    });
+  }
+
+  // 刷新需要截流
+  const throttlePromiseEvents = throttlePromise(() => {
+    return apiCall().then(() => {
+      console.log("完成");
+    })
+  }, 1000)
+
+  setInterval(() => {
+    console.log('循环调用');
+    throttlePromiseEvents()
+  }, 500)
+</script>
