@@ -1,0 +1,24 @@
+class Solution {
+    public String addStrings(String num1, String num2) {
+        int len1 = num1.length();
+        int len2 = num2.length();
+        int i = len1 - 1, j = len2 - 1, k = 0;
+        String res = "";
+        while (i >= 0 || j >= 0) {
+            int cur1 = i >= 0 ? num1.charAt(i) - '0' : 0;
+            int cur2 = j >= 0 ? num2.charAt(j) - '0' : 0;
+            int curRes = cur1 + cur2 + k;
+            res = curRes % 10 + res;
+            k = curRes / 10;
+            i--;
+            j--;
+        }
+        if (k > 0) {
+            res = k + res;
+        }
+        return res;
+    }
+}
+
+//runtime:11 ms
+//memory:44.5 MB
