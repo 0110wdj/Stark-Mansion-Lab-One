@@ -1,0 +1,75 @@
+<!-- case 1 script 区分了作用域 -->
+<!-- <script type="module">
+  import lodash from "https://cdn.skypack.dev/lodash";
+</script>
+
+<script type="module">
+  console.log(lodash.get({ a: 3 }, 'a'));
+</script> -->
+
+
+<!-- case 2 导入成功 -->
+<!-- <script type="module">
+  import lodash from "https://cdn.skypack.dev/lodash";
+  console.log(lodash.get({ a: 3 }, 'a'));
+</script> -->
+
+<!-- case 3 裸导入 失败1 -->
+<!-- <script type="importmap">
+  {
+    "imports": {
+      "lodash": "https://cdn.skypack.dev/lodash",
+    }
+  }
+</script>
+<script type="module">
+  import get from "lodash/get.js";
+  console.log(get({ a: 3 }, 'a'));
+</script> -->
+
+<!-- case 4 裸导入 失败2 -->
+<!-- <script type="importmap">
+  {
+    "imports": {
+      "lodash": "https://cdn.skypack.dev/lodash",
+    }
+  }
+</script>
+<script type="module">
+  import get from "./lodash/get.js";
+  console.log(get({ a: 3 }, 'a'));
+</script> -->
+
+<!-- case 5 裸导入 成功 -->
+<!-- <script type="importmap">
+  {
+    "imports": {
+      "lodash": "https://cdn.skypack.dev/lodash"
+    }
+  }
+</script>
+<script type="module">
+  import { get } from "lodash";
+  console.log(get({ a: 3 }, 'a'));
+</script> -->
+
+
+<!-- case 6 导入 JSON 失败1 -->
+<!-- <script type="module">
+  import data from "./data.json" assert { type: "json" };
+  console.log(data);
+</script> -->
+
+<!-- case 7 导入 JSON ：1、file://... 失败 ；2、http://... 成功 -->
+<!-- <script>
+  fetch('./data.json')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error loading JSON:', error));
+</script> -->
+
+<!-- case 8 导入 JSON ：1、file://... 失败 ；2、http://... 成功   -->
+<!-- <script type="module">
+  import data from "./data.json" with { type: "json" };
+  console.log(data);
+</script> -->
