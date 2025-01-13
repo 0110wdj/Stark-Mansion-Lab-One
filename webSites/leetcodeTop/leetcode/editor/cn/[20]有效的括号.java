@@ -2,11 +2,12 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean isValid(String s) {
-        HashMap map = new HashMap<Character, Character>();
+        HashMap<Character, Character> map = new HashMap<>();
         map.put(')', '(');
         map.put('}', '{');
         map.put(']', '[');
@@ -14,35 +15,30 @@ class Solution {
         int len = s.length();
         if (len % 2 == 1) return false;
 
-        ArrayList arr = new ArrayList<Character>();
+        ArrayList<Character> arr = new ArrayList<>();
+        // 使用 Stack 替代 ArrayList
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < len; i++) {
-            if (map.containsKey(s.charAt(i))) {
-                if (arr.size() > 0) {
-                    if (arr.get(arr.size() - 1).equals(map.get(s.charAt(i)))) {
-                        arr.remove(arr.size() - 1);
-                    } else {
-                        return false;
-                    }
+            char c = s.charAt(i);
+            if (map.containsKey(c)) { // 当前字符是右括号
+                if (!stack.isEmpty() && stack.peek() == map.get(c)) {
+                    stack.pop(); // 匹配成功，弹出栈顶
                 } else {
-                    return false;
+                    return false; // 匹配失败
                 }
             } else {
-                arr.add(s.charAt(i));
+                stack.push(c); // 左括号入栈
             }
         }
 
-        return arr.size() == 0;
+        return stack.isEmpty(); // 栈为空表示完全匹配
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-
 class Solution20 {
     static public boolean isValid(String s) {
-        HashMap map = new HashMap<Character, Character>();
+        HashMap<Character, Character> map = new HashMap<>();
         map.put(')', '(');
         map.put('}', '{');
         map.put(']', '[');
@@ -50,24 +46,23 @@ class Solution20 {
         int len = s.length();
         if (len % 2 == 1) return false;
 
-        ArrayList arr = new ArrayList<Character>();
+        ArrayList<Character> arr = new ArrayList<>();
+        // 使用 Stack 替代 ArrayList
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < len; i++) {
-            if (map.containsKey(s.charAt(i))) {
-                if (arr.size() > 0) {
-                    if (arr.get(arr.size() - 1).equals(map.get(s.charAt(i)))) {
-                        arr.remove(arr.size() - 1);
-                    } else {
-                        return false;
-                    }
+            char c = s.charAt(i);
+            if (map.containsKey(c)) { // 当前字符是右括号
+                if (!stack.isEmpty() && stack.peek() == map.get(c)) {
+                    stack.pop(); // 匹配成功，弹出栈顶
                 } else {
-                    return false;
+                    return false; // 匹配失败
                 }
             } else {
-                arr.add(s.charAt(i));
+                stack.push(c); // 左括号入栈
             }
         }
 
-        return arr.size() == 0;
+        return stack.isEmpty(); // 栈为空表示完全匹配
     }
 
     public static void main(String[] args) {
