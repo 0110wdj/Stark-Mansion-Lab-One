@@ -37,15 +37,15 @@ class Solution46 {
         return res;
     }
 
-    private static void backtrack(List<List<Integer>> res, List<Integer> tempList, int[] nums) {
-        if (tempList.size() == nums.length) {
-            res.add(new ArrayList<>(tempList)); // 添加 tempList 的一个拷贝
+    static public void backtrack(List<List<Integer>> res, ArrayList<Integer> state, int[] sourceData) {
+        if (state.size() == sourceData.length) {
+            res.add(new ArrayList<>(state));
         } else {
-            for (int num : nums) {
-                if (tempList.contains(num)) continue; // 如果 tempList 已包含当前数字，跳过
-                tempList.add(num);
-                backtrack(res, tempList, nums);
-                tempList.remove(tempList.size() - 1); // 回溯，移除最后一个元素
+            for (int i = 0; i < sourceData.length; i++) {
+                if (state.contains(sourceData[i])) continue;
+                state.add(sourceData[i]);
+                backtrack(res, state, sourceData);
+                state.remove(state.size() - 1);
             }
         }
     }
