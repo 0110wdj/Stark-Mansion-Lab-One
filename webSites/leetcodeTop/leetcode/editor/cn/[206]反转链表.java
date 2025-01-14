@@ -33,12 +33,15 @@ class Solution206 {
     }
 
     static public ListNode reverseList(ListNode head) {
-        if (head == null) return null;
-        if (head.next == null) return head;
-        ListNode newHead = reverseList(head.next);
-        head.next.next = head;
-        head.next = null;
-        return newHead;
+        ListNode prev = null;
+        ListNode current = head;
+        while (current != null) {
+            ListNode nextTemp = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextTemp;
+        }
+        return prev;
     }
 
     static public void printListNode(ListNode root) {
