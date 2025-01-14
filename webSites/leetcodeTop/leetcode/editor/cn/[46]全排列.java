@@ -32,19 +32,21 @@ import java.util.List;
 
 class Solution46 {
     static public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>(); // 使用 ArrayList 实例化 List
-        backtrack(res, new ArrayList<>(), nums);
+        List<List<Integer>> res = new ArrayList<>();
+        recur(res, new ArrayList<Integer>(), nums);
         return res;
     }
 
-    static public void backtrack(List<List<Integer>> res, ArrayList<Integer> state, int[] sourceData) {
-        if (state.size() == sourceData.length) {
+    static public void recur(List<List<Integer>> res, ArrayList<Integer> state, int[] nums) {
+        if (state.size() == nums.length) {
             res.add(new ArrayList<>(state));
         } else {
-            for (int i = 0; i < sourceData.length; i++) {
-                if (state.contains(sourceData[i])) continue;
-                state.add(sourceData[i]);
-                backtrack(res, state, sourceData);
+            for (int i = 0; i < nums.length; i++) {
+                if (state.contains(nums[i])) {
+                    continue;
+                }
+                state.add(nums[i]);
+                recur(res, state, nums);
                 state.remove(state.size() - 1);
             }
         }
