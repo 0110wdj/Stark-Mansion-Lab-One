@@ -19,3 +19,8 @@ $ npm publish
 
 - repository
 - README
+
+
+## 实例
+
+[json-string-pack](https://www.npmjs.com/package/json-string-pack)
