@@ -20,11 +20,12 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 12  | 算法导论（第三版）                                                                                                                                            | [美] Thomas H.Cromen, Charles E.Leiserson, Ronald L.Rivest, Clifford Stein 著 殷建平 徐云 王刚 刘晓光 苏明 邹恒明 王宏志 译 | pasued            |
 | 13  | 图解 HTTP                                                                                                                                                     | [日] 上野 宣 著 于均良 译                                                                                                   | 2024-06-10        |
 | 14  | 深入浅出 Node.js                                                                                                                                              | 朴灵                                                                                                                        | 2024-07-28        |
-| 15  | [LeetCode 热题 100](https://leetcode.cn/studyplan/top-100-liked/)                                                                                             | leetcode                                                                                                                    | reading           |
+| 15  | [LeetCode 热题 100](https://leetcode.cn/studyplan/top-100-liked/)                                                                                             | leetcode                                                                                                                    | 2024-12-07        |
 | 16  | JavaScript 设计模式与开发实践                                                                                                                                 | 曾探                                                                                                                        | 2024-09-11        |
 | 17  | Webpack 实战 入门、进阶、调优 第二版                                                                                                                          | 居玉皓                                                                                                                      | 2024-11-09        |
-| 18  | [前端工程化](https://q.shanyue.tech/engineering)                                                                                                              | [山月](https://github.com/shfshanyue)                                                                                       | reading           |
+| 18  | [前端工程化](https://q.shanyue.tech/engineering)                                                                                                              | [山月](https://github.com/shfshanyue)                                                                                       | 2025-01-19        |
 | 19  | [【狂神说 Java】Java 零基础学习视频通俗易懂](https://www.bilibili.com/video/BV12J41137hu/?spm_id_from=333.999.0.0&vd_source=86c089058388d688aef50d8d3bb1fbe7) | [遇见狂神说](https://space.bilibili.com/95256449)                                                                           | reading           |
+| 20  | [前端 100 问](https://juejin.cn/post/6844903885488783374)                                                                                                     | [程序员依扬](https://juejin.cn/user/3720403075993373/posts)                                                                 | reading           |
 
 ### 主线 1.0
 
@@ -56,16 +57,21 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 
 ### 主线 2.0 序列专题
 
-> 0、Long-term goal
+> 零、长期序列
 >
-> - blog post per month
-> - English -- Duolingo 30 minute per day
-> - Algorithm -- LeetCode per day
-> - Fitness -- 3 times per week
+> - 博客月更
+> - 英语练习
+> - 算法练习
+> - 锻炼身体
 
 > 一、webpack（2024.09.30）
 >
-> - 1、阅读书籍《webpack 实战》✅ [practice code](https://github.com/0110wdj/webpack-in-action)
-> - 2、参加山月训练营 —— 工程化
+> - 1、阅读书籍《webpack 实战》✅
+> - 2、参加山月训练营 —— 工程化 ✅
 > - 3、输出 blog ✅
 > - 4、理解并优化工作项目 ✅
+
+> 二、技术面拓展（2025.01.19）
+>
+> - 1、Java SE 基础
+> - 2、前端 100 问
