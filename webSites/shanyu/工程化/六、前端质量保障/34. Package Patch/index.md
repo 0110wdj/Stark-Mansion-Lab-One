@@ -26,3 +26,29 @@ index 5d063e2..1be61ea 100644
 \ No newline at end of file
 
 ```
+
+patch-package 使用的完整的流程如下：
+
+```bash
+# 修改库源文件
+$ vim node_modules/lodash/index.js
+
+# 对目标库的修复生成一个 patch 文件，位于 patches/lodash+4.17.21.patch
+$ npx patch-package lodash
+
+# 将修复文件提交到版本管理之中
+$ git add patches/lodash+4.17.21.patch
+$ git commit -m "fix 一点儿小事 in lodash"
+
+# 此后的命令在生产环境或 CI 中执行
+# 此后的命令在生产环境或 CI 中执行
+# 此后的命令在生产环境或 CI 中执行
+
+# 在生产环境装包
+$ npm i
+
+# 为生产环境的 lodash 进行小修复
+$ npx patch-package
+
+# 大功告成！
+```
