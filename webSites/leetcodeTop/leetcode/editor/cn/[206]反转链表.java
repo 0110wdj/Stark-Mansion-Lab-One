@@ -36,10 +36,10 @@ class Solution206 {
         ListNode prev = null;
         ListNode current = head;
         while (current != null) {
-            ListNode nextTemp = current.next;
+            ListNode tmp = current.next;
             current.next = prev;
             prev = current;
-            current = nextTemp;
+            current = tmp;
         }
         return prev;
     }
