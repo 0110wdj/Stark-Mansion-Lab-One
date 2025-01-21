@@ -28,3 +28,24 @@ chatgpt:
 > 但是对于列表频繁更新的场景， 节点不能重用，但是 diff 可以省略一部分逻辑，因此性能也会更好。
 > 但是两者的性能优化不在同一个纬度，一个是 创建和更新节点（我称之为渲染器）的优化，
 > 一个是 DOM diff 算法（我称之为核心引擎）的优化
+
+#### 2 ['1', '2', '3'].map(parseInt) what & why ?
+
+原文参考:
+
+> 第一眼看到这个题目的时候，脑海跳出的答案是 [1, 2, 3]，但是真正的答案是[1, NaN, NaN]。
+
+> map 函数的第一个参数 callback：
+> var new_array = arr.map(function callback(currentValue[, index[, array]]) { // Return element for new_array }[, thisArg])
+>
+> 而 parseInt 则是用来解析字符串的，使字符串成为指定基数的整数。
+> parseInt(string, radix) 接收两个参数，第一个表示被处理的值（字符串），第二个表示为解析时的基数。
+>
+> parseInt('1', 0) //radix 为 0 时，且 string 参数不以“0x”和“0”开头时，按照 10 为基数处理。这个时候返回 1
+> parseInt('2', 1) //基数为 1（1 进制）表示的数中，最大值小于 2，所以无法解析，返回 NaN
+> parseInt('3', 2) //基数为 2（2 进制）表示的数中，最大值小于 3，所以无法解析，返回 NaN
+
+补充：
+
+> parseInt 第二个参数需要的范围是 2~36 之间，如果小于 2 或者大于 36，则 parseInt() 将返回 NaN。
+> 所以 parseInt('0',1) 和 parseInt('1',37) 都是 NaN。
