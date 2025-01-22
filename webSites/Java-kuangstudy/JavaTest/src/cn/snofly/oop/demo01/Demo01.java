@@ -1,4 +1,4 @@
-package cn.snofly.oop;
+package cn.snofly.oop.demo01;
 
 import java.io.IOException;
 

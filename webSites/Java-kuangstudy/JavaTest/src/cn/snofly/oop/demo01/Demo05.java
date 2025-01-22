@@ -1,4 +1,4 @@
-package cn.snofly.oop;
+package cn.snofly.oop.demo01;
 
 public class Demo05 {
     public static void main(String[] args) {
