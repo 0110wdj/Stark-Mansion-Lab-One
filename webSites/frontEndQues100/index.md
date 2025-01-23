@@ -49,3 +49,8 @@ chatgpt:
 
 > parseInt 第二个参数需要的范围是 2~36 之间，如果小于 2 或者大于 36，则 parseInt() 将返回 NaN。
 > 所以 parseInt('0',1) 和 parseInt('1',37) 都是 NaN。
+
+### 3 什么是防抖和节流？有什么区别？如何实现？
+
+snofly:
+防抖是指在
