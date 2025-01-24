@@ -1,12 +1,13 @@
 // 生成防抖函数
 const antiShak = (callback = () => { }, time = 1000) => {
   let id = null;
-  const refun = (...args) => {
+  const refun = () => {
     if (id) {
       clearTimeout(id);
     }
     id = setTimeout(() => {
-      callback(args)
+      // callback(args)
+      callback.apply(this, arguments);
     }, time);
   }
   return refun
@@ -15,12 +16,13 @@ const antiShak = (callback = () => { }, time = 1000) => {
 // 生成节流函数
 const throttle = (callback = () => { }, time = 1000) => {
   let isWaiting = false;
-  const refun = (...args) => {
+  const refun = () => {
     if (isWaiting) return;
     isWaiting = true;
     setTimeout(() => {
       isWaiting = false;
-      callback(args)
+      // callback(args)
+      callback.apply(this, arguments);
     }, time);
   }
   return refun
@@ -44,7 +46,8 @@ const setIntervalCall = (props = {}) => {
   const id = setInterval(() => {
     if (i < frequency) {
       console.log("callback-" + i);
-      callback();
+      // callback();
+      callback.apply(this, arguments);
       i++
     } else {
       clearInterval(id);
