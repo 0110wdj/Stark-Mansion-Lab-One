@@ -9,3 +9,5 @@ public class Student extends Person {
         System.out.println("Student Student");
     }
 }
+
+//  Student s1 = new Student("ssname","ppname");
