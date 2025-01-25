@@ -1,18 +1,10 @@
 package cn.snofly.oop.demo05;
 
 public class Person {
+    protected String name = "snofly";
 
-    private int money = 10_0000_0000;
-
-    public void say() {
-        System.out.println("say something");
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    public int getMoney() {
-        return money;
+    public Person(String name) {
+        this.name = name;
+        System.out.println("Person Person");
     }
 }
