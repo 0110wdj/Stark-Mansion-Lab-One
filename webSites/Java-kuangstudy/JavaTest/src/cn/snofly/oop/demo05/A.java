@@ -7,3 +7,11 @@ public class A extends B {
         System.out.println("A  test");
     }
 }
+
+/**
+ * A a = new A();
+ * a.test();
+ * // 父类的引用指向子类
+ * B b = new A();
+ * b.test();
+ */
