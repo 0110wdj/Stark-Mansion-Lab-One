@@ -1,4 +1,4 @@
-const _generator = require('./')
+const _generator = require('.')
 const fs = require('fs')
 
 // 使用 configure 方法重新配置

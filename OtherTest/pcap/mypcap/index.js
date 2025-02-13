@@ -33,24 +33,23 @@ function configure(_opts) {
     globalHeader.writeUInt32BE(opts.linkLayerType, 20) // 4
 
     packets = packets.map(packet => {
-      const packetHeader = Buffer.alloc(24)
+      const packetHeader = Buffer.alloc(16)
       const isTimestampMicroPrecision = isMicroseconds(packet.timestamp)
       const [seconds, microseconds] = isTimestampMicroPrecision
         ? String(packet.timestamp).split('.').map(str => Number(str))
         : [Math.floor(packet.timestamp / 1000), Math.floor(((packet.timestamp / 1000) % 1) * 1000000)]
       packetHeader.writeUInt32BE(seconds, 0) // 4
       packetHeader.writeUInt32BE(makeLessThanAMillion(microseconds), 4) // 4 - if in microsecond precision then remove excess of 1,000,000 (see documentation)
-      packetHeader.writeUInt32BE(packet.buffer.length, 8) // 4
-      packetHeader.writeUInt32BE(packet.buffer.length, 12) // 4
+      packetHeader.writeUInt32BE(packet.buffer.length + 8, 8) // 4
+      packetHeader.writeUInt32BE(packet.buffer.length + 8, 12) // 4
       // 自定义包头
-      packetHeader.writeUInt16BE(packet.protocolCode || 0, 16) // 2
-      packetHeader.writeUInt8(packet.basicProtocol || 0, 18) // 1
-      packetHeader.writeUInt8(packet.connectIndex || 0, 19) // 1
-      packetHeader.writeUInt32BE(packet.roundIndex || 0, 20) // 4
+      const packetSmylHeader = Buffer.alloc(8)
+      packetSmylHeader.writeUInt16BE(packet.protocolCode || 0, 0) // 2
+      packetSmylHeader.writeUInt8(packet.basicProtocol || 0, 2) // 1
+      packetSmylHeader.writeUInt8(packet.connectIndex || 0, 3) // 1
+      packetSmylHeader.writeUInt32BE(packet.roundIndex || 0, 4) // 4
 
-      console.log({ connectIndex: packet.connectIndex, roundIndex: packet.roundIndex });
-
-      return Buffer.concat([packetHeader, packet.buffer])
+      return Buffer.concat([packetHeader, packetSmylHeader, packet.buffer])
     })
 
     const packetsBuffer = Buffer.concat(packets)
