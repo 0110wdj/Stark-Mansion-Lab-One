@@ -73,5 +73,5 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 
 > 二、技术面拓展（2025.01.19）
 >
-> - 1、Java SE 基础
+> - 1、Java SE 基础 ✅
 > - 2、前端 100 问
