@@ -24,3 +24,13 @@
             - IllegalArgumentException
             - ArrayIndexOutOfBoundsException
             - UnknownTypeException
+
+## 02 捕获和抛出异常
+
+- try
+- catch
+- finally
+- throw
+- throws
+
+异常捕获的范围从小到大。
