@@ -162,3 +162,17 @@ snofly:
 > Promise 是立即执行函数，Async 函数返回值是 Promise
 
 test code : 08.js
+
+### 09 Async/Await 如何通过同步的方式实现异步
+
+snofy:
+
+> async 函数返回值被 Promise 包裹，保证同步代码的非阻塞执行。
+> await 某个 async 函数时，其后的代码暂停执行，实际上是变成了异步任务代码，作为一个微任务推入任务队列中。
+> 等到该 async 函数变成完成状态，再从任务队列中取出到调用栈中。
+
+### 10 请写出下面代码的运行结果
+
+snofly:
+
+> 代码和分析 code: 10.js
