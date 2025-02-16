@@ -124,3 +124,41 @@ snofly:
 > 实现：06_source.js
 
 > 注意处理对象的循环引用，函数的复制
+
+### 07 ES5/ES6 的继承除了写法以外还有什么区别？
+
+chatGPT:
+
+> ES5 和 ES6 的继承除了语法上的差异外，主要还在于以下几个方面的区别：
+>
+> - 1、构造函数的行为：
+>   - ES5：继承通过 call 或 apply 在子类构造函数中调用父类构造函数，通常需要手动设置 this。
+>   - ES6：ES6 引入了 class 和 extends 语法，继承时在子类构造函数中使用 super() 调用父类构造函数，自动绑定 this。
+
+> - 2、原型链的设置：
+>   - ES5：手动设置子类的原型链，通常通过 Object.create() 或 new Parent() 来实现。
+>   - ES6：通过 extends 关键字自动设置了原型链。
+
+> - 3、super 的使用：
+>   - ES5：没有 super 关键字，父类的方法或构造函数调用需要直接通过 call 或 apply。
+>   - ES6：super 关键字不仅用于调用父类构造函数，还可以用来调用父类的方法。
+
+> - 4、instanceof 的判断：
+>   - ES5：继承关系是通过原型链来实现的，通过 instanceof 判断时会检查 \_\_proto\_\_。
+>   - ES6：继承关系通过 class 和 extends 显式声明，所以使用 instanceof 判断时也基于类的原型链，保持一致性。
+
+> - 5、类的静态方法：
+>   - ES5：没有类静态方法的概念，静态方法是通过在构造函数本身上定义的。
+>   - ES6：可以在类上直接定义静态方法，static 关键字用来声明静态方法。
+
+> 总结来说，ES6 的继承语法更加简洁、直观，同时解决了一些 ES5 中需要手动处理的问题，使继承机制更加规范化和易用。
+
+### 08 setTimeout、Promise、Async/Await 的区别？
+
+snofly:
+
+> 都会创建任务，但是任务队列的优先级不同。setTimeout 创建宏任务，优先级最低；Promise、Async/Await 创建微任务，优先级较高。
+
+> Promise 是立即执行函数，Async 函数返回值是 Promise
+
+test code : 08.js
