@@ -224,3 +224,7 @@ snfly:
 snofly:
 
 > Promise 构造函数是同步执行,then 方法是异步执行.
+
+### 14 如何实现一个 new
+
+参考信息：14.js
