@@ -4,50 +4,62 @@ import java.util.*;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 //class Solution {
-//    public static List<List<Integer>> removeDuplicates(List<List<Integer>> inputList) {
-//        // 使用 LinkedHashSet 来保留插入顺序并去重
-//        Set<String> set = new LinkedHashSet<>();
-//        List<List<Integer>> resultList = new ArrayList<>();
-//
-//        for (List<Integer> list : inputList) {
-//            // 将每个 List 排序，并转为字符串形式，便于比较
-//            List<Integer> sortedList = new ArrayList<>(list);
-//            Collections.sort(sortedList);
-//            String key = sortedList.toString();
-//
-//            // 如果该排序后的 List 没有出现过，则加入结果集合
-//            if (!set.contains(key)) {
-//                set.add(key);
-//                resultList.add(list);
-//            }
-//        }
-//
-//        return resultList;
-//    }
-//
-//    public static void threeSumRecur(int[] nums, List<List<Integer>> res, List<Integer> state, int deep) {
-//        if (state.size() == 3) {
-//
-//            if (state.get(0) + state.get(1) + state.get(2) == 0) {
-//                res.add(new ArrayList<>(state));
-//                return;
-//            }
-//        }
-//
-//        int j = deep;
-//        while (j < nums.length) {
-//            state.add(nums[j]);
-//            j = j + 1;
-//            threeSumRecur(nums, res, state, j);
-//            state.remove(state.size() - 1);
-//        }
-//    }
-//
 //    public List<List<Integer>> threeSum(int[] nums) {
 //        List<List<Integer>> res = new ArrayList<>();
-//        List<Integer> state = new ArrayList<>();
-//        threeSumRecur(nums, res, state, 0);
-//        return removeDuplicates(res);
+//        Arrays.sort(nums);
+//        for (int i = 0; i < nums.length; i++) {
+//            int target = -nums[i];
+//            int j = i + 1;
+//            int k = nums.length - 1;
+//            while (j < k && j < nums.length) {
+//                if (nums[j] + nums[k] == target) {
+//                    ArrayList arrayList = new ArrayList<>();
+//                    arrayList.add(nums[i]);
+//                    arrayList.add(nums[j]);
+//                    arrayList.add(nums[k]);
+//                    res.add(arrayList);
+//                    while (j < nums.length - 1) {
+//                        if (nums[j] != nums[j + 1]) {
+//                            j++;
+//                            break;
+//                        }
+//                        j++;
+//                    }
+//                    while (k > j) {
+//                        if (nums[k] != nums[k - 1]) {
+//                            k--;
+//                            break;
+//                        }
+//                        k--;
+//                    }
+//                } else if (nums[j] + nums[k] > target) {
+//                    while (k > j) {
+//                        if (nums[k] != nums[k - 1]) {
+//                            k--;
+//                            break;
+//                        }
+//                        k--;
+//                    }
+//                } else if (nums[j] + nums[k] < target) {
+//                    while (j < nums.length - 1) {
+//                        if (nums[j] != nums[j + 1]) {
+//                            j++;
+//                            break;
+//                        }
+//                        j++;
+//                    }
+//                }
+//            }
+//            while (i < nums.length - 1) {
+//                if (nums[i] == nums[i + 1]) {
+//                    i++;
+//                } else {
+//                    break;
+//                }
+//            }
+//        }
+//
+//        return res;
 //    }
 //}
 //leetcode submit region end(Prohibit modification and deletion)
@@ -56,50 +68,62 @@ import java.util.*;
 
 class Solution15 {
 
-    public static List<List<Integer>> removeDuplicates(List<List<Integer>> inputList) {
-        // 使用 LinkedHashSet 来保留插入顺序并去重
-        Set<String> set = new LinkedHashSet<>();
-        List<List<Integer>> resultList = new ArrayList<>();
-
-        for (List<Integer> list : inputList) {
-            // 将每个 List 排序，并转为字符串形式，便于比较
-            List<Integer> sortedList = new ArrayList<>(list);
-            Collections.sort(sortedList);
-            String key = sortedList.toString();
-
-            // 如果该排序后的 List 没有出现过，则加入结果集合
-            if (!set.contains(key)) {
-                set.add(key);
-                resultList.add(list);
-            }
-        }
-
-        return resultList;
-    }
-
-    public static void threeSumRecur(int[] nums, List<List<Integer>> res, List<Integer> state, int deep) {
-        if (state.size() == 3) {
-
-            if (state.get(0) + state.get(1) + state.get(2) == 0) {
-                res.add(new ArrayList<>(state));
-                return;
-            }
-        }
-
-        int j = deep;
-        while (j < nums.length) {
-            state.add(nums[j]);
-            j = j + 1;
-            threeSumRecur(nums, res, state, j);
-            state.remove(state.size() - 1);
-        }
-    }
-
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        List<Integer> state = new ArrayList<>();
-        threeSumRecur(nums, res, state, 0);
-        return removeDuplicates(res);
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            int target = -nums[i];
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k && j < nums.length) {
+                if (nums[j] + nums[k] == target) {
+                    ArrayList arrayList = new ArrayList<>();
+                    arrayList.add(nums[i]);
+                    arrayList.add(nums[j]);
+                    arrayList.add(nums[k]);
+                    res.add(arrayList);
+                    while (j < nums.length - 1) {
+                        if (nums[j] != nums[j + 1]) {
+                            j++;
+                            break;
+                        }
+                        j++;
+                    }
+                    while (k > j) {
+                        if (nums[k] != nums[k - 1]) {
+                            k--;
+                            break;
+                        }
+                        k--;
+                    }
+                } else if (nums[j] + nums[k] > target) {
+                    while (k > j) {
+                        if (nums[k] != nums[k - 1]) {
+                            k--;
+                            break;
+                        }
+                        k--;
+                    }
+                } else if (nums[j] + nums[k] < target) {
+                    while (j < nums.length - 1) {
+                        if (nums[j] != nums[j + 1]) {
+                            j++;
+                            break;
+                        }
+                        j++;
+                    }
+                }
+            }
+            while (i < nums.length - 1) {
+                if (nums[i] == nums[i + 1]) {
+                    i++;
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return res;
     }
 
     public static void main(String[] args) {
