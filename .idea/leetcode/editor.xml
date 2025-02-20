@@ -25,6 +25,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[112]路径总和.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/doc/content/[112]路径总和.md" />
+              <option name="frontendQuestionId" value="leetcode.cn112" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[112]路径总和.java" />
+              <option name="titleSlug" value="path-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[121]买卖股票的最佳时机.java">
           <value>
             <LeetcodeEditor>
