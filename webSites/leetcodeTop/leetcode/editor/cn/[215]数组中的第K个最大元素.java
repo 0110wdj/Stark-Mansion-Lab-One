@@ -36,18 +36,28 @@ import java.util.Arrays;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 //class Solution {
-//    public int findKthLargest(int[] nums, int k) {
-//        int[] buckets = new int[20001]; //10 ^ 4 + 10 ^ 4 + 1
-//        for (int i = 0; i < nums.length; i++) {
-//            buckets[nums[i] + 10000]++;
-//        }
-//        for (int i = 20000; i >= 0; i--) {
-//            k -= buckets[i];
-//            if (k <= 0) {
-//                return i - 10000;
+//    // k 表示：假设排序完成后，目标数值的下标
+//    static int quickSelect(int[] nums, int l, int r, int k) {
+//        if (l == r) return nums[l];
+//        int x = nums[l], i = l - 1, j = r + 1;
+//        // 正常的快速排序：将数组移动顺序，使得左边部分全部小于 x，使得右边部分全部大于 x；找到中间点，放置 x ，这个点也是最终结果的点。
+//        while (i < j) {
+//            do i++; while (nums[i] < x);
+//            do j--; while (nums[j] > x);
+//            if (i < j) {
+//                int tmp = nums[i];
+//                nums[i] = nums[j];
+//                nums[j] = tmp;
 //            }
 //        }
-//        return -1;
+//        // 目标下标能够确定在左半部分时，排序范围缩小到左半部分；反之亦然
+//        if (k <= j) return quickSelect(nums, l, j, k);
+//        return quickSelect(nums, j + 1, r, k);
+//    }
+//
+//    public int findKthLargest(int[] nums, int k) {
+//        int n = nums.length;
+//        return quickSelect(nums, 0, n - 1, n - k);
 //    }
 //}
 //leetcode submit region end(Prohibit modification and deletion)
@@ -55,18 +65,28 @@ import java.util.Arrays;
 import java.util.Arrays;
 
 class Solution215 {
-    static public int findKthLargest(int[] nums, int k) {
-        int[] buckets = new int[20001]; //10 ^ 4 + 10 ^ 4 + 1
-        for (int i = 0; i < nums.length; i++) {
-            buckets[nums[i] + 10000]++;
-        }
-        for (int i = 20000; i >= 0; i--) {
-            k -= buckets[i];
-            if (k <= 0) {
-                return i - 10000;
+    // k 表示：假设排序完成后，目标数值的下标
+    static int quickSelect(int[] nums, int l, int r, int k) {
+        if (l == r) return nums[l];
+        int x = nums[l], i = l - 1, j = r + 1;
+        // 正常的快速排序：将数组移动顺序，使得左边部分全部小于 x，使得右边部分全部大于 x；找到中间点，放置 x ，这个点也是最终结果的点。
+        while (i < j) {
+            do i++; while (nums[i] < x);
+            do j--; while (nums[j] > x);
+            if (i < j) {
+                int tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
             }
         }
-        return -1;
+        // 目标下标能够确定在左半部分时，排序范围缩小到左半部分；反之亦然
+        if (k <= j) return quickSelect(nums, l, j, k);
+        return quickSelect(nums, j + 1, r, k);
+    }
+
+    static public int findKthLargest(int[] nums, int k) {
+        int n = nums.length;
+        return quickSelect(nums, 0, n - 1, n - k);
     }
 
     public static void main(String[] args) {
