@@ -65,34 +65,27 @@ class Solution912 {
         nums[index2] = tmp;
     }
 
-    static public void quickSort(int[] nums, int i, int j) {
-        if (j - i <= 1) return;
-        if (i == nums.length - 1) return;
-        if (j < 0) return;
+    static public void quickSort(int[] nums, int left, int right) {
+        if (left >= right) return; // 终止条件
 
-        randomArrayFirst(nums, i, j);
+        randomArrayFirst(nums, left, right); // 选择随机基准点
+        int pivot = nums[left]; // 基准值
+        int i = left + 1, j = right; // 左右指针
 
-        int left = i, right = j;
-        int p = i;
-        i++;
-
-        while (i < j && i < right && j > left) {
-            if (nums[i] < nums[p]) {
+        while (i <= j) {
+            while (i <= j && nums[i] < pivot) i++; // 找到大于等于 pivot 的元素
+            while (i <= j && nums[j] > pivot) j--; // 找到小于等于 pivot 的元素
+            if (i <= j) {
+                swapNums(nums, i, j);
                 i++;
-                continue;
-            }
-            if (nums[j] > nums[p]) {
                 j--;
-                continue;
             }
-            swapNums(nums, i, j);
         }
 
-        if (nums[p] > nums[i]) {
-            swapNums(nums, p, i);
-        }
-        quickSort(nums, left, i - 1);
-        quickSort(nums, i + 1, right);
+        swapNums(nums, left, j); // 基准点归位
+
+        quickSort(nums, left, j - 1); // 递归左半部分
+        quickSort(nums, j + 1, right); // 递归右半部分
     }
 
     static public int[] sortArray(int[] nums) {
@@ -101,13 +94,13 @@ class Solution912 {
     }
 
     public static void main(String[] args) {
-        int[] nums1 = new int[]{5, 2, 3, 1};
+        int[] nums1 = {5, 2, 3, 1};
         System.out.println(Arrays.toString(sortArray(nums1)));
-        int[] nums2 = new int[]{5, 1, 1, 2, 0, 0};
+        int[] nums2 = {5, 1, 1, 2, 0, 0};
         System.out.println(Arrays.toString(sortArray(nums2)));
-        int[] nums3 = new int[]{-1, 2, -8, -10};
+        int[] nums3 = {-1, 2, -8, -10};
         System.out.println(Arrays.toString(sortArray(nums3)));
-        int[] nums4 = new int[]{110, 100, 0};
+        int[] nums4 = {110, 100, 0};
         System.out.println(Arrays.toString(sortArray(nums4)));
     }
 }
