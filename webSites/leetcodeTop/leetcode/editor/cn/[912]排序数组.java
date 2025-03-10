@@ -54,48 +54,49 @@ import java.util.Arrays;
 
 class Solution912 {
 
-    static void swapNums(int[] nums, int i, int j) {
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
+    static public void randomArrayFirst(int[] nums, int i, int j) {
+        int randomIndex = i + (int) (Math.random() * (j - i + 1));
+        swapNums(nums, i, randomIndex);
     }
 
-    static void ramdom(int[] nums, int i, int j) {
-        int ramdomIndex = (int) (Math.random() * (j - i + 1) + i);
-        swapNums(nums, i, ramdomIndex);
+    static public void swapNums(int[] nums, int index1, int index2) {
+        int tmp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = tmp;
     }
 
-    static void sortArrayOneNumer(int[] nums, int i, int j) {
-        if (i >= j) return;
+    static public void quickSort(int[] nums, int i, int j) {
+        if (j - i <= 1) return;
+        if (i == nums.length - 1) return;
+        if (j < 0) return;
 
-        ramdom(nums, i, j);
-        int left = i + 1;
-        int right = j;
+        randomArrayFirst(nums, i, j);
 
-        while (left <= right) {
-            if (left <= j && nums[left] <= nums[i]) {
-                left++;
+        int left = i, right = j;
+        int p = i;
+        i++;
+
+        while (i < j && i < right && j > left) {
+            if (nums[i] < nums[p]) {
+                i++;
                 continue;
             }
-            if (right > i && nums[right] > nums[i]) {
-                right--;
+            if (nums[j] > nums[p]) {
+                j--;
                 continue;
             }
-            if (left < right) {
-                swapNums(nums, left, right); // 交换左右不符合条件的元素
-                left++;
-                right--;
-            }
+            swapNums(nums, i, j);
         }
-        // 将基准元素放到正确的位置
-        swapNums(nums, i, right);
 
-        sortArrayOneNumer(nums, i, right - 1);
-        sortArrayOneNumer(nums, right + 1, j);
+        if (nums[p] > nums[i]) {
+            swapNums(nums, p, i);
+        }
+        quickSort(nums, left, i - 1);
+        quickSort(nums, i + 1, right);
     }
 
     static public int[] sortArray(int[] nums) {
-        sortArrayOneNumer(nums, 0, nums.length - 1);
+        quickSort(nums, 0, nums.length - 1);
         return nums;
     }
 
