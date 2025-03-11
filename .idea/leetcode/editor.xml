@@ -256,6 +256,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[704]二分查找.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/doc/content/[704]二分查找.md" />
+              <option name="frontendQuestionId" value="leetcode.cn704" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[704]二分查找.java" />
+              <option name="titleSlug" value="binary-search" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[70]爬楼梯.java">
           <value>
             <LeetcodeEditor>
