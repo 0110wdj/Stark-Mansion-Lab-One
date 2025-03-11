@@ -322,3 +322,15 @@ class Example extends React.Component {
   }
 }
 ```
+
+### 20 介绍下 npm 模块安装机制，为什么输入 npm install 就可以自动安装对应的模块？
+
+snofly:
+
+> npm install 执行后，自动读取当前目录下的 package.json 文件和 package-lock.json 文件。根绝 package.json 对依赖包的版本设置，查询 npm registry 指向的仓库中的相关依赖包，如果版本不用更新，则直接下载指定版本的安装包。
+> 下载之前，需要整理各个依赖包的依赖关系，无误，则合并相同包，避免重复下载。
+
+snofly 补充：
+
+> 新版本应该是参考了 pnpm 的处理方式，真实文件放在统一的地方，而 node_modules 中存放的是文件的软链接和硬链接。
+> 例如本项目中, ls -alh 显示的 node_modules 大小为 8K , 而 Finder 中快速查看的 node_modules 的大小为 42.5M
