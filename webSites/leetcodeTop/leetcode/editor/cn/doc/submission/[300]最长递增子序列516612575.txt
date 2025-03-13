@@ -1,0 +1,17 @@
+function lengthOfLIS(nums: number[]): number {
+  const dp: number[] = [1]
+  let max = 1
+  for (let i = 1; i < nums.length; i++) {
+    let base = 1
+    for (let j = i - 1; j >= 0; j--) {
+      if (nums[i] > nums[j]) {
+        base = Math.max(base, dp[j] + 1)
+      }
+    }
+    dp[i] = base
+    max = Math.max(max, ...dp)
+  }
+  return max
+};
+//runtime:205 ms
+//memory:52.4 MB
