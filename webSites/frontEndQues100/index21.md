@@ -202,3 +202,33 @@ snofly:
 参考资料：
 
 > 观察者模式由具体目标调度，每个被订阅的目标里面都需要有对观察者的处理，会造成代码的冗余。而发布订阅模式则统一由调度中心处理，消除了发布者和订阅者之间的依赖。
+
+## 24 聊聊 Redux 和 Vuex 的设计思想
+
+参考资料：
+
+> 共同点
+> 首先两者都是处理全局状态的工具库，大致实现思想都是：全局 state 保存状态---->dispatch(action)
+> ------>reducer(vuex 里的 mutation)----> 生成 newState; 整个状态为同步操作；
+
+> 区别
+> 最大的区别在于处理异步的不同，vuex 里面多了一步 commit 操作，在 action 之后 commit(mutation)之前处理异步，而 redux 里面则是通过中间件处理
+
+ai:
+
+> 1.  Redux
+
+- 单一数据源：整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
+- State 是只读的：唯一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。
+- 使用纯函数来执行修改：为了描述 action 如何改变 state tree ，你需要编写 reducers。
+- 三大原则：
+  - 单一数据源：整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
+  - State 是只读的：唯一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。
+  - 使用纯函数来执行修改：为了描述 action 如何改变 state tree ，你需要编写 reducers。
+- 中间件：Redux 的中间件用于支持异步 action，它可以让我们在 action 和 reducer 之间插入自定义的逻辑。
+
+> 2.  Vuex
+
+- 单一数据源：Vuex 的状态存储是响应式的，当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。
+- 状态只读：改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。
+- 模块化：Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割。
