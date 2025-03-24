@@ -1,5 +1,6 @@
 import React from 'react'
 import CustomRender from './customRender';
+import "./customScheddule.ts";
 // import ReactDOM from 'react-dom/client';
 import App from './App.js';
 // 替换 ReactDOM
