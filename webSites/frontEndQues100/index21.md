@@ -280,3 +280,27 @@ test();
 // children3
 // children3-1
 ```
+
+## 26 介绍模块化发展历程
+
+```
+可从IIFE、AMD、CMD、CommonJS、UMD、webpack(require.ensure)、ES Module、<script type="module"> 这几个角度考虑。
+```
+
+参考资料：
+
+```
+早期: 通过 IIFE 自行封装和管理作用域。
+
+模块化方案: AMD 和 CMD 通过异步加载、延迟加载模块来提升性能。
+
+Node.js 引领的 CommonJS: 提供了同步加载和统一模块机制，适用于服务端。
+
+UMD: 使得模块在不同环境下可以兼容使用。
+
+现代工具: Webpack 通过动态加载和代码拆分提高了应用的加载性能。
+
+ESM: 提供了原生、静态的模块化支持，逐渐成为标准。
+
+HTML <script type="module">: 使得浏览器直接支持模块化，免去了额外的打包工具依赖。
+```
