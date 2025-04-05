@@ -232,3 +232,51 @@ ai:
 - 单一数据源：Vuex 的状态存储是响应式的，当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。
 - 状态只读：改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。
 - 模块化：Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割。
+
+## 25 说说浏览器和 Node 事件循环的区别
+
+参考资料：
+
+> 其中一个主要的区别在于浏览器的 event loop 和 nodejs 的 event loop 在处理异步事件的顺序是不同的,nodejs 中有 micro event;其中 Promise 属于 micro event 该异步事件的处理顺序就和浏览器不同.nodejs V11.0 以上 这两者之间的顺序就相同了.
+
+```js
+function test() {
+  console.log("start");
+  setTimeout(() => {
+    console.log("children2");
+    Promise.resolve().then(() => {
+      console.log("children2-1");
+    });
+  }, 0);
+  setTimeout(() => {
+    console.log("children3");
+    Promise.resolve().then(() => {
+      console.log("children3-1");
+    });
+  }, 0);
+  Promise.resolve().then(() => {
+    console.log("children1");
+  });
+  console.log("end");
+}
+
+test();
+
+// 以上代码在node11以下版本的执行结果(先执行所有的宏任务，再执行微任务)
+// start
+// end
+// children1
+// children2
+// children3
+// children2-1
+// children3-1
+
+// 以上代码在node11及浏览器的执行结果(顺序执行宏任务和微任务)
+// start
+// end
+// children1
+// children2
+// children2-1
+// children3
+// children3-1
+```
