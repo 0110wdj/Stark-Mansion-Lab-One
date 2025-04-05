@@ -4,66 +4,71 @@ import java.util.*;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 //class Solution {
-//    static public int coinChange(int[] coins, int amount) {
-//        if (amount < 1) {
+//    static public int coinChange(int[] coins, int target) {
+//        if (target < 1) {
 //            return 0;
 //        }
-//        return coinChange(coins, amount, new int[amount]);
+//        return searchSteps(coins, target, new int[target + 1]);
 //    }
 //
-//    static private int coinChange(int[] coins, int rem, int[] count) {
-//        if (rem < 0) {
+//    /**
+//     * @param cache 缓存的 cache[target] 的含义为：达到 target 的最小硬币数量
+//     */
+//    static public int searchSteps(int[] coins, int currentTarget, int[] cache) {
+//        if (currentTarget < 0) {
 //            return -1;
 //        }
-//        if (rem == 0) {
+//        if (currentTarget == 0) {
 //            return 0;
 //        }
-//        if (count[rem - 1] != 0) {
-//            return count[rem - 1];
+//        if (cache[currentTarget] != 0) {
+//            return cache[currentTarget];
 //        }
 //        int min = Integer.MAX_VALUE;
 //        for (int coin : coins) {
-//            int res = coinChange(coins, rem - coin, count);
-//            if (res >= 0 && res < min) {
-//                min = 1 + res;
+//            int lastStep = searchSteps(coins, currentTarget - coin, cache);
+//            if (lastStep != -1) {
+//                min = Math.min(1 + lastStep, min);
 //            }
 //        }
-//        count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
-//        return count[rem - 1];
+//        cache[currentTarget] = min == Integer.MAX_VALUE ? -1 : min;
+//        return cache[currentTarget];
 //    }
 //}
 //leetcode submit region end(Prohibit modification and deletion)
 
 
 class Solutino322 {
-    static public int coinChange(int[] coins, int amount) {
-        if (amount < 1) {
+    static public int coinChange(int[] coins, int target) {
+        if (target < 1) {
             return 0;
         }
-        return coinChange(coins, amount, new int[amount]);
+        return searchSteps(coins, target, new int[target + 1]);
     }
 
-    static private int coinChange(int[] coins, int rem, int[] count) {
-        if (rem < 0) {
+    /**
+     * @param cache 缓存的 cache[target] 的含义为：达到 target 的最小硬币数量
+     */
+    static public int searchSteps(int[] coins, int currentTarget, int[] cache) {
+        if (currentTarget < 0) {
             return -1;
         }
-        if (rem == 0) {
+        if (currentTarget == 0) {
             return 0;
         }
-        if (count[rem - 1] != 0) {
-            return count[rem - 1];
+        if (cache[currentTarget] != 0) {
+            return cache[currentTarget];
         }
         int min = Integer.MAX_VALUE;
         for (int coin : coins) {
-            int res = coinChange(coins, rem - coin, count);
-            if (res >= 0 && res < min) {
-                min = 1 + res;
+            int lastStep = searchSteps(coins, currentTarget - coin, cache);
+            if (lastStep != -1) {
+                min = Math.min(1 + lastStep, min);
             }
         }
-        count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
-        return count[rem - 1];
+        cache[currentTarget] = min == Integer.MAX_VALUE ? -1 : min;
+        return cache[currentTarget];
     }
-
 
     public static void main(String[] args) {
         System.out.println(coinChange(new int[]{1, 2, 5}, 100) == 20);
