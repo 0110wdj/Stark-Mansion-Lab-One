@@ -15,6 +15,14 @@ fs.readdir(dirPath, (err, files) => {
   // 过滤出所有 PNG 文件
   const pngFiles = files.filter(file => path.extname(file).toLowerCase() === '.png');
 
+  // 对 PNG 文件按名称排序
+  // 自定义排序函数：提取文件名中的数字部分，按数字排序
+  pngFiles.sort((a, b) => {
+    const numA = Number.parseInt(a.replace(/\D/g, ''), 10); // 提取数字
+    const numB = Number.parseInt(b.replace(/\D/g, ''), 10); // 提取数字
+    return numA - numB; // 按数字顺序排序
+  });
+
   // 存储所有 base64 编码的字符串
   const base64Array = pngFiles.map(file => {
     const filePath = path.join(dirPath, file);
