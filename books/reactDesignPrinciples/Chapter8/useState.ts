@@ -2,7 +2,7 @@ let callbackNode: NodeJS.Timeout | number | null = null;
 let workInProgressHook: Hook | undefined;
 let isMount = true;
 
-type Action = (prev: any) => void;
+type Action<T> = (prev: T) => T;
 
 interface Fiber {
   memoizedState?: Hook;
@@ -11,17 +11,17 @@ interface Fiber {
 
 interface Hook {
   queue: Queue;
-  memoizedState: any;
-  next: Hook;
+  memoizedState: number;
+  next: Hook | undefined;
 }
 
 interface Update {
-  action: Action;
+  action: Action<number>;
   next?: Update;
 }
 
 interface Queue {
-  pending: Update;
+  pending?: Update;
 }
 
 // ------------------------------------------------------------
@@ -53,7 +53,7 @@ function schedule() {
   });
 }
 
-function dispatchSetState(queue: Queue, action: Action) {
+function dispatchSetState(queue: Queue, action: Action<number>) {
   const update: Update = {
     action,
     next: undefined
@@ -68,14 +68,14 @@ function dispatchSetState(queue: Queue, action: Action) {
   schedule();
 }
 
-function useState(initialValue: any) {
-  let hook;
+function useState(initialValue: number): [number, (action: Action<number>) => void] {
+  let hook: Hook;
 
   if (isMount) {
     hook = {
       queue: { pending: undefined },
       memoizedState: initialValue,
-      next: null
+      next: undefined
     }
     if (!fiber.memoizedState) {
       fiber.memoizedState = hook;
@@ -84,7 +84,7 @@ function useState(initialValue: any) {
     }
     (workInProgressHook as Hook) = hook;
   } else {
-    hook = workInProgressHook;
+    hook = workInProgressHook as Hook;
     workInProgressHook = (workInProgressHook as Hook).next;
   }
 
@@ -96,9 +96,11 @@ function useState(initialValue: any) {
   if (hook.queue.pending) {
     let firstUpdate = hook.queue.pending.next;
     do {
-      const action = firstUpdate.action;
-      baseState = action(baseState);
-      firstUpdate = firstUpdate.next;
+      const action = firstUpdate?.action;
+      if (action) {
+        baseState = action(baseState);
+      }
+      firstUpdate = firstUpdate?.next;
     } while (firstUpdate !== hook.queue.pending);
     hook.queue.pending = undefined;
   }
