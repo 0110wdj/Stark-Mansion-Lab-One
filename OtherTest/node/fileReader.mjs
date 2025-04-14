@@ -175,8 +175,7 @@ async function readFilesInRange(baseDir, testId, rangeStr) {
     const filePath = path.join(testDir, 'data', `${i}`, `${i}.data`);
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, 'utf8');
-      console.log(`\n文件 ${i}.data 的内容：`);
-      console.log(content);
+      console.log(`\n文件 ${i}.data 的内容长度：${content.length}`);
       console.log('----------------------------------------');
 
       // 如果文件内容不为空，则添加到数组中
