@@ -420,3 +420,26 @@ var b = 10;
   console.log(b);
 })();
 ```
+
+## 35 浏览器缓存读取规则，可以分成 Service Worker、Memory Cache、Disk Cache 和 Push Cache，那请求的时候 from memory cache 和 from disk cache 的依据是什么，哪些数据什么时候存放在 Memory Cache 和 Disk Cache 中？
+
+从缓存位置上来说分为四种，并且各自有优先级，当依次查找缓存且都没有命中的时候，才会去请求网络。
+
+- Service Worker
+- Memory Cache
+
+Memory Cache 也就是内存中的缓存，主要包含的是当前中页面中已经抓取到的资源,例如页面上已经下载的样式、脚本、图片等。读取内存中的数据肯定比磁盘快,内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。 一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。
+
+- Disk Cache
+
+Disk Cache 也就是存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中，比之 Memory Cache 胜在容量和存储时效性上。
+
+- Push Cache
+
+浏览器会把哪些文件丢进内存中？哪些丢进硬盘中？
+关于这点，网上说法不一，不过以下观点比较靠得住：
+
+对于大文件来说，大概率是不存储在内存中的，反之优先
+当前系统内存使用率高的话，文件优先存储进硬盘
+
+[参考链接](https://www.jianshu.com/p/54cc04190252)
