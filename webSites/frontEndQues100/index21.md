@@ -404,8 +404,19 @@ gpt:
 var b = 10;
 (function b() {
   b = 20;
-  console.log(b);//[Function: b]
+  console.log(b); //[Function: b]
 })();
 ```
 
 在非匿名自执行函数中，函数变量为只读状态无法修改；
+
+## 34 简单改造下面的代码，使之分别打印 10 和 20。
+
+```js
+var a = 10;
+var b = 10;
+(function b() {
+  b = 20;
+  console.log(b);
+})();
+```
