@@ -443,3 +443,19 @@ Disk Cache 也就是存储在硬盘中的缓存，读取速度慢点，但是什
 当前系统内存使用率高的话，文件优先存储进硬盘
 
 [参考链接](https://www.jianshu.com/p/54cc04190252)
+
+## 36 使用迭代的方式实现 flatten 函数。
+
+秒法：
+
+```js
+const flatten = (inputArray) => {
+  let result = [...inputArray];
+  // 当数组中还存在数组元素时继续循环
+  while (result.some((item) => Array.isArray(item))) {
+    // 使用 concat 和扩展运算符来展开一层数组
+    result = [].concat(...result);
+  }
+  return result;
+};
+```
