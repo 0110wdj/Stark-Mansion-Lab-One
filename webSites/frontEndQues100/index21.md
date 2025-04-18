@@ -483,3 +483,25 @@ currentState = currentReducer(currentState, action)
 其实这个问题应该是 Redux 中为什么不能有副作用的操作更合适。
 
 [链接](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/65)
+
+## 38 下面代码中 a 在什么情况下会打印 1
+
+```js
+var a = {
+  i: 1,
+  toString() {
+    return a.i++;
+  },
+};
+
+var a = {
+  i: 1,
+  valueOf() {
+    return a.i++;
+  },
+};
+
+if (a == 1 && a == 2 && a == 3) {
+  console.log(1);
+}
+```
