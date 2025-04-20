@@ -42,3 +42,36 @@ var a = 10;
 - 2 通过 CRL 或 OCSP 的方式校验证书是否被吊销。
 - 3 对比系统时间，校验证书是否在有效期内。
 - 4 通过校验对方是否存在证书的私钥，判断证书的网站域名是否与证书颁发的域名一致。
+
+## 46 输出以下代码执行的结果并解释为什么
+
+```js
+var obj = {
+  2: 3,
+  3: 4,
+  length: 2,
+  // splice: Array.prototype.splice,
+  push: Array.prototype.push,
+};
+obj.push(1);
+obj.push(2);
+console.log(obj);
+
+// {
+//   '2': 1,
+//   '3': 2,
+//   length: 4,
+//   splice: [Function: splice],
+//   push: [Function: push]
+// }
+```
+
+GPT 解释：
+
+> push 是数组的一个方法，它将一个元素添加到数组的末尾。
+> 在这个例子中，push 被用在 obj 上，它将 1 添加到 obj 的末尾。
+> push(1) 会将 1 插入到 obj 中，并更新 length 属性。
+> 因为 obj 当前的 length 是 2，push 会把 1 插入到索引 2 处，并将 length 更新为 3。
+
+> - 键是字符串：在 JavaScript 中，所有对象的键都是字符串，因此即使你使用数字作为键（如 2 和 3），它们实际上会被转换为字符串 '2' 和 '3'。这就是为什么输出的键是 '2' 和 '3'（而不是数字 2 和 3）。
+> - 对象模拟数组：尽管 obj 是一个普通对象，但它通过 length 和数组方法（push）模拟了一个类数组的行为。通过 push 向对象添加新元素，length 会相应地增长。
