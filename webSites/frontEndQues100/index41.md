@@ -75,3 +75,46 @@ GPT 解释：
 
 > - 键是字符串：在 JavaScript 中，所有对象的键都是字符串，因此即使你使用数字作为键（如 2 和 3），它们实际上会被转换为字符串 '2' 和 '3'。这就是为什么输出的键是 '2' 和 '3'（而不是数字 2 和 3）。
 > - 对象模拟数组：尽管 obj 是一个普通对象，但它通过 length 和数组方法（push）模拟了一个类数组的行为。通过 push 向对象添加新元素，length 会相应地增长。
+
+## 47 双向绑定和 vuex 是否冲突
+
+存在冲突：
+
+当在严格模式中使用 Vuex 时，在属于 Vuex 的 state 上使用 v-model 会比较棘手：
+
+```
+<input v-model="obj.message">
+```
+
+假设这里的 obj 是在计算属性中返回的一个属于 Vuex store 的对象，在用户输入时，v-model 会试图直接修改 obj.message。在严格模式中，由于这个修改不是在 mutation 函数中执行的, 这里会抛出一个错误。
+
+用“Vuex 的思维”去解决这个问题的方法是：给 input 中绑定 value，然后侦听 input 或者 change 事件，在事件回调中调用一个方法:
+
+```
+<input :value="message" @input="updateMessage">
+```
+
+```
+
+// ...
+computed: {
+  ...mapState({
+    message: state => state.obj.message
+  })
+},
+methods: {
+  updateMessage (e) {
+    this.$store.commit('updateMessage', e.target.value)
+  }
+}
+
+// ...
+mutations: {
+  updateMessage (state, message) {
+    state.obj.message = message
+  }
+}
+
+```
+
+[官网链接](https://vuex.vuejs.org/zh/guide/forms.html)
