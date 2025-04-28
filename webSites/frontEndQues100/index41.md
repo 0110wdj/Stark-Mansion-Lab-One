@@ -192,3 +192,15 @@ console.log(b.x); // {n:2}
 每次遍历获取到一个 max 或 min 到数组开头或结尾，然后缩小遍历范围，直到遍历结束。
 时间复杂度：O(n^2)
 改进：直接改成快速排序，不会更糟了。
+
+## 55 某公司 1 到 12 月份的销售额存在一个对象里面
+
+如下：{1:222, 2:123, 5:888}，请把数据处理为如下结构：[222, 123, null, null, 888, null, null, null, null, null, null, null]。
+
+```js
+let obj = { 1: 222, 2: 123, 5: 888 };
+const result = Array.from({ length: 12 }).map(
+  (_, index) => obj[index + 1] || null
+);
+console.log(result);
+```
