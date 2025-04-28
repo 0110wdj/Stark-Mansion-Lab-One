@@ -1,0 +1,102 @@
+<div class="parent" style="width: 100px; height: 100px; background-color: red;">
+  <div class="child" style="width: 50px; height: 50px; background-color: blue;">11</div>
+</div>
+
+<style>
+  /* 方法一：flex 布局 */
+  /* div.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+
+  /* 方法二：绝对定位 1 */
+  /* div.parent {
+    position: relative;
+  }
+
+  div.child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } */
+
+  /* 方法二：绝对定位 2 */
+  /* div.child {
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -25px;
+    margin-top: -5px;
+  } */
+
+  /* 方法二：绝对定位 3 */
+  /* div.child {
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  } */
+
+  /* 方法三：grid 布局 */
+  /* div.parent {
+    display: grid;
+  }
+
+  div.child {
+    justify-self: center;
+    align-self: center;
+  } */
+
+  /* 方法四：text-align 和 vertical-align */
+  /* div.parent {
+    font-size: 0;
+    text-align: center;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  div.child {
+    display: inline-block;
+    vertical-align: middle;
+  } */
+
+  /* 方法五：flex 布局 */
+  /* div.parent {
+    display: flex;
+  }
+
+  div.child {
+    margin: auto;
+  } */
+
+  /* 方法六：table 布局 */
+  /* .parent {
+    display: table-cell;
+    height: 200px;
+    width: 200px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .child {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  } */
+</style>
