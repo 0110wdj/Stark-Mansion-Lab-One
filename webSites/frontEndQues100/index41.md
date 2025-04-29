@@ -204,3 +204,7 @@ const result = Array.from({ length: 12 }).map(
 );
 console.log(result);
 ```
+
+## 56 要求设计 LazyMan 类，实现以下功能。
+
+56.js
