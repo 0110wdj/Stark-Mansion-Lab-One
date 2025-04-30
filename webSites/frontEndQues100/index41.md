@@ -282,3 +282,26 @@ function intersect(nums1, nums2) {
   return result; // 输出交集结果
 }
 ```
+
+## 60 已知如下代码，如何修改才能让图片宽度为 300px ？注意下面代码不可修改。
+
+```html
+<img src="1.jpg" style="width:480px!important;”>
+```
+
+参考方案：
+
+```css
+img {
+  padding:0 90px;
+  box-sizing: border-box;
+}
+
+img {
+  max-width：300px;
+}
+
+img {
+  transform: scale(300/480);
+}
+```
