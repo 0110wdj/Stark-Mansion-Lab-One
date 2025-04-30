@@ -255,3 +255,30 @@ function newFunc(father, ...rest) {
   return result;
 }
 ```
+
+## 59 给定两个数组，写一个方法来计算它们的交集。
+
+例如：给定 nums1 = [1, 2, 2, 1]，nums2 = [2, 2]，返回 [2, 2]。
+
+```js
+function intersect(nums1, nums2) {
+  const map = new Map();
+  const result = []; // 存储交集结果
+  // 遍历第一个数组，统计每个元素的出现次数
+  for (let num of nums1) {
+    if (map.has(num)) {
+      map.set(num, map.get(num) + 1);
+    } else {
+      map.set(num, 1);
+    }
+  }
+  // 遍历第二个数组，检查每个元素是否在第一个数组中出现过
+  for (let num of nums2) {
+    if (map.has(num) && map.get(num) > 0) {
+      result.push(num);
+      map.set(num, map.get(num) - 1);
+    }
+  } // 返回交集结果
+  return result; // 输出交集结果
+}
+```
