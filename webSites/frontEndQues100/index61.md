@@ -6,3 +6,19 @@
 > 后端利用 secret 和加密算法(如：HMAC-SHA256)对 payload(如账号密码)生成一个字符串(token)，返回前端
 > 前端每次 request 在 header 中带上 token
 > 后端用同样的算法解密
+
+## 62 redux 为什么要把 reducer 设计成纯函数
+
+redux 的设计思想就是不产生副作用，数据更改的状态可回溯，所以 redux 中处处都是纯函数
+
+redux 三大原则
+
+- 单一数据流
+  整个应用 state 都被储存在一个 store 里面 构成一个 Object tree
+- State 是只读的
+  唯一改变 state 的方法就是触发 action, action 是一个用于描述已发生事件的普通对象
+- 使用纯函数来执行修改
+  为了描述 action 如何改变 state tree， 你需要编写 reducers
+  把 reducer 设计成纯函数，可以实现时间旅行，记录/回放或者热加载
+
+store 里的 state 是一个引用类型，多个组件都可能共享这个 state，如果允许直接在组件中修改这个 state，由于组件间千丝万缕的关系，复杂度会变得很高，定位问题会变得异常困难，因为很难搞清楚到底是哪个组件“搞坏”了数据，而采用纯函数就没有这样的副作用。
