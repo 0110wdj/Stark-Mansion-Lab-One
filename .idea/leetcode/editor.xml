@@ -355,6 +355,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[94]二叉树的中序遍历.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/doc/content/[94]二叉树的中序遍历.md" />
+              <option name="frontendQuestionId" value="leetcode.cn94" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[94]二叉树的中序遍历.java" />
+              <option name="titleSlug" value="binary-tree-inorder-traversal" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[LCR 140]训练计划 II.java">
           <value>
             <LeetcodeEditor>
