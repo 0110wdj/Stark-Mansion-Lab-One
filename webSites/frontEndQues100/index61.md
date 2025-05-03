@@ -43,3 +43,11 @@ a.b.c.d;
 
 > 这个题从 AST 角度看就很简单了，两者转换成 AST 前者的的树是含计算的，后者只是 string literal，天然前者会消耗更多的计算成本，时间也更长。
 
+## 66 ES6 代码转成 ES5 代码的实现思路是什么
+
+ES6 转 ES5 分为以下两种情况
+
+- 1.语法转换
+  ES6 语法通过 babel 等工具为 ES5 语法，本质是将 ES6 语法转 AST（抽象语法数——对编程语言编写的程序的一种描述）再将 AST 转为 ES5 语法代码；例如：let,const 转换为 var，箭头函数转换为 function 函数声明等
+- 2.API 转换
+  采用 babel-polyfill 等工具对 ES5 中不存在的 API（包括 Set 等 ES6 中新的数据结构）做修复，例如：Array.prototype.includes Set Map 等在 ES5 中不存在，需要用相应的 ES5 代码实现这些 API
