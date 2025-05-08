@@ -213,3 +213,20 @@ example 3 对象类型会调用 toString 方法转换成字符串 [object Object
 > 子组件： -> beforeCreate -> created -> beforeMount -> mounted
 > 父组件： -> mounted
 > 总结：从外到内，再从内到外
+
+## 79 input 搜索如何防抖，如何处理中文输入
+
+防抖就不说了，主要是这里提到的中文输入问题，其实看过 elementui 框架源码的童鞋都应该知道，elementui 是通过 compositionstart & compositionend 做的中文输入处理：
+相关代码：
+
+```js
+<input
+ref="input"
+@compositionstart="handleComposition"
+@compositionupdate="handleComposition"
+@compositionend="handleComposition"
+>
+```
+
+这 3 个方法是原生的方法，这里简单介绍下，官方定义如下 compositionstart 事件触发于一段文字的输入之前（类似于 keydown 事件，但是该事件仅在若干可见字符的输入之前，而这些可见字符的输入可能需要一连串的键盘操作、语音识别或者点击输入法的备选词）
+简单来说就是切换中文输入法时在打拼音时(此时 input 内还没有填入真正的内容)，会首先触发 compositionstart，然后每打一个拼音字母，触发 compositionupdate，最后将输入好的中文填入 input 中时触发 compositionend。触发 compositionstart 时，文本框会填入 “虚拟文本”（待确认文本），同时触发 input 事件；在触发 compositionend 时，就是填入实际内容后（已确认文本）,所以这里如果不想触发 input 事件的话就得设置一个 bool 变量来控制。
