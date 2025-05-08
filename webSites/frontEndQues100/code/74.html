@@ -1,0 +1,38 @@
+<body>
+  <!-- 页面基本结构：一个输入框和一个段落元素 -->
+  hello,world
+  <input type="text" id="model">
+  <p id="word"></p>
+</body>
+<script>
+  // 获取DOM元素
+  const model = document.getElementById("model")
+  const word = document.getElementById("word")
+  // 创建一个空对象作为代理的目标对象
+  var obj = {};
+
+  // 创建代理对象，实现数据劫持
+  const newObj = new Proxy(obj, {
+    // 拦截对象属性的读取操作
+    get: function (target, key, receiver) {
+      console.log(`getting ${key}!`);
+      return Reflect.get(target, key, receiver);
+    },
+    // 拦截对象属性的设置操作
+    set: function (target, key, value, receiver) {
+      console.log('setting', target, key, value, receiver);
+      // 当设置text属性时，同步更新DOM
+      if (key === "text") {
+        model.value = value;  // 更新输入框的值
+        word.innerHTML = value;  // 更新段落文本
+      }
+      return Reflect.set(target, key, value, receiver);
+    }
+  });
+
+  // 监听输入框的keyup事件
+  model.addEventListener("keyup", function (e) {
+    // 当输入框内容变化时，更新代理对象的text属性
+    newObj.text = e.target.value
+  })
+</script>
