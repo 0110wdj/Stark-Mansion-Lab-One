@@ -206,3 +206,10 @@ example 3 对象类型会调用 toString 方法转换成字符串 [object Object
 
 时间复杂度为 Ο(n/2+(n-k)/2+k/2) = Ο(n)
 空间复杂度为 O(1)
+
+## 78 Vue 的父组件和子组件生命周期钩子执行顺序是什么
+
+> 父组建： beforeCreate -> created -> beforeMount
+> 子组件： -> beforeCreate -> created -> beforeMount -> mounted
+> 父组件： -> mounted
+> 总结：从外到内，再从内到外
