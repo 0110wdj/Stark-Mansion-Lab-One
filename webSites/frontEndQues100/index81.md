@@ -110,3 +110,35 @@ function MyLink() {
 ```
 
 86.js
+
+## 87 在输入框中如何判断输入的是一个正确的网址？
+
+```js
+function isValidURL(url) {
+  const pattern =
+    /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
+  return pattern.test(url);
+}
+```
+
+```js
+function isValidURL(url) {
+  try {
+    new URL(url.includes("://") ? url : "http://" + url);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+```
+
+```js
+async function urlIsReachable(url) {
+  try {
+    const response = await fetch(url, { method: "HEAD" });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+```
