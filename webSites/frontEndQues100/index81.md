@@ -20,3 +20,19 @@
 ```
 
 82.js
+
+## 83.js var、let 和 const 区别的实现原理是什么
+
+它们的行为差异源于 JavaScript 引擎在编译和执行时对它们的处理方式不同
+
+编译阶段，JavaScript 会根据作用域创建“环境记录（Environment Record）”
+
+对于 var，变量绑定存在于其所属的函数环境记录中（Function Environment Record）。
+
+对于 let 和 const，它们绑定在块级环境记录（Block Environment Record）中，并且每次进入新块都会新建一个环境记录。
+
+所有声明都会被“预处理”——编译阶段进入词法环境（Lexical Environment）。
+
+var 的声明会被提升，并立即初始化为 undefined 。
+
+let 和 const 也会被记录，但不会被初始化，处于“暂时性死区（Temporal Dead Zone, TDZ）”，直到执行到声明语句。
