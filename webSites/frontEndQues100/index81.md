@@ -40,8 +40,8 @@ let 和 const 也会被记录，但不会被初始化，处于“暂时性死区
 ## 84 请实现一个 add 函数，满足以下功能。
 
 ```js
-add(1); 			// 1
-add(1)(2);  	// 3
+add(1); // 1
+add(1)(2); // 3
 add(1)(2)(3); // 6
 add(1)(2, 3); // 6
 add(1, 2)(3); // 6
@@ -49,3 +49,47 @@ add(1, 2, 3); // 6
 ```
 
 84.js
+
+## 85 react-router 里的 Link 标签和 a 标签有什么区别？如何禁掉 a 标签默认事件，禁掉之后如何实现跳转？
+
+| 特性           | `<Link>`（来自 react-router）                                     | `<a>`（原生 HTML）       |
+| -------------- | ----------------------------------------------------------------- | ------------------------ |
+| **跳转方式**   | 使用 `history.push` 改变 URL，不刷新页面（**单页应用 SPA 体验**） | 默认会导致页面刷新       |
+| **性能**       | 更快、保留页面状态                                                | 刷新页面，重新加载资源   |
+| **作用**       | 仅改变前端路由，不重新请求 HTML 文档                              | 发起 HTTP 请求，刷新页面 |
+| **支持 props** | 支持 `to=""`、`replace`、`state` 等 props                         | 仅支持 `href`            |
+
+```html
+<!-- 禁用 a 标签的默认行为 -->
+<a href="/about" onClick={(e) => e.preventDefault()}>
+  About
+</a>
+```
+
+```js
+// 你可以手动使用 react-router-dom 提供的 useNavigate 或 useHistory 来编程式跳转
+import { useNavigate } from "react-router-dom";
+
+function MyLink() {
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault(); // 阻止默认跳转
+    navigate("/about"); // 手动跳转
+  };
+
+  return (
+    <a href="/about" onClick={handleClick}>
+      About
+    </a>
+  );
+}
+```
+
+```
+从最终渲染的 DOM 来看，这两者都是链接，都是 <a> 标签，区别是：
+
+<Link> 是 react-router 里实现路由跳转的链接，一般配合 <Route> 使用，react-router 接管了其默认的链接跳转行为，区别于传统的页面跳转，<Link> 的“跳转”行为只会触发相匹配的 <Route> 对应的页面内容更新，而不会刷新整个页面。
+
+<a> 标签就是普通的超链接了，用于从当前页面跳转到 href 指向的另一个页面（非锚点情况）。
+```
