@@ -277,3 +277,16 @@ React diff
 Vue diff
 
 - 跟 react 一样，只进行同层级比较，忽略跨级操作
+
+## 98 写出如下代码的打印结果
+
+```js
+function changeObjProperty(o) {
+  o.siteUrl = "http://www.baidu.com";
+  o = new Object();
+  o.siteUrl = "http://www.google.com";
+}
+let webSite = new Object();
+changeObjProperty(webSite);
+console.log(webSite.siteUrl); // http://www.baidu.com
+```
