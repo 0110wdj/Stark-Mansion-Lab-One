@@ -263,3 +263,17 @@ Plan
 
 这时，如果你想让用户看到“12345”，你在页面中渲染的数字就应该是“23154”。这种手段也可以算作一种加密。
 具体的实现方法可以看一下[《Web 端反爬虫技术方案》](https://juejin.im/post/5b6d579cf265da0f6e51a7e0)。
+
+## 97 React 和 Vue 的 diff 时间复杂度从 O(n^3) 优化到 O(n) ，那么 O(n^3) 和 O(n) 是如何计算出来的？
+
+React diff
+
+- 由于 web UI 中跨级移动操作非常少、可以忽略不计，所以 react 实现的 diff 是同层级比较
+- 拥有相同类型的两个组件产生的 DOM 结构也是相似的，不同类型的两个组件产生的 DOM 结构则不近相同
+- 对于同一层级的一组子节点，通过分配唯一唯一 id 进行区分（key 值）
+
+[传统 diff、react 优化 diff、vue 优化 diff](https://www.jianshu.com/p/398e63dc1969)
+
+Vue diff
+
+- 跟 react 一样，只进行同层级比较，忽略跨级操作
