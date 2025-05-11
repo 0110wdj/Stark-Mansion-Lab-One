@@ -186,3 +186,36 @@ https 协议由 http + ssl 协议构成，具体的链接过程可参考 [SSL �
 ## 93 给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。请找出这两个有序数组的中位数。要求算法的时间复杂度为 O(log(m+n))。
 
 93.js
+
+## 94 vue 在 v-for 时给每项元素绑定事件需要用事件代理吗？为什么？
+
+在 Vue 中使用 v-for 渲染列表时，并不一定需要使用事件代理。Vue 本身支持为每个列表项单独绑定事件处理函数，而且它在内部做了性能优化，所以一般情况下，你可以直接给每个元素绑定事件处理函数而不用担心性能问题。
+
+```html
+<template>
+  <ul>
+    <li v-for="(item, index) in list" :key="index" @click="handleClick(item)">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        list: ["Apple", "Banana", "Cherry"],
+      };
+    },
+    methods: {
+      handleClick(item) {
+        console.log("Clicked:", item);
+      },
+    },
+  };
+</script>
+```
+
+这种方式在 Vue 内部会通过虚拟 DOM 的差分机制，只为必要的 DOM 节点绑定事件处理器。对于绝大多数应用场景来说，它的性能已经足够好。
+
+当列表非常大或存在频繁 DOM 更新时，可考虑事件代理。
