@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>模糊搜索关键词高亮</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    .highlight {
+      background: yellow;
+      color: #d0021b;
+    }
+
+    .result-item {
+      margin: 8px 0;
+    }
+
+    input[type="text"] {
+      padding: 6px;
+      width: 240px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>模糊搜索（关键词高亮）</h2>
+  <input type="text" id="searchInput" placeholder="请输入关键词..." />
+  <div id="results"></div>
+
+  <script>
+    // 静态数据
+    const data = [
+      '地铁线路图',
+      '地铁站',
+      '地铁9号线 曹路-松江南站',
+      '地铁2号线 徐泾东-广兰路',
+      '地铁11号线 迪士尼-嘉定北',
+      '地铁1号线 莘庄-富锦路',
+      '地铁10号线 新江湾城-虹桥火车站',
+      '南京东路(地铁站) 10号线 2号线',
+      '地铁3号线 上海南站-江杨北路',
+      '豫园(地铁站) 14号线(在建) 10号线'
+    ];
+
+    const searchInput = document.getElementById('searchInput');
+    const resultsDiv = document.getElementById('results');
+
+    function highlightKeyword(text, keyword) {
+      if (!keyword) return text;
+      // 使用正则实现不区分大小写的高亮
+      const reg = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(reg, '<span class="highlight">$1</span>');
+    }
+
+    function renderResults(keyword) {
+      const filtered = data.filter(item => item.toLowerCase().includes(keyword.toLowerCase()));
+      if (filtered.length === 0) {
+        resultsDiv.innerHTML = '<div>无匹配结果</div>';
+        return;
+      }
+      resultsDiv.innerHTML = filtered.map(item =>
+        `<div class="result-item">${highlightKeyword(item, keyword)}</div>`
+      ).join('');
+    }
+
+    // 初始渲染全部
+    renderResults('');
+
+    searchInput.addEventListener('input', e => {
+      renderResults(e.target.value.trim());
+    });
+  </script>
+</body>
+
+</html>
