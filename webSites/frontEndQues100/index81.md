@@ -301,3 +301,29 @@ function reverseInt(num) {
   return String(num % 10) + reverseInt(Math.floor(num / 10));
 }
 ```
+
+## 100 请写出如下代码的打印结果
+
+```js
+function Foo() {
+  // 注意，这里的 Foo 是闭包传入的 functon Foo 函数对象
+  Foo.a = function () {
+    console.log(1);
+  };
+  this.a = function () {
+    console.log(2);
+  };
+}
+Foo.prototype.a = function () {
+  console.log(3);
+};
+Foo.a = function () {
+  console.log(4);
+};
+Foo.a();
+let obj = new Foo();
+obj.a();
+Foo.a();
+
+// 4 2 1
+```
