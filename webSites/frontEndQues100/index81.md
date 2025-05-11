@@ -146,3 +146,7 @@ async function urlIsReachable(url) {
 ## 88 实现 convert 方法，把原始 list 转换成树形结构，要求尽可能降低时间复杂度
 
 88.js
+
+## 89 设计并实现 Promise.race()
+
+89.js
