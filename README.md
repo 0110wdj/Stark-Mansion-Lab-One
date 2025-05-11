@@ -27,6 +27,7 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 19  | [【狂神说 Java】Java 零基础学习视频通俗易懂](https://www.bilibili.com/video/BV12J41137hu/?spm_id_from=333.999.0.0&vd_source=86c089058388d688aef50d8d3bb1fbe7) | [遇见狂神说](https://space.bilibili.com/95256449)                                                                           | 2025-02-15        |
 | 20  | [前端 100 问](https://juejin.cn/post/6844903885488783374)                                                                                                     | [程序员依扬](https://juejin.cn/user/3720403075993373/posts)                                                                 | 2025-05-11        |
 | 21  | 《React 设计原理》                                                                                                                                            | 卡颂                                                                                                                        | 2025-04-15        |
+| 22  | 《Web 性能权威指南》                                                                                                                                          | [加] Ilya Grigorik 著 李松峰 译                                                                                             | reading           |
 
 ### 主线 1.0
 
@@ -77,3 +78,9 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 > - 1、Java SE 基础 ✅
 > - 2、前端 100 问 ✅
 > - 3、阅读书籍《React 设计原理》✅
+
+> 三、性能优化（2025.05.11）
+>
+> - 1、实践：nodejs 框架应用
+> - 2、实践：微信小程序
+> - 3、阅读书籍《Web 性能权威指南》
