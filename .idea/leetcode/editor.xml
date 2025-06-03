@@ -333,6 +333,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[695]岛屿的最大面积.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/doc/content/[695]岛屿的最大面积.md" />
+              <option name="frontendQuestionId" value="leetcode.cn695" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[695]岛屿的最大面积.java" />
+              <option name="titleSlug" value="max-area-of-island" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[704]二分查找.java">
           <value>
             <LeetcodeEditor>
