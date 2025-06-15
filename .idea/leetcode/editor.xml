@@ -58,6 +58,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[1143]最长公共子序列.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/doc/content/[1143]最长公共子序列.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1143" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[1143]最长公共子序列.java" />
+              <option name="titleSlug" value="longest-common-subsequence" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/webSites/leetcodeTop/leetcode/editor/cn/[121]买卖股票的最佳时机.java">
           <value>
             <LeetcodeEditor>
