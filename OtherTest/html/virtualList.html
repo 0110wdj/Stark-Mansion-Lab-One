@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual List - Smooth Scrolling with Better Buffer</title>
+  <style>
+    #container {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+
+    .item {
+      box-sizing: border-box;
+      padding: 10px;
+      margin: 4px 0;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      position: absolute;
+      width: calc(100% - 8px);
+      left: 4px;
+    }
+
+    #spacer {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="spacer"></div>
+    <div id="list"></div>
+  </div>
+
+  <script>
+    // 总数据量
+    const TOTAL = 10000;
+
+    // 估算每项平均高度（未测量前使用）
+    const ESTIMATED_HEIGHT = 50;
+
+    // 向上向下缓冲渲染多少个额外元素（增加缓冲区以提高平滑度）
+    const BUFFER = 15;
+
+    // DOM 元素引用
+    const container = document.getElementById('container');
+    const list = document.getElementById('list');
+    const spacer = document.getElementById('spacer');
+
+    // 模拟不等高数据
+    const data = Array.from({ length: TOTAL }, (_, i) => ({
+      id: i,
+      text: `Item ${i} - 这是一个测试项目，内容长度不同以模拟真实场景`,
+      height: 30 + Math.floor(Math.random() * 50) // 高度 30~80 之间
+    }));
+
+    // 高度缓存（id => height）
+    const heights = new Map();
+
+    // 每一项的偏移位置（计算 top）
+    const positions = [];
+
+    // 当前渲染的元素范围
+    let currentRange = { start: 0, end: 0 };
+
+    // 已渲染的DOM元素缓存
+    const renderedElements = new Map();
+
+    // 计算所有项的 top 偏移位置
+    function calcPositions() {
+      positions.length = 0;
+      let top = 0;
+      for (let i = 0; i < data.length; i++) {
+        const h = heights.get(i) || ESTIMATED_HEIGHT;
+        positions.push(top);
+        top += h;
+      }
+      spacer.style.height = top + 'px'; // 设置撑高容器高度
+    }
+
+    // 使用二分查找快速定位当前 scrollTop 对应的可视起始项
+    function findStartIndex(scrollTop) {
+      let low = 0;
+      let high = data.length - 1;
+      while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        const midTop = positions[mid];
+        const midBottom = midTop + (heights.get(mid) || ESTIMATED_HEIGHT);
+        if (midBottom <= scrollTop) {
+          low = mid + 1;
+        } else {
+          high = mid - 1;
+        }
+      }
+      return Math.max(0, low - BUFFER); // 加 buffer
+    }
+
+    // 创建单个列表项元素
+    function createElement(index) {
+      const item = data[index];
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerText = item.text;
+      div.style.height = item.height + 'px';
+      div.dataset.index = index;
+      return div;
+    }
+
+    // 渲染可见范围内的项
+    function render() {
+      const scrollTop = container.scrollTop;
+      const containerHeight = container.clientHeight;
+
+      calcPositions();
+
+      const start = findStartIndex(scrollTop);
+      const visibleEnd = scrollTop + containerHeight;
+
+      // 计算结束索引，增加更多缓冲
+      let end = start;
+      while (end < data.length && positions[end] < visibleEnd + BUFFER * ESTIMATED_HEIGHT) {
+        end++;
+      }
+      end = Math.min(end + BUFFER, data.length);
+
+      // 如果渲染范围变化不大，避免重新渲染
+      if (Math.abs(currentRange.start - start) < BUFFER / 2 &&
+        Math.abs(currentRange.end - end) < BUFFER / 2) {
+        return;
+      }
+
+      // 移除不再需要的元素
+      const toRemove = [];
+      renderedElements.forEach((element, index) => {
+        if (index < start || index >= end) {
+          toRemove.push(index);
+          list.removeChild(element);
+        }
+      });
+      toRemove.forEach(index => renderedElements.delete(index));
+
+      // 添加新需要的元素
+      for (let i = start; i < end; i++) {
+        if (!renderedElements.has(i)) {
+          const element = createElement(i);
+          element.style.transform = `translateY(${positions[i]}px)`;
+          renderedElements.set(i, element);
+          list.appendChild(element);
+        } else {
+          // 更新已存在元素的位置
+          const element = renderedElements.get(i);
+          element.style.transform = `translateY(${positions[i]}px)`;
+        }
+      }
+
+      currentRange = { start, end };
+
+      // 测量新添加元素的真实高度
+      measureHeights(start, end);
+    }
+
+    // 获取真实 DOM 高度，更新缓存
+    function measureHeights(start, end) {
+      let needsRecalc = false;
+
+      for (let i = start; i < end; i++) {
+        const element = renderedElements.get(i);
+        if (element) {
+          const realHeight = element.offsetHeight;
+          if (heights.get(i) !== realHeight) {
+            heights.set(i, realHeight);
+            needsRecalc = true;
+          }
+        }
+      }
+
+      // 如果高度有变化，重新计算位置
+      if (needsRecalc) {
+        calcPositions();
+        // 更新所有已渲染元素的位置
+        renderedElements.forEach((element, index) => {
+          element.style.transform = `translateY(${positions[index]}px)`;
+        });
+      }
+    }
+
+    // 滚动监听
+    // 滚动事件可能非常频繁触发（比如每毫秒多次）
+    container.addEventListener('scroll', () => {
+      // 但渲染只会在浏览器准备重绘时执行
+      requestAnimationFrame(render); // 不会少于一帧的时间执行
+    });
+
+    // 窗口大小变化时重新渲染
+    window.addEventListener('resize', () => {
+      requestAnimationFrame(render);
+    });
+
+    // 初始渲染
+    calcPositions();
+    render();
+  </script>
+
+</body>
+
+</html>
