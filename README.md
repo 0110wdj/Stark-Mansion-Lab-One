@@ -83,4 +83,4 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 >
 > - 1、实践：nodejs 框架应用 ✅
 > - 2、实践：微信小程序 ✅
-> - 3、阅读书籍《Web 性能权威指南》
+> - 3、阅读书籍《Web 性能权威指南》✅
