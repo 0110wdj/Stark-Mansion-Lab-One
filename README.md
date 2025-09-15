@@ -29,6 +29,7 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 | 21  | 《React 设计原理》                                                                                                                                            | 卡颂                                                                                                                        | 2025-04-15        |
 | 22  | 《Web 性能权威指南》                                                                                                                                          | [加] Ilya Grigorik 著 李松峰 译                                                                                             | 2025-07-01        |
 | 23  | 《JavaScript 高级程序设计（第 5 版）》                                                                                                                        | [美] Matt Frisbie 著 李松峰 译                                                                                              | reading           |
+| 24  | 《Spring 实战（第 6 版）》                                                                                                                                    | [美] Craig Walls 著 张卫滨 吴国浩 译                                                                                        | reading           |
 
 ### 主线 1.0
 
@@ -90,3 +91,4 @@ This is a personal code store for _snofly_ (alias _0110wdj_)。There are some pr
 >
 > - 1、阅读书籍《JavaScript 高级程序设计》
 > - 2、实践：框架开源贡献
+> - 3、阅读书籍《Spring 实战》
