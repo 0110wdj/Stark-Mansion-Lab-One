@@ -16,7 +16,7 @@ function solve(arr, k) {
   }
 
   // ---------- 滑动窗口 ----------
-  for (let l = 0, r = k; r < k; l++, r++) {
+  for (let l = 0, r = k; ; l++, r++) {
 
     // 窗口内恰好 0 个坏元素，直接通过
     if (badMap.size === 0) {
@@ -41,6 +41,7 @@ function solve(arr, k) {
     }
 
     // 本次窗口失败，开始滑动
+    if (r === n) return ["NO"]
 
     // ---------- 左端移出 ----------
     if (arr[l] > k) {
