@@ -139,11 +139,15 @@ function main() {
         
         console.log(`[${fileCount}] 正在读取: ${path.basename(selectedFile)}`);
         
-        // 计算还能读取多少行
+        // 计算还能读取多少行 - 如果是最后一个文件（剩余行数不够），仍然读取完整文件
         const remainingLines = MAX_LINES - totalLines;
-        
+        const unreadCount = allFiles.length - readFiles.size + 1; // 包括当前选中的
+
+        // 如果这是最后一个要读取的文件（剩余行数不够），不限制行数，读取完整文件
+        const maxLinesForThisFile = unreadCount === 1 ? Infinity : remainingLines;
+
         // 读取文件内容
-        const { content, lineCount } = readFileContent(selectedFile, remainingLines);
+        const { content, lineCount } = readFileContent(selectedFile, maxLinesForThisFile);
         
         if (content) {
             // 如果不是第一个文件，添加分隔符
