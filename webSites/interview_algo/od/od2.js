@@ -1,61 +1,103 @@
 /**
- * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+ * 玩家试玩调度问题
  *
- * 返回最大的试玩玩家数量
- * @param playerCount int整型 试玩玩家数量
- * @param playerTimeRange int整型二维数组 [[玩家1游戏开始时间, 玩家1游戏结束时间]...[玩家n游戏开始时间, 玩家n游戏结束时间]]
- * @return int整型
+ * 题目描述：
+ * 游戏试玩区只有1台设备，同一时间只能供1位玩家试玩。
+ * 给定 N 位玩家的试玩时间区间 [开始时间, 结束时间]，
+ * 请计算最多可以安排多少位玩家完成试玩（即选择最多的不重叠区间）。
+ *
+ * 输入：
+ * - playerCount: 玩家数量
+ * - playerTimeRange: 二维数组，每个子数组为 [开始时间, 结束时间]
+ *
+ * 输出：
+ * - 最多可以安排的玩家数量
+ *
+ * 示例：
+ * 输入: playerCount = 3, playerTimeRange = [[1, 5], [2, 3], [4, 6]]
+ * 输出: 2
+ * 解释: 可以安排玩家 [2, 3] 和 [4, 6]，两个区间不重叠。
+ *
+ * 输入: playerCount = 3, playerTimeRange = [[2, 3], [4, 6], [3, 4]]
+ * 输出: 3
+ * 解释: 三个区间按顺序排列互不重叠，可以全部安排。
  */
+
+/**
+ * 解题思路：
+ *
+ * 这是经典的「活动选择问题」，使用贪心算法求解。
+ *
+ * 核心思想：每次选择结束时间最早的玩家，这样可以留出尽可能多的时间给后续玩家。
+ *
+ * 算法步骤：
+ * 1. 将所有时间区间按结束时间从小到大排序
+ * 2. 初始化：选择第一个区间（结束时间最早），计数为1
+ * 3. 遍历剩余区间：如果当前区间的开始时间 >= 上一个选中区间的结束时间，
+ *    则选择该区间，更新结束时间，计数+1
+ * 4. 最终计数就是最多可安排的玩家数
+ *
+ * 为什么贪心有效：
+ * 选择结束时间最早的活动，能为后续活动留出最多的时间，
+ * 这是局部最优选择，最终能得到全局最优解。
+ *
+ * 时间复杂度：O(N log N)  - 主要耗时在排序
+ * 空间复杂度：O(1)        - 只需要几个变量
+ */
+
 function MaxPlayers(playerCount, playerTimeRange) {
-  if (playerCount === 1) return 1;
+  if (playerCount === 0) return 0;
 
-  function insertArea(blockArea, curArea, blockAreaIndex, resultBlockArea) {
-    if (curArea[1] <= blockArea[0][0]) {
-      blockArea.unshift(curArea);
-      return;
-    }
+  // 按结束时间从小到大排序
+  playerTimeRange.sort((a, b) => a[1] - b[1]);
 
-    if (curArea[0] >= blockArea.at(-1)[1]) {
-      blockArea.push(curArea);
-      return;
-    }
-
-    for (let i = 0; i < blockArea.length; i++) {
-      const area = blockArea[i];
-      if (area[1] <= curArea[0]) {
-        if (blockArea[i + 1][0] <= curArea[1]) {
-          blockArea = [...blockArea.slice(0, i + 1), curArea, ...blockArea.slice(i + 1)]
-          resultBlockArea[blockAreaIndex] = blockArea
-        } else {
-          return;
-        }
-      }
-    }
-  }
-
-  function insertBlock(resultBlockArea, curArea) {
-    resultBlockArea.forEach((blockArea, blockAreaIndex) => {
-      insertArea(blockArea, curArea, blockAreaIndex, resultBlockArea);
-    })
-    resultBlockArea.push([curArea]);
-  }
-
-  let resultBlockArea = [[playerTimeRange[0]]];
+  let count = 1;  // 至少可以安排第一个玩家
+  let lastEndTime = playerTimeRange[0][1];
 
   for (let i = 1; i < playerCount; i++) {
-    const curArea = playerTimeRange[i];
-    insertBlock(resultBlockArea, curArea);
+    const [start, end] = playerTimeRange[i];
+    // 如果当前玩家的开始时间 >= 上一个玩家的结束时间，可以安排
+    if (start >= lastEndTime) {
+      count++;
+      lastEndTime = end;
+    }
   }
 
-  let maxPlayer = 0;
-  resultBlockArea.forEach(blockArea => {
-    maxPlayer = Math.max(maxPlayer, blockArea.length);
-  })
-
-  return maxPlayer;
+  return count;
 }
 
+// 测试用例 1: 基础用例 - 部分区间重叠
+// 输入: 3个玩家，时间区间 [[1, 5], [2, 3], [4, 6]]
+// 预期输出: 2 (可以安排 [2, 3] 和 [4, 6])
+console.log("测试用例 1:");
+console.log(MaxPlayers(3, [[1, 5], [2, 3], [4, 6]]));
 
-// console.log(MaxPlayers(3, [[1, 5], [2, 3], [4, 6]]))
-// console.log(MaxPlayers(3, [[2, 3], [4, 6], [3, 4]]))
-// console.log(MaxPlayers(1, [[2, 3]]))
+// 测试用例 2: 所有区间都不重叠
+// 输入: 3个玩家，时间区间 [[2, 3], [4, 6], [3, 4]]
+// 预期输出: 3 (三个区间按顺序全部可以安排)
+console.log("\n测试用例 2:");
+console.log(MaxPlayers(3, [[2, 3], [4, 6], [3, 4]]));
+
+// 测试用例 3: 只有1个玩家
+// 输入: 1个玩家，时间区间 [[2, 3]]
+// 预期输出: 1
+console.log("\n测试用例 3:");
+console.log(MaxPlayers(1, [[2, 3]]));
+
+// 测试用例 4: 所有区间完全重叠
+// 输入: 4个玩家，时间区间 [[1, 10], [2, 3], [4, 5], [6, 7]]
+// 预期输出: 3 (可以安排 [2, 3], [4, 5], [6, 7])
+console.log("\n测试用例 4:");
+console.log(MaxPlayers(4, [[1, 10], [2, 3], [4, 5], [6, 7]]));
+
+// 测试用例 5: 嵌套区间
+// 输入: 4个玩家，时间区间 [[1, 5], [1, 3], [3, 4], [4, 5]]
+// 预期输出: 3 (可以安排 [1, 3], [3, 4], [4, 5])
+console.log("\n测试用例 5:");
+console.log(MaxPlayers(4, [[1, 5], [1, 3], [3, 4], [4, 5]]));
+
+// 测试用例 6: 完全相同的时间
+// 输入: 3个玩家，时间区间 [[1, 2], [1, 2], [1, 2]]
+// 预期输出: 1 (只能选其中一个)
+console.log("\n测试用例 6:");
+console.log(MaxPlayers(3, [[1, 2], [1, 2], [1, 2]]));
